@@ -97,11 +97,11 @@ Microsserviços + RabbitMQ + Redis + SQL Server
 
 ### Fluxo de Movimentação de Estoque
 
-![Fluxo de movimentação de estoque](docs/Fluxograma.png)
+[Fluxo de movimentação de estoque](docs/Fluxograma.png)
 
 ### Diagrama de Classes – RDTrackr
 
-![Diagrama de classes](docs/Diagrama.png)
+[Diagrama de classes](docs/Diagrama.png)
 
 ---
 
