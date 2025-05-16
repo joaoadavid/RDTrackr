@@ -1,4 +1,5 @@
-# RDTrackr – Sistema de Gerenciamento de Estoque para Empresa de Usinagem
+# RDTrackr – Sistema de Gerenciamento de Estoque para Empresa de Usinagem  
+> Rastreabilidade, controle e eficiência para processos industriais.
 
 ## 📘 Descrição
 
