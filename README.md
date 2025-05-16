@@ -1,109 +1,157 @@
-# RDTrackr – Sistema de Gerenciamento de Estoque para Empresa de Usinagem  
-> Rastreabilidade, controle e eficiência para processos industriais.
+# RDTrackr: Sistema de Gerenciamento de Estoque para Empresa de Usinagem
 
-## 📘 Descrição
+## 📘 Resumo
 
-O **RDTrackr** é um sistema web de gerenciamento de estoque voltado para empresas do setor de usinagem. A proposta é automatizar o controle de entrada e saída de materiais, ferramentas e produtos acabados, com foco em rastreabilidade e eficiência operacional.
-
-A aplicação segue uma arquitetura baseada em **microsserviços**, utilizando tecnologias modernas como `.NET`, `Docker`, `RabbitMQ`, `Redis`, `SQL Server` e interface em **Blazor** ou **React**.
+O **RDTrackr** é um sistema web de gerenciamento de estoque projetado para empresas do setor de usinagem. Oferece controle detalhado sobre entradas, saídas e movimentações de materiais, ferramentas e produtos acabados, utilizando uma arquitetura de microsserviços com .NET, RabbitMQ, Redis, Docker e SQL Server. A interface será desenvolvida com Blazor ou React.
 
 ---
 
-## 🚀 Objetivos
+## 📌 Introdução
 
-- Gerenciar o estoque de forma automatizada e centralizada;
-- Rastrear movimentações de materiais e ferramentas;
-- Emitir relatórios e alertas em tempo real;
-- Prover escalabilidade e desempenho com arquitetura moderna.
+### Contexto
+Empresas de usinagem enfrentam desafios no controle de estoques, impactando diretamente produção e prazos. Um sistema confiável é essencial para eficiência e rastreabilidade.
 
----
+### Justificativa
+Sem controle automatizado, ocorrem desperdícios e atrasos. Um sistema voltado ao setor melhora diretamente a gestão.
 
-## ⚙️ Funcionalidades
-
-- Cadastro de materiais, ferramentas e produtos acabados;
-- Registro de entradas e saídas no estoque;
-- Visualização de saldo e histórico de movimentações;
-- Controle de usuários com níveis de acesso (admin/operador);
-- Geração de relatórios por período, setor, tipo de item e responsável;
-- Notificações de estoque mínimo e vencimento;
-- Integração com setores e ordens de produção.
+### Objetivos
+- Desenvolver um sistema web de gerenciamento de estoque;
+- Rastrear materiais, ferramentas e peças;
+- Controlar movimentações e gerar relatórios;
+- Usar arquitetura escalável com microsserviços.
 
 ---
 
-## 🔐 Requisitos Não Funcionais
+## 📚 Fundamentação Teórica
 
-- Alta disponibilidade (mínimo de 99,5%);
-- Tempo de resposta crítico < 500ms;
-- Comunicação segura via HTTPS;
-- Autenticação com JWT;
-- Microsserviços independentes;
-- Logging estruturado e monitoramento centralizado.
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-| Camada         | Tecnologia              |
-|----------------|--------------------------|
-| Backend        | .NET Core                |
-| Mensageria     | RabbitMQ                 |
-| Cache          | Redis                    |
-| Banco de Dados | SQL Server               |
-| Containers     | Docker                   |
-| Frontend       | Blazor ou React          |
-| Monitoramento  | Grafana                  |
-| CI/CD          | Azure DevOps             |
+- **Microsserviços:** estrutura modular com APIs independentes;
+- **RabbitMQ:** mensageria assíncrona entre serviços;
+- **Redis:** cache de dados;
+- **Blazor ou React:** para o frontend;
+- **Docker:** containerização do ambiente.
 
 ---
 
-## 🧪 Plano de Testes
+## 🧩 Descrição do Projeto
 
-- **Testes Unitários**: lógica de microsserviços (xUnit);
-- **Testes de Integração**: comunicação entre serviços (Postman);
-- **Testes de Interface**: interação do usuário;
-- **Testes de Performance**: latência e carga (JMeter, SonarCloud).
+### Tema
+Sistema de gerenciamento de estoque para usinagem.
+
+### Problemas Identificados
+- Falta de controle de estoque;
+- Dificuldade em rastrear movimentações;
+- Ausência de histórico de uso;
+- Reposição lenta de itens críticos.
+
+### Limitações
+- Sem módulo financeiro/faturamento;
+- Produção em tempo real fora do escopo inicial;
+- Integração com ERPs externos fora do escopo.
 
 ---
 
-## 🗂️ Metodologia
+## ✅ Especificação Técnica
 
-A metodologia adotada será o **Scrum**, com sprints quinzenais:
+### Requisitos Funcionais
+- RF01 – Cadastro de itens no estoque;
+- RF02 – Entradas com origem e quantidade;
+- RF03 – Saídas com destino e responsável;
+- RF04 – Saldo atualizado por item;
+- RF05 – Histórico de movimentações;
+- RF06 – Controle de usuários com níveis de acesso;
+- RF07 – Relatórios por período, tipo, setor e responsável;
+- RF08 – Notificações de itens críticos;
+- RF09 – Itens vinculados a setores ou ordens de produção;
+- RF10 – Interface web responsiva.
 
-1. Levantamento de requisitos;
-2. Modelagem de arquitetura e banco;
-3. Implementação incremental;
-4. Testes e integração contínua;
-5. Feedback e iterações.
+### Requisitos Não Funcionais
+- RNF01 – Disponibilidade de 99,5%;
+- RNF02 – Resposta crítica < 500ms;
+- RNF03 – HTTPS em todas as requisições;
+- RNF04 – Autenticação JWT;
+- RNF05 – Microsserviços independentes;
+- RNF06 – Suporte à concorrência no banco;
+- RNF07 – Compatibilidade com navegadores modernos;
+- RNF08 – Logging e monitoramento centralizado.
+
+---
+
+## 🎨 Considerações de Design e Stack Tecnológica
+
+### Arquitetura:
+Microsserviços + RabbitMQ + Redis + SQL Server
+
+### Stack:
+- **Backend:** .NET Core
+- **Mensageria:** RabbitMQ
+- **Cache:** Redis
+- **Banco:** SQL Server
+- **Containers:** Docker
+- **Monitoramento:** Grafana
+- **CI/CD:** Azure DevOps
+- **Frontend:** Blazor ou React
 
 ---
 
 ## 📊 Modelagem UML
 
-O projeto inclui:
-- Diagrama de Classes (Modelo de Domínio);
-- Fluxo de movimentação de estoque;
-- Documentação técnica detalhada em LaTeX.
+### Fluxo de Movimentação de Estoque
+
+![Fluxo de movimentação de estoque](docs/Fluxograma.png)
+
+### Diagrama de Classes – RDTrackr
+
+![Diagrama de classes](docs/Diagrama.png)
 
 ---
 
-## 📅 Cronograma (a definir)
+## 🚀 Metodologia
 
-| Atividade                               | Início    | Término   |
-|----------------------------------------|-----------|-----------|
-| Levantamento de requisitos             | A definir | A definir |
-| Modelagem da arquitetura e banco       | A definir | A definir |
-| Implementação dos microsserviços       | A definir | A definir |
-| Integração com frontend                | A definir | A definir |
-| Testes e documentação final            | A definir | A definir |
+Scrum com sprints quinzenais:
+
+1. Levantamento de requisitos;
+2. Modelagem da arquitetura e banco;
+3. Implementação incremental;
+4. Testes unitários e integração;
+5. Validação com feedback.
 
 ---
 
-## 📚 Referências
+## 🧪 Plano de Testes
 
-- [.NET Docs](https://learn.microsoft.com/dotnet/)
-- [Docker Docs](https://docs.docker.com/)
-- [Redis Docs](https://redis.io/docs/)
-- [RabbitMQ Docs](https://www.rabbitmq.com/documentation.html)
+- **Unitários:** lógica dos microsserviços;
+- **Integração:** comunicação entre serviços;
+- **Interface:** usabilidade;
+- **Performance:** carga e latência.
+
+Ferramentas: xUnit, Postman, SonarCloud.
+
+---
+
+## 📅 Cronograma de Desenvolvimento
+
+| Atividade                                  | Início     | Término    |
+|--------------------------------------------|------------|------------|
+| Levantamento de requisitos                 | A definir  | A definir  |
+| Modelagem de arquitetura e banco           | A definir  | A definir  |
+| Implementação dos microsserviços base      | A definir  | A definir  |
+| Integração com frontend Blazor/React       | A definir  | A definir  |
+| Testes e documentação                      | A definir  | A definir  |
+
+---
+
+## ✅ Considerações Finais
+
+O RDTrackr busca solucionar problemas reais de controle de estoque em empresas de usinagem, aplicando boas práticas de engenharia de software com uma abordagem moderna e escalável.
+
+---
+
+## 🔗 Referências
+
+- [.NET Documentation](https://learn.microsoft.com/dotnet/)
+- [Docker Documentation](https://docs.docker.com/)
+- [Redis Documentation](https://redis.io/docs/)
+- [RabbitMQ Documentation](https://www.rabbitmq.com/documentation.html)
 
 ---
 
