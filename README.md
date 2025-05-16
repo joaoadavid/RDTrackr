@@ -114,7 +114,7 @@ O projeto inclui:
 
 ## 👤 Autor
 
-**Nome do Aluno**  
+**João Antonio David**  
 Engenharia de Software – Católica de Santa Catarina  
-Orientador: Nome do Professor
+Orientador: DIOGO VINÍCIUS WINCK
 
