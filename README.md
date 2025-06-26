@@ -54,11 +54,11 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 ## 📊 Modelagem UML
 
-### Fluxo de Movimentação de Estoque
+### Diagrama de Classes
 
 [Fluxo de movimentação de estoque](docs/Fluxograma.png)
 
-### Diagrama de Classes – RDTrackr
+### Diagrama de Casos de Uso (UML)
 
 [Diagrama de classes](docs/Diagrama-UML.png)
 
