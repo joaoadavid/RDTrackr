@@ -1,169 +1,160 @@
-# RDTrackr: Sistema de Gerenciamento de Estoque para Empresa de Usinagem
+# RDTrackr: Sistema de Gerenciamento de Estoque para Empresas de Usinagem
 
 ## 📘 Resumo
 
-O **RDTrackr** é um sistema web de gerenciamento de estoque projetado para empresas do setor de usinagem. Oferece controle detalhado sobre entradas, saídas e movimentações de materiais, ferramentas e produtos acabados, utilizando uma arquitetura de microsserviços com .NET, RabbitMQ, Redis, Docker e SQL Server. A interface será desenvolvida com Blazor ou React.
+O **RDTrackr** é um sistema web de gerenciamento de estoque desenvolvido para empresas de usinagem que enfrentam dificuldades no controle de insumos e ferramentas. O projeto oferece atualização em tempo real, rastreabilidade de movimentações e alertas automáticos. A arquitetura é baseada em Django com suporte a tarefas assíncronas via Celery, mensageria com RabbitMQ e cache Redis, promovendo escalabilidade, desempenho e modularidade.
 
 ---
 
-## 📌 Introdução
+## 1. Introdução
 
 ### Contexto
-Empresas de usinagem enfrentam desafios no controle de estoques, impactando diretamente produção e prazos. Um sistema confiável é essencial para eficiência e rastreabilidade.
+
+Empresas do setor de usinagem operam com altos níveis de complexidade no controle de materiais. A falta de visibilidade em tempo real sobre movimentações e saldos de estoque compromete diretamente a eficiência produtiva. O uso de planilhas ou sistemas genéricos se mostra limitado diante da especificidade dessas operações.
 
 ### Justificativa
-Sem controle automatizado, ocorrem desperdícios e atrasos. Um sistema voltado ao setor melhora diretamente a gestão.
+
+Para evitar rupturas na produção, atrasos em entregas e desperdícios, é fundamental contar com um sistema que ofereça não apenas o registro, mas também o acompanhamento contínuo das movimentações de estoque. O RDTrackr surge como uma solução sob medida para o setor, garantindo controle total, integração e automação.
 
 ### Objetivos
-- Desenvolver um sistema web de gerenciamento de estoque;
-- Rastrear materiais, ferramentas e peças;
-- Controlar movimentações e gerar relatórios;
-- Usar arquitetura escalável com microsserviços.
+
+#### 🎯 Objetivo Principal
+Desenvolver um sistema web modular para gerenciamento de estoque com foco em atualização em tempo real, rastreabilidade e automação de alertas operacionais.
+
+#### ✅ Objetivos Secundários
+- Proporcionar uma interface web intuitiva e responsiva para operadores e gestores;
+- Facilitar o acompanhamento em tempo real dos saldos e movimentações;
+- Gerar alertas automáticos para reposição de itens críticos;
+- Permitir emissão de relatórios por setor, período e movimentação;
+- Disponibilizar APIs REST públicas para futura integração com outros sistemas (ex: ERP).
 
 ---
 
-## 📚 Fundamentação Teórica
-
-- **Microsserviços:** estrutura modular com APIs independentes;
-- **RabbitMQ:** mensageria assíncrona entre serviços;
-- **Redis:** cache de dados;
-- **Blazor ou React:** para o frontend;
-- **Docker:** containerização do ambiente.
-
----
-
-## 🧩 Descrição do Projeto
+## 2. Descrição do Projeto
 
 ### Tema
-Sistema de gerenciamento de estoque para usinagem.
 
-### Problemas Identificados
-- Falta de controle de estoque;
-- Dificuldade em rastrear movimentações;
-- Ausência de histórico de uso;
-- Reposição lenta de itens críticos.
+Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco em rastreabilidade, automação e escalabilidade.
+
+### Problemas a Resolver
+
+- Falta de controle de estoque em tempo real;
+- Inexistência de alertas automáticos;
+- Dificuldade de rastrear movimentações e responsáveis;
+- Ausência de interface especializada para o setor de usinagem.
 
 ### Limitações
-- Sem módulo financeiro/faturamento;
-- Produção em tempo real fora do escopo inicial;
-- Integração com ERPs externos fora do escopo.
+
+- Integrações com sistemas externos (ERP, financeiro) não fazem parte da versão atual;
+- Módulo de controle de produção não está incluso no MVP.
 
 ---
 
-## ✅ Especificação Técnica
+## 3. Especificação Técnica
 
-### Requisitos Funcionais
-- RF01 – Cadastro de itens no estoque;
-- RF02 – Entradas com origem e quantidade;
-- RF03 – Saídas com destino e responsável;
-- RF04 – Saldo atualizado por item;
-- RF05 – Histórico de movimentações;
-- RF06 – Controle de usuários com níveis de acesso;
-- RF07 – Relatórios por período, tipo, setor e responsável;
-- RF08 – Notificações de itens críticos;
-- RF09 – Itens vinculados a setores ou ordens de produção;
-- RF10 – Interface web responsiva.
+### 3.1 Requisitos
 
-### Requisitos Não Funcionais
-- RNF01 – Disponibilidade de 99,5%;
-- RNF02 – Resposta crítica < 500ms;
-- RNF03 – HTTPS em todas as requisições;
-- RNF04 – Autenticação JWT;
-- RNF05 – Microsserviços independentes;
-- RNF06 – Suporte à concorrência no banco;
-- RNF07 – Compatibilidade com navegadores modernos;
-- RNF08 – Logging e monitoramento centralizado.
+#### Requisitos Funcionais (RF)
 
----
+- RF01: Cadastro e edição de itens no estoque;
+- RF02: Registro de entradas e saídas com origem e destino;
+- RF03: Consulta de saldo atualizado por item e setor;
+- RF04: Emissão de alertas automáticos com base em regras pré-definidas;
+- RF05: Histórico completo de movimentações;
+- RF06: Interface responsiva para diferentes dispositivos;
+- RF07: Permissões por tipo de usuário;
+- RF08: Integração via API REST.
 
-## 🎨 Considerações de Design e Stack Tecnológica
+#### Requisitos Não Funcionais (RNF)
 
-### Arquitetura:
-Microsserviços + RabbitMQ + Redis + SQL Server
+- RNF01: Tempo de resposta inferior a 500ms nas operações principais;
+- RNF02: Atualização assíncrona com RabbitMQ e Celery;
+- RNF03: Utilização de Redis para cache de dados críticos;
+- RNF04: Autenticação JWT para segurança;
+- RNF05: Disponibilidade mínima de 99,5%.
 
-### Stack:
-- **Backend:** .NET Core
+### 3.2 Design da Solução
+
+#### Visão Geral da Arquitetura
+
+- **Backend:** Django REST Framework
 - **Mensageria:** RabbitMQ
+- **Tarefas assíncronas:** Celery
 - **Cache:** Redis
-- **Banco:** SQL Server
-- **Containers:** Docker
-- **Monitoramento:** Grafana
-- **CI/CD:** Azure DevOps
-- **Frontend:** Blazor ou React
+- **Banco de Dados:** PostgreSQL
+- **Frontend:** React (SPA)
+- **Orquestração:** Docker + Docker Compose
+
+#### Padrões de Arquitetura
+
+- MVC para estrutura do backend
+- Modularização por domínio funcional (modular monolith)
+- Estilo orientado a eventos (Event-Driven Architecture)
+
+#### Modelos C4
+
+- **Contexto**: Interações entre usuários, sistema web e APIs.
+- **Contêineres**: Divisão entre frontend, backend, workers, cache e filas.
+- **Componentes**: Em desenvolvimento.
 
 ---
 
-## 📊 Modelagem UML
+## 4. Stack Tecnológica
 
-### Fluxo de Movimentação de Estoque
-
-[Fluxo de movimentação de estoque](docs/Fluxograma.png)
-
-### Diagrama de Classes – RDTrackr
-
-[Diagrama de classes](docs/Diagrama.png)
-
----
-
-## 🚀 Metodologia
-
-Scrum com sprints quinzenais:
-
-1. Levantamento de requisitos;
-2. Modelagem da arquitetura e banco;
-3. Implementação incremental;
-4. Testes unitários e integração;
-5. Validação com feedback.
+| Camada         | Tecnologias                                   |
+|----------------|-----------------------------------------------|
+| Linguagens     | Python, JavaScript                            |
+| Backend        | Django, Django REST Framework                 |
+| Frontend       | React, Axios, Tailwind CSS                    |
+| Tarefas        | Celery                                        |
+| Broker         | RabbitMQ                                      |
+| Cache          | Redis                                         |
+| Banco de Dados | PostgreSQL                                    |
+| Monitoramento  | Prometheus, Grafana, Loguru                   |
+| CI/CD          | GitHub Actions, Docker, Docker Compose        |
 
 ---
 
-## 🧪 Plano de Testes
+## 5. Segurança
 
-- **Unitários:** lógica dos microsserviços;
-- **Integração:** comunicação entre serviços;
-- **Interface:** usabilidade;
-- **Performance:** carga e latência.
-
-Ferramentas: xUnit, Postman, SonarCloud.
-
----
-
-## 📅 Cronograma de Desenvolvimento
-
-| Atividade                                  | Início     | Término    |
-|--------------------------------------------|------------|------------|
-| Levantamento de requisitos                 | A definir  | A definir  |
-| Modelagem de arquitetura e banco           | A definir  | A definir  |
-| Implementação dos microsserviços base      | A definir  | A definir  |
-| Integração com frontend Blazor/React       | A definir  | A definir  |
-| Testes e documentação                      | A definir  | A definir  |
+- Comunicação via HTTPS;
+- Autenticação com JWT;
+- Controle de acesso baseado em papéis (RBAC);
+- Logs estruturados e auditáveis;
+- Sanitização e validação de entrada de dados.
 
 ---
 
-## ✅ Considerações Finais
+## 6. Próximos Passos
 
-O RDTrackr busca solucionar problemas reais de controle de estoque em empresas de usinagem, aplicando boas práticas de engenharia de software com uma abordagem moderna e escalável.
-
----
-
-## 🔗 Referências
-
-- [.NET Documentation](https://learn.microsoft.com/dotnet/)
-- [Docker Documentation](https://docs.docker.com/)
-- [Redis Documentation](https://redis.io/docs/)
-- [RabbitMQ Documentation](https://www.rabbitmq.com/documentation.html)
+- Finalizar o diagrama C4 (nível componentes);
+- Implementar funcionalidades principais do MVP;
+- Realizar testes automatizados e de integração;
+- Implantar ambiente de homologação;
+- Obter feedback de usuários reais.
 
 ---
 
-## ✅ Status
+## 7. Referências
 
-📌 Projeto em fase de planejamento e documentação técnica. Implementação prevista para próxima etapa.
+- [Django](https://docs.djangoproject.com/)
+- [Django REST Framework](https://www.django-rest-framework.org/)
+- [Celery](https://docs.celeryq.dev/)
+- [RabbitMQ](https://www.rabbitmq.com/)
+- [Redis](https://redis.io/)
+- [React](https://reactjs.org/)
+- [C4 Model](https://c4model.com/)
 
 ---
 
-## 👤 Autor
+## 8. Autor
 
 **João Antonio David**  
-Engenharia de Software – Católica de Santa Catarina  
-Orientador: DIOGO VINÍCIUS WINCK
+Curso: Engenharia de Software – Católica de Santa Catarina  
+Orientador: Prof. Diogo Vinícius Winck
 
+---
+
+## 9. Status
+
+📌 Projeto em desenvolvimento. MVP previsto para próxima etapa do Portfólio.
