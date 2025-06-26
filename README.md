@@ -60,7 +60,7 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 ### Diagrama de Classes – RDTrackr
 
-[Diagrama de classes](docs/Diagrama UML.png)
+[Diagrama de classes](docs/Diagrama-UML.png)
 
 ### 3.1 Requisitos
 
