@@ -26,7 +26,7 @@ Desenvolver um sistema web modular para gerenciamento de estoque com foco em atu
 - Facilitar o acompanhamento em tempo real dos saldos e movimentações;
 - Gerar alertas automáticos para reposição de itens críticos;
 - Permitir emissão de relatórios por setor, período e movimentação;
-- Disponibilizar APIs REST públicas para futura integração com outros sistemas (ex: ERP).
+- Incorporar visualizações interativas (dashboards) para análise de consumo e controle de estoque estratégico.
 
 ---
 
