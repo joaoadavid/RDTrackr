@@ -52,6 +52,16 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 ## 3. Especificação Técnica
 
+## 📊 Modelagem UML
+
+### Fluxo de Movimentação de Estoque
+
+[Fluxo de movimentação de estoque](docs/Fluxograma.png)
+
+### Diagrama de Classes – RDTrackr
+
+[Diagrama de classes](docs/Diagrama.png)
+
 ### 3.1 Requisitos
 
 #### Requisitos Funcionais (RF)
