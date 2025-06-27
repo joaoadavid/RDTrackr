@@ -64,7 +64,7 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 #### Modelos C4
 
-[Modelagem C4](docs/modelagemc4.png)
+[Modelagem C4](docs/modelagem-c4.png)
 
 ### 3.1 Requisitos
 
