@@ -103,9 +103,7 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 #### Modelos C4
 
-- **Contexto**: Interações entre usuários, sistema web e APIs.
-- **Contêineres**: Divisão entre frontend, backend, workers, cache e filas.
-- **Componentes**: Em desenvolvimento.
+[Modelagem C4](docs/modelagemc4.png)
 
 ---
 
