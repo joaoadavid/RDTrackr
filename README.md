@@ -133,7 +133,6 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 ## 6. Próximos Passos
 
-- Finalizar o diagrama C4 (nível componentes);
 - Implementar funcionalidades principais do MVP;
 - Realizar testes automatizados e de integração;
 - Implantar ambiente de homologação;
