@@ -52,15 +52,13 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 ## 3. Especificação Técnica
 
-## 📊 Modelagem UML
-
 ### Diagrama de Classes
 
-[Fluxo de movimentação de estoque](docs/Fluxograma.png)
+[Fluxo de movimentação de estoque](docs/Diagrama.png)
 
 ### Diagrama de Casos de Uso (UML)
 
-[Diagrama de classes](docs/Diagrama.png)
+[Diagrama de classes](docs/DiagramaCasosDeUso.png)
 
 #### Modelos C4
 
