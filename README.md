@@ -60,7 +60,7 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 ### Diagrama de Casos de Uso (UML)
 
-[Diagrama de classes](docs/Diagrama-UML.png)
+[Diagrama de classes](docs/Diagrama.png)
 
 #### Modelos C4
 
