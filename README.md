@@ -62,6 +62,10 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 [Diagrama de classes](docs/Diagrama-UML.png)
 
+#### Modelos C4
+
+[Modelagem C4](docs/modelagemc4.png)
+
 ### 3.1 Requisitos
 
 #### Requisitos Funcionais (RF)
@@ -100,11 +104,6 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 - MVC para estrutura do backend
 - Modularização por domínio funcional (modular monolith)
 - Estilo orientado a eventos (Event-Driven Architecture)
-
-#### Modelos C4
-
-[Modelagem C4](docs/modelagemc4.png)
-
 ---
 
 ## 4. Stack Tecnológica
