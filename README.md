@@ -70,22 +70,21 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 #### Requisitos Funcionais (RF)
 
-- RF01: Cadastro e edição de itens no estoque;
-- RF02: Registro de entradas e saídas com origem e destino;
-- RF03: Consulta de saldo atualizado por item e setor;
-- RF04: Emissão de alertas automáticos com base em regras pré-definidas;
-- RF05: Histórico completo de movimentações;
-- RF06: Interface responsiva para diferentes dispositivos;
-- RF07: Permissões por tipo de usuário;
-- RF08: Integração via API REST.
+- RF01: O sistema deve permitir o cadastro e a edição de itens no estoque.  
+- RF02: O sistema deve permitir o registro de entradas e saídas com indicação de origem e destino.  
+- RF03: O sistema deve permitir a consulta do saldo atualizado por item e por setor.  
+- RF04: O sistema deve emitir alertas automáticos com base em regras pré-definidas.  
+- RF05: O sistema deve conter o histórico completo de movimentações.  
+- RF06: O sistema deve conter uma interface responsiva para diferentes dispositivos.  
+- RF07: O sistema deve permitir a configuração de permissões por tipo de usuário.  
+- RF08: O sistema deve permitir integração via API REST.  
 
 #### Requisitos Não Funcionais (RNF)
 
-- RNF01: Tempo de resposta inferior a 500ms nas operações principais;
-- RNF02: Atualização assíncrona com RabbitMQ e Celery;
-- RNF03: Utilização de Redis para cache de dados críticos;
-- RNF04: Autenticação JWT para segurança;
-- RNF05: Disponibilidade mínima de 99,5%.
+- RNF01: O sistema deve garantir tempo de resposta inferior a 500ms nas operações principais.  
+- RNF02: O sistema deve permitir atualização assíncrona com RabbitMQ e Celery.  
+- RNF03: O sistema deve utilizar Redis para cache de dados críticos.  
+- RNF04: O sistema deve garantir autenticação via JWT para segurança.  
 
 ### 3.2 Design da Solução
 
