@@ -137,7 +137,6 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 - [Django](https://docs.djangoproject.com/)
 - [Django REST Framework](https://www.django-rest-framework.org/)
 - [Celery](https://docs.celeryq.dev/)
-- [RabbitMQ](https://www.rabbitmq.com/)
 - [Redis](https://redis.io/)
 - [React](https://reactjs.org/)
 - [C4 Model](https://c4model.com/)
