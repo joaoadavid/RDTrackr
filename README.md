@@ -18,10 +18,10 @@ Para evitar rupturas na produção, atrasos em entregas e desperdícios, é fund
 
 ### Objetivos
 
-#### 🎯 Objetivo Principal
+#### Objetivo Principal
 Desenvolver um sistema web modular para gerenciamento de estoque com foco em atualização em tempo real, rastreabilidade e automação de alertas operacionais.
 
-#### ✅ Objetivos Secundários
+#### Objetivos Secundários
 - Proporcionar uma interface web intuitiva e responsiva para operadores e gestores;
 - Facilitar o acompanhamento em tempo real dos saldos e movimentações;
 - Gerar alertas automáticos para reposição de itens críticos;
@@ -52,10 +52,6 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 
 ## 3. Especificação Técnica
 
-### Diagrama de Classes
-
-[Diagrama de classes](docs/Diagrama.png)
-
 ### Diagrama de Casos de Uso (UML)
 
 [Fluxo de movimentação de estoque](docs/DiagramaCasosDeUso.png)
@@ -80,7 +76,7 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 #### Requisitos Não Funcionais (RNF)
 
 - RNF01: O sistema deve garantir tempo de resposta inferior a 500ms nas operações principais.  
-- RNF02: O sistema deve permitir atualização assíncrona com RabbitMQ e Celery.  
+- RNF02: O sistema deve permitir atualização assíncrona com Celery e Redis.  
 - RNF03: O sistema deve utilizar Redis para cache de dados críticos.  
 - RNF04: O sistema deve garantir autenticação via JWT para segurança.  
 
@@ -89,7 +85,6 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 #### Visão Geral da Arquitetura
 
 - **Backend:** Django REST Framework
-- **Mensageria:** RabbitMQ
 - **Tarefas assíncronas:** Celery
 - **Cache:** Redis
 - **Banco de Dados:** PostgreSQL
@@ -111,7 +106,6 @@ Sistema web de gerenciamento de estoque voltado a empresas de usinagem, com foco
 | Backend        | Django, Django REST Framework                 |
 | Frontend       | React, Axios, Tailwind CSS                    |
 | Tarefas        | Celery                                        |
-| Broker         | RabbitMQ                                      |
 | Cache          | Redis                                         |
 | Banco de Dados | PostgreSQL                                    |
 | Monitoramento  | Prometheus, Grafana, Loguru                   |
