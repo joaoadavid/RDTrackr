@@ -1,6 +1,6 @@
 # RDTrackr: Sistema de Gerenciamento de Estoque para Empresas de Usinagem
 
-## 📘 Resumo
+## Resumo
 
 O **RDTrackr** é um sistema web de gerenciamento de estoque desenvolvido para empresas de usinagem que enfrentam dificuldades no controle de insumos e ferramentas. O projeto oferece atualização em tempo real, rastreabilidade de movimentações e alertas automáticos. A arquitetura é baseada em Django com suporte a tarefas assíncronas via Celery, mensageria com RabbitMQ e cache Redis, promovendo escalabilidade, desempenho e modularidade.
 
