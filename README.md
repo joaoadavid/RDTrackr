@@ -8,10 +8,10 @@ O **RDTrackr** é um sistema web de gerenciamento de estoque desenvolvido para e
 ## 1. Introdução
 
 ### Contexto
-Empresas do setor de usinagem operam com alta complexidade na gestão de materiais. A falta de visibilidade em tempo real sobre movimentações e saldos compromete diretamente a eficiência produtiva. Muitas ainda utilizam planilhas ou sistemas genéricos que não contemplam as particularidades desse setor.
+A gestão de estoque exerce um papel estratégico nas organizações, sendo fator determinante para a eficiência produtiva e a saúde financeira. Conforme evidenciado por Rezende (2008), falhas na administração de materiais e na rastreabilidade das entradas e saídas podem resultar em excessos ou rupturas de estoque, impactando diretamente o fluxo operacional e o nível de serviço ao cliente. No setor de usinagem, onde o controle de insumos e ferramentas é crítico, um sistema especializado como o RDTrackr se justifica por permitir acompanhamento em tempo real, redução de desperdícios e aumento da confiabilidade dos processos.
 
 ### Justificativa
-Para evitar paradas na produção, atrasos em entregas e desperdícios, torna-se essencial contar com um sistema que vá além do simples registro: é necessário monitorar continuamente o estoque, emitindo alertas preventivos. O RDTrackr foi concebido como uma solução sob medida para empresas de usinagem, garantindo controle total, integração e automação.
+Para evitar paradas na produção, atrasos em entregas e desperdícios, torna-se essencial contar com um sistema que vá além do simples registro: é necessário monitorar continuamente o estoque, emitindo alertas preventivos. Rezende (2008) destaca que falhas na gestão de estoque resultam em custos adicionais e comprometem o fluxo operacional, reforçando a importância de soluções especializadas. O RDTrackr foi concebido como uma solução sob medida para empresas de usinagem, garantindo controle total, integração e automação.
 
 ### Objetivos
 #### Objetivo Principal
@@ -46,29 +46,29 @@ Sistema web de gerenciamento de estoque voltado para empresas de usinagem, com �
 ## 3. Especificação Técnica
 
 ### Requisitos Funcionais (RF)
-- RF01: Permitir cadastro e edição de itens no estoque;
-- RF02: Registrar entradas e saídas, indicando origem e destino;
-- RF03: Consultar saldo atualizado por item e setor;
-- RF04: Emitir alertas automáticos conforme regras configuráveis;
-- RF05: Manter histórico completo de movimentações;
-- RF06: Oferecer interface responsiva para diferentes dispositivos;
-- RF07: Configurar permissões por tipo de usuário (RBAC);
-- RF08: Expor API REST para integrações futuras.
+- RF01: Permitir cadastro de itens no estoque.
+- RF02: Permitir edição de itens no estoque.
+- RF03: Registrar entradas com origem e quantidade.
+- RF04: Registrar saídas com destino e responsável.
+- RF05: Consultar saldo atualizado por item/setor.
+- RF06: Emitir alertas automáticos conforme regras de estoque.
+- RF07: Manter histórico completo de movimentações.
 
 ### Requisitos Não Funcionais (RNF)
-- RNF01: Garantir tempo de resposta inferior a 500ms nas operações principais;
-- RNF02: Utilizar Celery e Redis para processamento assíncrono;
-- RNF03: Implementar cache em Redis para dados críticos;
-- RNF04: Garantir autenticação via JWT para segurança.
-
+- RNF01: Garantir tempo de resposta inferior a 500ms para operações críticas. 
+- RNF02: Utilizar Celery e RabbitMQ para processamento assíncrono e Redis para cache de dados críticos. 
+- RNF03: Garantir autenticação segura via JWT. 
+- RNF04: Garantir interface responsiva em diferentes dispositivos. 
+- RNF05: Permitir configuração de permissões por tipo de usuário. 
+- RNF06: Disponibilizar API REST para futuras integrações com sistemas externos. 
 ---
 
 ## 4. Stack Tecnológica e Considerações de Design
 
 ### Considerações de Design
-- **Monólito Modularizado:** o backend é construído em Django REST Framework, dividido em módulos de domínio como estoque, movimentações e alertas, facilitando manutenção e testes isolados.
-- **MVC:** o Django adota o padrão Model-View-Controller, permitindo clara separação entre dados (Models), regras de negócio e as APIs REST (Views/Serializers).
-- **Event-Driven:** o uso do Celery, com Redis como broker e backend de resultados, viabiliza o processamento assíncrono e orientado a eventos para tarefas como geração de relatórios e envio de alertas.
+- **Monólito Modularizado:** backend construído em Django REST Framework, separado em módulos de domínio como estoque, movimentações e alertas.
+- **MVC:** Django organiza Models, Views e Serializers, mantendo coesão e manutenibilidade.
+- **Event-Driven:** o Celery, com Redis como broker e backend, viabiliza processamento assíncrono para relatórios e alertas.
 
 ### Tecnologias Utilizadas
 | Camada         | Tecnologias                      |
@@ -77,16 +77,14 @@ Sistema web de gerenciamento de estoque voltado para empresas de usinagem, com �
 | Backend        | Django, Django REST Framework   |
 | Frontend       | React, Tailwind CSS             |
 | Tarefas        | Celery                          |
-| Cache          | Redis                           |
+| Cache/Filas    | Redis                           |
 | Banco de Dados | PostgreSQL                      |
 | Monitoramento  | Prometheus, Grafana, Loguru     |
-| CI/CD          | GitHub Actions, Docker          |
+| CI/CD          | GitHub Actions, Podman          |
 
 ---
 
 ## 5. Diagramas de Caso de Uso (UML)
-
-Os diagramas a seguir ilustram as principais interações entre usuários (operadores e gestores) e o sistema.
 
 ### Caso de Uso 1: Processo de Compra
 ![Caso de Uso 1](docs/CasoDeUso1.png)
@@ -101,7 +99,7 @@ Os diagramas a seguir ilustram as principais interações entre usuários (opera
 
 ## 6. Modelagem C4
 
-A modelagem C4 foi adotada para descrever a arquitetura do sistema em diferentes níveis de abstração. O diagrama abaixo apresenta a visão dos principais containers do RDTrackr.
+O modelo C4 foi adotado para representar a arquitetura em níveis. O diagrama abaixo mostra a visão de containers, já considerando orquestração com Podman para padronizar ambientes.
 
 ![Modelagem C4](docs/ModelagemC4.png)
 
@@ -109,41 +107,22 @@ A modelagem C4 foi adotada para descrever a arquitetura do sistema em diferentes
 
 ## 7. Considerações de Segurança
 
-Para garantir a integridade, confidencialidade e disponibilidade dos dados manipulados pelo RDTrackr, foram adotadas práticas consolidadas de segurança em múltiplas camadas:
-
-- **Comunicação via HTTPS:** Todo tráfego entre cliente e servidor utiliza TLS/SSL, prevenindo ataques do tipo man-in-the-middle.
-- **Autenticação JWT + RBAC:** O uso de JSON Web Tokens permite autenticação stateless e escalável, combinada com RBAC para restrição de acessos por papéis.
-- **Logs auditáveis e estruturados:** Operações críticas como login, movimentações e relatórios são registradas em logs no formato JSON, facilitando rastreamento e auditorias.
-- **Validação e sanitização de dados:** Entradas nas APIs passam por validações rigorosas, prevenindo injeções de SQL e scripts maliciosos (XSS).
+- **HTTPS em toda comunicação:** protegendo dados sensíveis e credenciais.
+- **JWT + RBAC:** controle de acesso baseado em papéis e autenticação stateless.
+- **Logs estruturados:** facilitando auditorias, rastreamento e monitoramento.
+- **Validações robustas:** prevenindo SQL Injection e XSS.
 
 ---
 
 ## 8. Próximos Passos
 
-### Validação da Proposta
-Apresentar a documentação técnica, arquitetura e requisitos do RDTrackr ao orientador e banca avaliadora para garantir que a proposta esteja em conformidade com os objetivos acadêmicos e alinhada às necessidades reais do mercado de usinagem.
+- Validação do escopo e modelo com stakeholders e orientadores.
+- Refinamento dos requisitos e dos diagramas UML e C4.
+- Montagem do pipeline de CI/CD com Podman e GitHub Actions.
+- Desenvolvimento do MVP com sprints quinzenais.
+- Implantação em ambiente controlado para homologação.
+- Coleta de feedback e ajustes contínuos.
 
-### Revisões e Refinamentos
-Realizar revisões contínuas do documento e da modelagem do sistema com base no feedback recebido, ajustando requisitos, fluxos e diagramas. Aperfeiçoar a clareza e a objetividade das especificações técnicas para consolidar uma base sólida para a fase de desenvolvimento.
-
-### Aprovação Formal
-Submeter a documentação final revisada ao orientador e demais professores para obtenção da aprovação formal, validando que todos os critérios acadêmicos do Portfólio I foram devidamente cumpridos.
-
-### Planejamento para Implementação (Portfólio II)
-Elaborar o cronograma detalhado para o desenvolvimento do sistema na etapa do Portfólio II, definindo sprints, entregas intermediárias e milestones de acompanhamento. Incluir o planejamento para testes automatizados, integração contínua e homologação em ambiente controlado.
-
-### Preparação do Ambiente Técnico
-Configurar o pipeline de CI/CD, os ambientes de desenvolvimento (local e homologação) e garantir a containerização via Docker, visando padronização do deploy e mitigação de problemas de ambiente.
-
-### Engajamento com Stakeholders
-Promover reuniões com stakeholders (gestores da empresa de usinagem) para alinhar expectativas quanto a funcionalidades prioritárias, customizações e indicadores de sucesso do sistema.
-
-### Desenvolvimento do MVP
-- Implementar funcionalidades principais do MVP;
-- Realizar testes automatizados e de integração;
-- Implantar ambiente de homologação;
-- Obter feedback de usuários reais;
-- Ajustar funcionalidades com base no retorno obtido.
 ---
 
 ## 9. Referências
@@ -159,18 +138,21 @@ Promover reuniões com stakeholders (gestores da empresa de usinagem) para alinh
 
 ### Ferramentas de Desenvolvimento e Gestão
 - [GitHub Actions](https://github.com/features/actions)
-- [Docker](https://www.docker.com/)
+- [Podman](https://podman.io/)
 - [Prometheus](https://prometheus.io/)
 - [Grafana](https://grafana.com/)
 - [VS Code](https://code.visualstudio.com/)
 - [Postman](https://www.postman.com/)
 
-### Documentação
+### Documentação e Artigos
 - [Django Docs](https://docs.djangoproject.com/en/stable/)
 - [DRF Quickstart](https://www.django-rest-framework.org/tutorial/quickstart/)
 - [React Learn](https://react.dev/learn)
 - [Tailwind Docs](https://tailwindcss.com/docs)
 - [Celery Docs](https://docs.celeryq.dev/en/stable/)
+
+### Trabalhos Acadêmicos
+- REZENDE, Juliana Pinheiro. *Gestão de Estoque: um estudo de caso em uma empresa de materiais para construção*. Monografia (Administração de Empresas) — UniCEUB, Brasília, 2008.
 
 ---
 
@@ -179,5 +161,3 @@ Promover reuniões com stakeholders (gestores da empresa de usinagem) para alinh
 **João Antonio David**  
 Curso: Engenharia de Software – Católica de Santa Catarina  
 Orientador: Prof. Diogo Vinícius Winck
-
----
