@@ -56,7 +56,7 @@ Sistema web de gerenciamento de estoque voltado para empresas de usinagem, com �
 
 ### Requisitos Não Funcionais (RNF)
 - RNF01: Garantir tempo de resposta inferior a 500ms para operações críticas. 
-- RNF02: Utilizar Celery e RabbitMQ para processamento assíncrono e Redis para cache de dados críticos. 
+- RNF02: Utilizar Celery com Redis como broker e backend para processamento assíncrono.
 - RNF03: Garantir autenticação segura via JWT. 
 - RNF04: Garantir interface responsiva em diferentes dispositivos. 
 - RNF05: Permitir configuração de permissões por tipo de usuário. 
