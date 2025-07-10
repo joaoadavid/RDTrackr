@@ -87,13 +87,13 @@ Sistema web de gerenciamento de estoque voltado para empresas de usinagem, com �
 ## 5. Diagramas de Caso de Uso (UML)
 
 ### Caso de Uso 1: Processo de Compra
-![Caso de Uso 1](docs/CasoDeUso1.png)
+![Caso de Uso 1](docs/CasoDeUso-ProcessoCompra.png)
 
 ### Caso de Uso 2: Movimentação e Cadastro de Produtos
-![Caso de Uso 2](docs/CasoDeUso2.png)
+![Caso de Uso 2](docs/CasoDeUso-MovimentacaoCadastro.png)
 
 ### Caso de Uso 3: Gestão de Estoque e Alertas
-![Caso de Uso 3](docs/CasoDeUso3.png)
+![Caso de Uso 3](docs/CasoDeUso-GestaoEstoque.png)
 
 ---
 
