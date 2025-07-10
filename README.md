@@ -90,7 +90,7 @@ Sistema web de gerenciamento de estoque voltado para empresas de usinagem, com �
 ![Caso de Uso 1](docs/CasoDeUso-ProcessoCompra.png)
 
 ### Caso de Uso 2: Movimentação e Cadastro de Produtos
-![Caso de Uso 2](docs/CasoDeUso-MovimentacaoCadastro.png)
+![Caso de Uso 2](docs/CasoDeUso-MovimentacaoCadastro.jpg)
 
 ### Caso de Uso 3: Gestão de Estoque e Alertas
 ![Caso de Uso 3](docs/CasoDeUso-GestaoEstoque.png)
