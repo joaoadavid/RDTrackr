@@ -1,0 +1,22 @@
+{% extends "global/base.html" %}
+{% block page_title %}Visão geral{% endblock %}
+{% block content %}
+<div class="grid md:grid-cols-4 gap-4">
+  <div class="stat bg-base-100 border rounded-box">
+    <div class="stat-title">Itens ativos</div>
+    <div class="stat-value">{{ total_items }}</div>
+  </div>
+  <div class="stat bg-base-100 border rounded-box">
+    <div class="stat-title">Total Entradas</div>
+    <div class="stat-value">{{ total_in }}</div>
+  </div>
+  <div class="stat bg-base-100 border rounded-box">
+    <div class="stat-title">Total Saídas</div>
+    <div class="stat-value">{{ total_out }}</div>
+  </div>
+  <div class="stat bg-base-100 border rounded-box">
+    <div class="stat-title">Abaixo do mínimo</div>
+    <div class="stat-value">{{ low_stock }}</div>
+  </div>
+</div>
+{% endblock %}

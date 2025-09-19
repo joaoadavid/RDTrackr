@@ -1,0 +1,35 @@
+<aside id="rdSidebar" class="sidebar bg-base-100 border-r min-h-full w-64 transition-all">
+  <ul class="menu p-2">
+    <li class="menu-title"><span class="label">Menu</span></li>
+
+    <li>
+      <a href="{% url 'inventory:item-list' %}" class="tooltip tooltip-right" data-tip="Itens">
+        <i class="fa-solid fa-boxes-stacked mr-2"></i><span class="label">Itens</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="{% url 'movements:movement-list' %}" class="tooltip tooltip-right" data-tip="Movimentações">
+        <i class="fa-solid fa-right-left mr-2"></i><span class="label">Movimentações</span>
+      </a>
+    </li>
+
+    <li class="menu-title"><span class="label">Relatórios</span></li>
+    <li>
+      <details>
+        <summary>
+          <i class="fa-solid fa-chart-line mr-2"></i>
+          <span class="label">Dashboards</span>
+          <i class="fa-solid fa-chevron-down ml-auto"></i>
+        </summary>
+        <ul>
+          <li><a href="#"><span class="label">Visão geral</span></a></li>
+          <li><a href="#"><span class="label">Consumo mensal</span></a></li>
+        </ul>
+      </details>
+    </li>
+
+    <li class="menu-title"><span class="label">Sua conta</span></li>
+    <li>
+      <a href="#" class="tooltip tooltip-right" data-tip="Dashboard">
+        <i class="fa-solid fa-user mr-2"></i><span class="label">Dashboar

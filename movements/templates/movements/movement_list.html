@@ -1,0 +1,63 @@
+{# templates/movements/movement_list.html #}
+{% extends "global/base.html" %}
+{% block page_title %}Movimentações{% endblock %}
+{% block content %}
+<div class="card bg-base-100 border">
+  <div class="card-body">
+    <form method="get" class="flex gap-2 items-end">
+      <label class="form-control w-full max-w-xs">
+        <span class="label-text">Buscar</span>
+        <input class="input input-bordered" type="text" name="q" value="{{ q }}">
+      </label>
+      <label class="form-control w-full max-w-xs">
+        <span class="label-text">Tipo</span>
+        <select class="select select-bordered" name="kind">
+          <option value="">Todos</option>
+          <option value="IN"  {% if kind == "IN" %}selected{% endif %}>Entrada</option>
+          <option value="OUT" {% if kind == "OUT" %}selected{% endif %}>Saída</option>
+        </select>
+      </label>
+      <button class="btn btn-primary">Filtrar</button>
+      <a href="{% url 'movements:movement-create' %}" class="btn btn-outline">Nova</a>
+    </form>
+
+    <div class="overflow-x-auto mt-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Data</th><th>Item</th><th>Tipo</th><th>Qtd.</th><th>Usuário</th><th>Obs</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for m in page_obj %}
+          <tr>
+            <td>{{ m.created_at|date:"d/m/Y H:i" }}</td>
+            <td>{{ m.item.code }} — {{ m.item.name }}</td>
+            <td>
+              <span class="badge {% if m.kind == 'IN' %}badge-success{% else %}badge-error{% endif %}">
+                {{ m.get_kind_display }}
+              </span>
+            </td>
+            <td>{{ m.quantity }}</td>
+            <td>{{ m.created_by }}</td>
+            <td>{{ m.note }}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="6" class="text-center opacity-60">Nada por aqui…</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="join justify-center mt-4">
+      {% if page_obj.has_previous %}
+        <a class="btn join-item" href="?page={{ page_obj.previous_page_number }}&q={{ q }}&kind={{ kind }}">«</a>
+      {% endif %}
+      <button class="btn join-item">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</button>
+      {% if page_obj.has_next %}
+        <a class="btn join-item" href="?page={{ page_obj.next_page_number }}&q={{ q }}&kind={{ kind }}">»</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

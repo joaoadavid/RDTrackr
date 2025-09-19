@@ -1,0 +1,110 @@
+{% load static %}
+<!doctype html>
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <!-- ... seus links ... -->
+    <link href="{% static 'tailwind.css' %}" rel="stylesheet">
+    <title>{% block title %}RDTrackr{% endblock %}</title>
+  </head>
+  <!-- ADICIONE o atributo data-sidebar para o modo mini -->
+  <body class="bg-base-200" data-sidebar="">
+    <div class="drawer lg:drawer-open min-h-screen">
+      <input id="rd-drawer" type="checkbox" class="drawer-toggle" />
+
+      <!-- Main content -->
+      <div class="drawer-content flex flex-col">
+        {% include "global/partials/topbar.html" %}
+
+        <!-- ENVOLVA O CONTEÚDO COM A CLASSE container-page -->
+        <main class="p-8">
+          <div class="container-page">
+            {% include 'global/partials/messages.html' %}
+            <h1 class="mb-4">{% block page_title %}{% endblock %}</h1>
+            {% block content %}{% endblock %}
+          </div>
+        </main>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="drawer-side">
+        <label for="rd-drawer" class="drawer-overlay"></label>
+        {% include "global/partials/sidebar.html" %}
+      </div>
+    </div>
+
+    <!-- Tema + Sidebar mini toggles -->
+ <script>
+(function(){
+  const html = document.documentElement;
+  const body = document.body;
+  const themeKey = "rdtrackr-theme";
+  const sideKey  = "rdtrackr-sidebar";
+  const drawerChk = document.getElementById("rd-drawer");
+  const btn = document.getElementById("rdToggleSidebar");
+
+  // restaura preferências
+  const savedTheme = localStorage.getItem(themeKey);
+  if (savedTheme) html.setAttribute("data-theme", savedTheme);
+
+  const savedSide = localStorage.getItem(sideKey);
+  if (savedSide) body.setAttribute("data-sidebar", savedSide);
+
+  // estado inicial dos ícones/aria
+  syncButton();
+
+  // tema
+  document.addEventListener("click", (e) => {
+    const t1 = e.target.closest("[data-toggle-theme]");
+    if (t1){
+      const next = html.getAttribute("data-theme")==="dark" ? "light" : "dark";
+      html.setAttribute("data-theme", next);
+      localStorage.setItem(themeKey, next);
+    }
+  });
+
+  // sidebar
+  btn?.addEventListener("click", () => {
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+    if (!isDesktop) {
+      // mobile: abre/fecha o drawer da DaisyUI
+      if (drawerChk) drawerChk.checked = !drawerChk.checked;
+      return;
+    }
+
+    // desktop: alterna modo mini (ícones-only)
+    const next = body.getAttribute("data-sidebar")==="mini" ? "" : "mini";
+    body.setAttribute("data-sidebar", next);
+    localStorage.setItem(sideKey, next);
+    syncButton();
+  });
+
+  // troca ícones e aria
+  function syncButton(){
+    const mini = body.getAttribute("data-sidebar")==="mini";
+    btn?.setAttribute("aria-expanded", String(!mini));
+    const icExpand  = btn?.querySelector(".icon-expand");
+    const icCollapse= btn?.querySelector(".icon-collapse");
+    if (icExpand && icCollapse){
+      icExpand.classList.toggle("hidden", !mini);
+      icCollapse.classList.toggle("hidden", mini);
+    }
+  }
+
+  // ao redimensionar, mantenha o ícone coerente
+  window.addEventListener("resize", () => {
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+    if (!isDesktop) {
+      // mobile: sempre mostrar estado "expandido" no botão (pois o drawer é overlay)
+      btn?.setAttribute("aria-expanded", "false");
+    } else {
+      // desktop: reflete o estado salvo
+      syncButton();
+    }
+  });
+})();
+</script>
+
+  </body>
+</html>

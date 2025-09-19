@@ -1,0 +1,41 @@
+<div class="navbar bg-base-100 border-b">
+  <div class="flex-none">
+    <!-- Botão: alterna collapsed/expanded e troca ícone via aria-expanded -->
+    <button id="rdToggleSidebar"
+        data-toggle-sidebar
+        aria-controls="rdSidebar"
+        aria-expanded="true"
+        class="btn btn-ghost btn-square"
+        title="Compactar/Expandir">
+  <!-- Ícone expandir (mostra trilho fechado) -->
+  <svg class="icon-expand hidden" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
+  </svg>
+  <!-- Ícone collapse (mostra trilho aberto) -->
+  <svg class="icon-collapse" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+  </svg>
+</button>
+
+  </div>
+
+  <div class="flex-1">
+    <a href="/" class="text-lg font-semibold tracking-tight">RDTrackr</a>
+  </div>
+
+  <div class="flex-none gap-2">
+    <button class="btn btn-ghost" title="Tema claro/escuro" data-toggle-theme>🌓</button>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost">Conta</div>
+      <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-48 p-2 shadow">
+        <li>
+          <form id="logout-form" method="post" action="{% url 'authors:logout' %}">
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{ request.user.username }}">
+            <button type="submit" class="w-full text-left">Sair</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
