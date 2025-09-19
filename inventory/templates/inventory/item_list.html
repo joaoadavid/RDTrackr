@@ -1,0 +1,35 @@
+{% extends "global/base.html" %}
+{% block title %}Itens{% endblock %}
+{% block page_title %}Itens{% endblock %}
+{% block content %}
+<div class="flex items-center justify-between mb-4">
+  <form method="get" class="join">
+    <input name="q" value="{{ request.GET.q }}" class="input input-sm input-bordered join-item" placeholder="Buscar">
+    <button class="btn btn-sm btn-primary join-item">Filtrar</button>
+  </form>
+  <a href="{% url 'inventory:item-create' %}" class="btn btn-sm btn-primary">Novo</a>
+</div>
+<div class="card bg-base-100 border shadow-sm">
+  <div class="card-body p-0">
+    <div class="overflow-x-auto">
+      <table class="table table-zebra table-sm">
+        <thead><tr><th>SKU</th><th>Descrição</th><th>Unid</th><th>Est. mín.</th><th>Saldo</th><th></th></tr></thead>
+        <tbody>
+        {% for i in object_list %}
+          <tr>
+            <td>{{ i.sku }}</td>
+            <td>{{ i.descricao }}</td>
+            <td>{{ i.unidade }}</td>
+            <td>{{ i.estoque_minimo }}</td>
+            <td>{{ i.saldo.quantidade|default:"0" }}</td>
+            <td><a class="btn btn-xs" href="{% url 'inventory:item-detail' i.pk %}">Abrir</a></td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="6" class="text-center text-base-content/60">Nenhum item.</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,188 @@
+{% extends "home/base_public.html" %}
+{% load static %}
+{% block title %}RDTrackr — Controle de estoque simples e poderoso{% endblock %}
+
+{% block content %}
+<!-- HERO -->
+<section class="relative overflow-hidden">
+  <!-- glow azul -->
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute left-1/2 top-[-6rem] h-72 w-[36rem] -translate-x-1/2 rounded-full bg-primary-600/10 blur-[90px]"></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 pt-16 pb-10 md:pt-28 md:pb-16">
+    <div class="grid items-center gap-10 md:grid-cols-2">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:text-gray-300">
+          Novo • Importação em massa por CSV
+        </span>
+
+        <h1 class="mt-4 text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl">
+          O painel de estoque que <span class="text-primary-600">cresce</span> com o seu negócio
+        </h1>
+        <p class="mt-4 max-w-xl text-lg text-gray-600 dark:text-gray-300">
+          Cadastre itens, registre entradas/saídas e receba alertas de mínimo em tempo real. Tudo rápido, simples e organizado.
+        </p>
+
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="{% url 'authors:register' %}" class="rounded-lg bg-primary-600 px-5 py-3 text-white hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
+            Começar grátis
+          </a>
+          <a href="{% url 'home:solutions' %}" class="rounded-lg px-5 py-3 ring-1 ring-gray-300 hover:bg-gray-50 dark:ring-gray-700 dark:hover:bg-gray-800">
+            Ver soluções
+          </a>
+        </div>
+
+        <div class="mt-6 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+          <div class="flex -space-x-2">
+            <img src="{% static 'img/a1.png' %}" class="h-7 w-7 rounded-full ring-2 ring-white dark:ring-gray-900" alt="">
+            <img src="{% static 'img/a2.png' %}" class="h-7 w-7 rounded-full ring-2 ring-white dark:ring-gray-900" alt="">
+            <img src="{% static 'img/a3.png' %}" class="h-7 w-7 rounded-full ring-2 ring-white dark:ring-gray-900" alt="">
+          </div>
+          <span>+2.000 itens geridos / mês</span>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -left-6 -top-6 h-40 w-40 rounded-full bg-primary-600/10 blur-2xl"></div>
+        <!-- screenshot / hero visual -->
+        <div class="rounded-2xl border bg-white/70 p-3 shadow-2xl backdrop-blur dark:border-gray-800 dark:bg-gray-900/70">
+          <img src="{% static 'img/hero.png' %}" class="rounded-xl ring-1 ring-gray-100 dark:ring-gray-800" alt="Preview RDTrackr" onerror="this.src='{% static 'img/hero_fallback.jpg' %}'">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST / LOGOS -->
+<section class="border-t border-b bg-gray-50 py-6 dark:border-gray-800 dark:bg-gray-900/40">
+  <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-8 px-4 opacity-70">
+    <img src="{% static 'img/logos/logo1.svg' %}" class="h-7" alt="">
+    <img src="{% static 'img/logos/logo2.svg' %}" class="h-7" alt="">
+    <img src="{% static 'img/logos/logo3.svg' %}" class="h-7" alt="">
+    <img src="{% static 'img/logos/logo4.svg' %}" class="h-7" alt="">
+    <img src="{% static 'img/logos/logo5.svg' %}" class="h-7" alt="">
+  </div>
+</section>
+
+<!-- FEATURES GRID -->
+<section class="mx-auto max-w-7xl px-4 py-16 md:py-24">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl font-bold md:text-4xl">Tudo o que você precisa para controlar o estoque</h2>
+    <p class="mt-3 text-gray-600 dark:text-gray-300">Utilize cadastros simples, movimentações assistidas e relatórios prontos para ação.</p>
+  </div>
+
+  <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- card -->
+    <article class="group rounded-2xl border p-6 shadow-sm transition hover:shadow-md dark:border-gray-800">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white">📦</div>
+      <h3 class="mt-4 text-lg font-semibold">Catálogo rápido</h3>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">SKU, unidade, descrição e estoque mínimo com preenchimento assistido.</p>
+      <a href="{% url 'home:solutions' %}" class="mt-3 inline-flex items-center text-primary-600 hover:underline">Saiba mais →</a>
+    </article>
+
+    <article class="group rounded-2xl border p-6 shadow-sm transition hover:shadow-md dark:border-gray-800">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white">↔︎</div>
+      <h3 class="mt-4 text-lg font-semibold">Movimentações</h3>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">Entradas e saídas com validações, histórico e saldo atualizado.</p>
+      <a href="{% url 'home:solutions' %}" class="mt-3 inline-flex items-center text-primary-600 hover:underline">Saiba mais →</a>
+    </article>
+
+    <article class="group rounded-2xl border p-6 shadow-sm transition hover:shadow-md dark:border-gray-800">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white">🔔</div>
+      <h3 class="mt-4 text-lg font-semibold">Alertas de mínimo</h3>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">Receba avisos antes de faltar e priorize a reposição certa.</p>
+      <a href="{% url 'home:solutions' %}" class="mt-3 inline-flex items-center text-primary-600 hover:underline">Saiba mais →</a>
+    </article>
+
+    <article class="group rounded-2xl border p-6 shadow-sm transition hover:shadow-md dark:border-gray-800">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white">📈</div>
+      <h3 class="mt-4 text-lg font-semibold">Relatórios</h3>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">KPIs de consumo, curva ABC e projeções simples.</p>
+      <a href="{% url 'home:solutions' %}" class="mt-3 inline-flex items-center text-primary-600 hover:underline">Saiba mais →</a>
+    </article>
+
+    <article class="group rounded-2xl border p-6 shadow-sm transition hover:shadow-md dark:border-gray-800">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white">🧾</div>
+      <h3 class="mt-4 text-lg font-semibold">Importação CSV</h3>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">Suba seus itens e saldos por planilha, sem complicação.</p>
+      <a href="{% url 'home:solutions' %}" class="mt-3 inline-flex items-center text-primary-600 hover:underline">Saiba mais →</a>
+    </article>
+
+    <article class="group rounded-2xl border p-6 shadow-sm transition hover:shadow-md dark:border-gray-800">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-600 text-white">🔐</div>
+      <h3 class="mt-4 text-lg font-semibold">Permissões</h3>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">Controle de acesso por papel para times e unidades.</p>
+      <a href="{% url 'home:solutions' %}" class="mt-3 inline-flex items-center text-primary-600 hover:underline">Saiba mais →</a>
+    </article>
+  </div>
+</section>
+
+<!-- SHOWCASE / “produtos” -->
+<section class="bg-gray-50 py-16 dark:bg-gray-900/40">
+  <div class="mx-auto max-w-7xl px-4">
+    <div class="flex items-end justify-between gap-6">
+      <div>
+        <h2 class="text-2xl font-semibold md:text-3xl">Visão do catálogo</h2>
+        <p class="mt-1 text-gray-600 dark:text-gray-300">Visual limpo para procurar, filtrar e editar seus itens.</p>
+      </div>
+      <a href="{% url 'inventory:item-list' %}" class="rounded-lg bg-primary-600 px-4 py-2 text-white hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300">
+        Abrir Itens
+      </a>
+    </div>
+
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {% for i in "123456" %}
+      <div class="group overflow-hidden rounded-2xl border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div class="h-40 bg-gradient-to-br from-emerald-100 to-white dark:from-gray-800 dark:to-gray-900"></div>
+        <div class="p-5">
+          <div class="flex items-center justify-between">
+            <h3 class="font-medium">Produto {{ forloop.counter }}</h3>
+            <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-xs text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">Em estoque</span>
+          </div>
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">SKU-00{{ forloop.counter }} · Unidade: UN</p>
+          <div class="mt-4 flex items-center justify-between text-sm">
+            <span class="text-gray-500 dark:text-gray-400">Saldo: 24</span>
+            <button class="rounded-md px-3 py-1 ring-1 ring-gray-300 hover:bg-gray-50 dark:ring-gray-700 dark:hover:bg-gray-800">Ver</button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="mx-auto max-w-5xl px-4 py-16 md:py-24">
+  <div class="rounded-2xl border bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+    <blockquote class="text-xl font-medium leading-relaxed">
+      “Em uma semana organizamos todo o estoque e reduzimos as rupturas em 35%. O RDTrackr virou parte do nosso dia.”
+    </blockquote>
+    <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">— Ana Souza, Operações</div>
+  </div>
+</section>
+
+<!-- CTA FINAL (gradiente AZUL primário) -->
+<section class="mx-auto max-w-7xl px-4 pb-20">
+  <div class="relative isolate rounded-2xl p-8 md:p-12 text-white
+            bg-primary-600 bg-gradient-to-r from-primary-600 to-primary-500">
+  <div class="grid items-center gap-6 md:grid-cols-2">
+    <div>
+      <h3 class="text-2xl font-bold md:text-3xl">Pronto para dominar seu estoque?</h3>
+      <p class="mt-2 text-white/90">Comece hoje — sem cartão — e importe seus itens em minutos.</p>
+    </div>
+    <div class="flex gap-3 md:justify-end">
+      <a href="/authors/register/" class="rounded-lg bg-white px-5 py-3 font-medium text-primary-700 hover:bg-gray-50">
+        Criar conta
+      </a>
+      <a href="/planos/"
+   class="rounded-lg bg-primary-600 px-5 py-3 font-medium text-white">
+  Ver planos
+</a>
+
+    </div>
+  </div>
+</div>
+
+</section>
+{% endblock %}
