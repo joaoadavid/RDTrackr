@@ -2,34 +2,110 @@
 {% block title %}Itens{% endblock %}
 {% block page_title %}Itens{% endblock %}
 {% block content %}
-<div class="flex items-center justify-between mb-4">
+
+{% with view=request.GET.view|default:'table' %}
+<div class="flex items-center justify-between mb-4 gap-3">
+  <!-- Busca (preserva a visualização atual) -->
   <form method="get" class="join">
-    <input name="q" value="{{ request.GET.q }}" class="input input-sm input-bordered join-item" placeholder="Buscar">
+    <input name="q" value="{{ request.GET.q }}"
+           class="input input-sm input-bordered join-item"
+           placeholder="Buscar">
+    <input type="hidden" name="view" value="{{ view }}">
     <button class="btn btn-sm btn-primary join-item">Filtrar</button>
   </form>
-  <a href="{% url 'inventory:item-create' %}" class="btn btn-sm btn-primary">Novo</a>
-</div>
-<div class="card bg-base-100 border shadow-sm">
-  <div class="card-body p-0">
-    <div class="overflow-x-auto">
-      <table class="table table-zebra table-sm">
-        <thead><tr><th>SKU</th><th>Descrição</th><th>Unid</th><th>Est. mín.</th><th>Saldo</th><th></th></tr></thead>
-        <tbody>
-        {% for i in object_list %}
-          <tr>
-            <td>{{ i.sku }}</td>
-            <td>{{ i.descricao }}</td>
-            <td>{{ i.unidade }}</td>
-            <td>{{ i.estoque_minimo }}</td>
-            <td>{{ i.saldo.quantidade|default:"0" }}</td>
-            <td><a class="btn btn-xs" href="{% url 'inventory:item-detail' i.pk %}">Abrir</a></td>
-          </tr>
-        {% empty %}
-          <tr><td colspan="6" class="text-center text-base-content/60">Nenhum item.</td></tr>
-        {% endfor %}
-        </tbody>
-      </table>
-    </div>
+
+  <!-- Controles: trocar visualização + novo -->
+  <div class="join">
+    <a href="?{% if request.GET.q %}q={{ request.GET.q|urlencode }}&{% endif %}view=table"
+       class="btn btn-sm join-item {% if view == 'table' %}btn-primary text-white{% else %}btn-ghost{% endif %}">
+      Tabela
+    </a>
+    <a href="?{% if request.GET.q %}q={{ request.GET.q|urlencode }}&{% endif %}view=grid"
+       class="btn btn-sm join-item {% if view == 'grid' %}btn-primary text-white{% else %}btn-ghost{% endif %}">
+      Cards
+    </a>
+    <a href="{% url 'inventory:item-create' %}" class="btn btn-sm join-item btn-primary">Novo</a>
   </div>
 </div>
+
+{% if view == 'grid' %}
+  <!-- ====== GRID / CARDS ====== -->
+  <div class="mt-2 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {% for i in object_list %}
+      <div class="group overflow-hidden rounded-2xl border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+        <div class="h-40 bg-gradient-to-br from-primary-100 to-white dark:from-gray-800 dark:to-gray-900"></div>
+        <div class="p-5">
+          <div class="flex items-center justify-between">
+            <h3 class="font-medium">{{ i.descricao }}</h3>
+
+            {% with qty=i.saldo.quantidade|default:0 %}
+              {% if qty <= i.estoque_minimo|default:0 %}
+                <span class="rounded-full bg-red-100 px-2 py-0.5 text-xs text-red-700 dark:bg-red-900/40 dark:text-red-300">
+                  Baixo
+                </span>
+              {% elif qty > 0 %}
+                <span class="rounded-full bg-primary-100 px-2 py-0.5 text-xs text-primary-700 dark:bg-primary-900/40 dark:text-primary-300">
+                  Em estoque
+                </span>
+              {% else %}
+                <span class="rounded-full bg-gray-200 px-2 py-0.5 text-xs text-gray-700 dark:bg-gray-700/60 dark:text-gray-300">
+                  Sem saldo
+                </span>
+              {% endif %}
+            {% endwith %}
+          </div>
+
+          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            {{ i.sku }} · Unidade: {{ i.unidade }}
+          </p>
+
+          <div class="mt-4 flex items-center justify-between text-sm">
+            <span class="text-gray-500 dark:text-gray-400">
+              Saldo: {{ i.saldo.quantidade|default:"0" }}
+            </span>
+            <a href="{% url 'inventory:item-detail' i.pk %}"
+               class="rounded-md px-3 py-1 ring-1 ring-gray-300 hover:bg-gray-50 dark:ring-gray-700 dark:hover:bg-gray-800">
+              Ver
+            </a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-base-content/60 col-span-full py-6">Nenhum item.</p>
+    {% endfor %}
+  </div>
+
+{% else %}
+  <!-- ====== TABELA ====== -->
+  <div class="card bg-base-100 border shadow-sm">
+    <div class="card-body p-0">
+      <div class="overflow-x-auto">
+        <table class="table table-zebra table-sm">
+          <thead>
+            <tr>
+              <th>SKU</th><th>Descrição</th><th>Unid</th>
+              <th>Est. mín.</th><th>Saldo</th><th></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for i in object_list %}
+            <tr>
+              <td>{{ i.sku }}</td>
+              <td class="font-medium">{{ i.descricao }}</td>
+              <td>{{ i.unidade }}</td>
+              <td>{{ i.estoque_minimo }}</td>
+              <td>{{ i.saldo.quantidade|default:"0" }}</td>
+              <td><a class="btn btn-xs" href="{% url 'inventory:item-detail' i.pk %}">Abrir</a></td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="6" class="text-center text-base-content/60">Nenhum item.</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endwith %}
+
 {% endblock %}

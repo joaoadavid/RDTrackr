@@ -4,7 +4,8 @@
 <html lang="pt-BR" data-theme="light">
   <head>
     <!-- ... seus links ... -->
-    <link href="{% static 'tailwind.css' %}" rel="stylesheet">
+{% load static %}
+<link href="{% static 'css/app.css' %}" rel="stylesheet">
     <title>{% block title %}RDTrackr{% endblock %}</title>
   </head>
   <!-- ADICIONE o atributo data-sidebar para o modo mini -->

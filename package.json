@@ -6,7 +6,8 @@
     "test": "tests"
   },
   "scripts": {
-    "tw:build": "node ./node_modules/tailwindcss/lib/cli.js -i ./project/static_src/input.css -o ./project/static/css/app.css --watch"
+ "tw:watch": "tailwindcss -i ./project/static_src/input.css -o ./project/static/css/app.css --watch",
+    "tw:build": "tailwindcss -i ./project/static_src/input.css -o ./project/static/css/app.css --minify"
   },
   "keywords": [],
   "author": "",
