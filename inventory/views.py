@@ -6,6 +6,10 @@ from django.db.models import Sum, Count, Q, F
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
+from django.contrib import messages
+from django.shortcuts import redirect, get_object_or_404
+from django.views import View
+from django.db.models.deletion import ProtectedError
 from .models import Item
 from .forms import ItemForm
 from movements.models import Movement
@@ -64,11 +68,38 @@ class ItemUpdateView(LoginRequiredMixin, UpdateView):
 
 class ItemDeleteView(LoginRequiredMixin, DeleteView):
     model = Item
-    template_name = "inventory/item_confirm_delete.html"
     success_url = reverse_lazy("inventory:item-list")
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(
+                request,
+                "Não é possível excluir: o item possui movimentações vinculadas. "
+                "Desative o item para manter o histórico."
+            )
+            return redirect("inventory:item-list")
 
 
 class ItemDetailView(LoginRequiredMixin, DetailView):
     model = Item
     template_name = "inventory/item_detail.html"
     context_object_name = "item"
+
+class ItemDeactivateView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        item = get_object_or_404(Item, pk=pk)
+        item.is_active = False
+        item.save(update_fields=["is_active"])
+        messages.success(request, f"Item {item.sku} desativado.")
+        return redirect("inventory:item-list")
+
+class ItemActivateView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        item = get_object_or_404(Item, pk=pk)
+        item.is_active = True
+        item.save(update_fields=["is_active"])
+        messages.success(request, f"Item {item.sku} reativado.")
+        return redirect("inventory:item-list")

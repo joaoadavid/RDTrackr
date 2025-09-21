@@ -29,13 +29,21 @@ class Movement(models.Model):
         return f"{self.item.sku} {s}{self.quantity} ({self.created_at:%d/%m/%Y})"
 
     def clean(self):
+        # quantidade válida
         if self.quantity is None or self.quantity <= 0:
             raise ValidationError({"quantity": "Quantidade deve ser positiva."})
 
+        # 🔒 item deve estar ativo
+        if self.item_id:
+            # usa getattr pra evitar falha se o atributo mudar de nome
+            if not getattr(self.item, "is_active", True):
+                # manda pro topo do form (non_field_errors) com mensagem clara
+                raise ValidationError("Este item está inativo e não pode receber movimentações.")
+
+        # estoque suficiente nas saídas
         if self.kind == self.OUT and self.item_id:
             current = self.item.stock or Decimal("0")
             if self.quantity > current:
-                # vai para form.non_field_errors ou field errors conforme o caso
                 raise ValidationError(
                     f"Estoque insuficiente. Disponível: {current}, solicitado: {self.quantity}."
                 )
@@ -46,6 +54,11 @@ class Movement(models.Model):
 
         # bloqueia a linha do item nesta transação
         item = Item.objects.select_for_update().get(pk=self.item_id)
+
+        # 🔒 checagem extra sob lock: não movimenta item inativo
+        if not getattr(item, "is_active", True):
+            raise ValueError("Não é possível movimentar um item inativo.")
+
         new_stock = (item.stock or Decimal("0")) + delta
         if new_stock < 0:
             # revalidação sob lock (prevenção contra corrida)

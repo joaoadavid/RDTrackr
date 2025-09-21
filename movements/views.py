@@ -45,12 +45,19 @@ class MovementCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
+
+        # 🔒 Blindagem extra: bloqueia movimentação se o item estiver inativo
+        item = form.cleaned_data.get("item")
+        if item and not getattr(item, "is_active", True):
+            form.add_error("item", "Este item está inativo e não pode receber movimentações.")
+            return self.form_invalid(form)
+
         try:
             return super().form_valid(form)
         except (ValueError, ValidationError) as e:
             form.add_error(None, str(e))
             return self.form_invalid(form)
-        
+
     def get_success_url(self):
         # permite voltar para a lista/detalhe do item
         return self.request.POST.get("next") or super().get_success_url()
