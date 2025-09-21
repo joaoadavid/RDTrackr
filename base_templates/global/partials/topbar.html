@@ -18,7 +18,9 @@
       <div tabindex="0" role="button" class="btn btn-ghost">Conta</div>
       <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[60] w-48 p-2 shadow">
         <li>
-          <form method="post" action="{% url 'authors:logout' %}">{% csrf_token %}
+          <form method="post" action="{% url 'authors:logout' %}">
+          {% csrf_token %}
+            <input type="hidden" name="username" value="{{ request.user.get_username }}">
             <button type="submit" class="w-full text-left">Sair</button>
           </form>
         </li>

@@ -2,7 +2,7 @@
 from django.urls import path
 from .views import (
     ItemListView, ItemCreateView, ItemDetailView,
-    ItemUpdateView, ItemDeleteView,
+    ItemUpdateView, ItemDeleteView,ItemDeactivateView,ItemActivateView,
 )
 
 app_name = "inventory"
@@ -13,4 +13,6 @@ urlpatterns = [
     path("<int:pk>/", ItemDetailView.as_view(), name="item-detail"),
     path("<int:pk>/edit/", ItemUpdateView.as_view(), name="item-update"),
     path("<int:pk>/delete/", ItemDeleteView.as_view(), name="item-delete"),
+    path("<int:pk>/deactivate/", ItemDeactivateView.as_view(), name="item-deactivate"),
+    path("<int:pk>/activate/", ItemActivateView.as_view(), name="item-activate"),
 ]

@@ -1,5 +1,6 @@
 # movements/forms.py
 from django import forms
+from django.core.exceptions import ValidationError
 from .models import Movement
 from inventory.models import Item
 
@@ -20,7 +21,14 @@ class MovementForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["item"].queryset = Item.objects.order_by("descricao", "sku")
+
+        # só itens ATIVOS no dropdown
+        self.fields["item"].queryset = (
+            Item.objects.filter(is_active=True)
+            .order_by("descricao", "sku")
+        )
+
+        # label amigável (mantido do seu código)
         self.fields["item"].label_from_instance = (
             lambda obj: (
                 f"{obj.sku} — {obj.descricao} (estoque: {obj.stock} {obj.unidade})"
@@ -28,3 +36,11 @@ class MovementForm(forms.ModelForm):
                 f"{obj.sku} — {obj.descricao} (estoque: {obj.stock})"
             )
         )
+
+    def clean(self):
+        cleaned = super().clean()
+        item = cleaned.get("item")
+        # garantia extra contra POST manual com item inativo
+        if item and not getattr(item, "is_active", True):
+            raise ValidationError("Este item está inativo e não pode receber movimentações.")
+        return cleaned

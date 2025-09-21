@@ -32,7 +32,7 @@
           {% for m in page_obj %}
           <tr>
             <td>{{ m.created_at|date:"d/m/Y H:i" }}</td>
-            <td>{{ m.item.code }} — {{ m.item.name }}</td>
+            <td>{{ m.item.sku }}</td>
             <td>
               <span class="badge {% if m.kind == 'IN' %}badge-success{% else %}badge-error{% endif %}">
                 {{ m.get_kind_display }}
