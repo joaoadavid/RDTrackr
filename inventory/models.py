@@ -1,21 +1,26 @@
+# inventory/models.py
 from django.db import models
-from django.utils import timezone
+from django.db.models import Q
 
 class Item(models.Model):
-    sku = models.CharField("SKU", max_length=40, unique=True)
-    descricao = models.CharField("Descrição", max_length=180)
-    unidade = models.CharField("Unidade", max_length=15, default="un")
-    estoque_minimo = models.DecimalField("Estoque mínimo", max_digits=12, decimal_places=2, default=0)
-    is_active = models.BooleanField("Ativo", default=True)
-
-    # Campo derivado (opcional). Se não quiser denormalizar, remova e calcule via agregação.
-    stock = models.DecimalField("Saldo atual", max_digits=14, decimal_places=2, default=0)
-
-    created_at = models.DateTimeField(default=timezone.now, editable=False)
+    sku = models.CharField(max_length=50, unique=True)
+    descricao = models.CharField(max_length=255)
+    unidade = models.CharField(max_length=20, blank=True)           # ex.: UN, KG...
+    stock = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    estoque_minimo = models.DecimalField(max_digits=14, decimal_places=2, default=0)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ["sku"]
+        ordering = ["descricao", "sku"]
+        constraints = [
+            # opcional (requer migration): evita estoque negativo no banco
+            models.CheckConstraint(
+                check=Q(stock__gte=0),
+                name="item_stock_non_negative",
+            )
+        ]
 
     def __str__(self):
-        return f"{self.sku} - {self.descricao}"
+        return f"{self.sku} — {self.descricao}"

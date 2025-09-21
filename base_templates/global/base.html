@@ -1,111 +1,226 @@
 {% load static %}
 <!doctype html>
-<!doctype html>
 <html lang="pt-BR" data-theme="light">
   <head>
-    <!-- ... seus links ... -->
-{% load static %}
-<link href="{% static 'css/app.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet" />
     <title>{% block title %}RDTrackr{% endblock %}</title>
+
+    <style>
+  /* compensa topbar fixa */
+  main#rdContent { padding-top: 4rem; }
+
+  /* ====== DESKTOP ====== */
+  @media (min-width:1024px){
+    /* OPEN (default): sidebar 16rem e conteúdo com ml=16rem */
+    body[data-sidebar="open"]    #rdSidebar { width: 16rem; transform: translateX(0) !important; }
+    body[data-sidebar="open"]    #rdContent { margin-left: 16rem; }
+
+    /* MINI: sidebar 4rem e conteúdo com ml=4rem */
+    body[data-sidebar="mini"]    #rdSidebar { width: 4rem;  transform: translateX(0) !important; }
+    body[data-sidebar="mini"]    #rdContent { margin-left: 4rem; }
+
+    /* CLOSED: sidebar off-canvas e conteúdo full */
+    body[data-sidebar="closed"]  #rdSidebar { transform: translateX(-100%) !important; }
+    body[data-sidebar="closed"]  #rdContent { margin-left: 0; }
+
+    /* Esconde labels e chevrons no estado MINI */
+    body[data-sidebar="mini"]    #rdSidebar .label,
+    body[data-sidebar="mini"]    #rdSidebar summary .fa-chevron-down{ display:none; }
+
+    /* Ajusta os itens no MINI para ficarem centralizados */
+    body[data-sidebar="mini"]    #rdSidebar .menu > li > a,
+    body[data-sidebar="mini"]    #rdSidebar summary{
+      justify-content: center;
+      gap: 0;
+      padding-left: .75rem; padding-right: .75rem;
+    }
+    body[data-sidebar="mini"]    #rdSidebar i.fa-solid{ margin-right: 0 !important; }
+  }
+</style>
+
   </head>
-  <!-- ADICIONE o atributo data-sidebar para o modo mini -->
+
   <body class="bg-base-200" data-sidebar="">
-    <div class="drawer lg:drawer-open min-h-screen">
-      <input id="rd-drawer" type="checkbox" class="drawer-toggle" />
+    {% include "global/partials/topbar.html" %}
+    {% include "global/partials/sidebar.html" %}
 
-      <!-- Main content -->
-      <div class="drawer-content flex flex-col">
-        {% include "global/partials/topbar.html" %}
+    <!-- Backdrop mobile (abaixo da topbar) -->
+    <div id="rdBackdrop" class="fixed inset-x-0 top-16 bottom-0 z-40 bg-black/40 hidden lg:hidden"></div>
 
-        <!-- ENVOLVA O CONTEÚDO COM A CLASSE container-page -->
-        <main class="p-8">
-          <div class="container-page">
-            {% include 'global/partials/messages.html' %}
-            <h1 class="mb-4">{% block page_title %}{% endblock %}</h1>
-            {% block content %}{% endblock %}
-          </div>
-        </main>
+    <main id="rdContent" class="transition-[margin]">
+      <div class="container-page p-8">
+        {% include 'global/partials/messages.html' %}
+        <h1 class="mb-4">{% block page_title %}{% endblock %}</h1>
+        {% block content %}{% endblock %}
       </div>
+    </main>
 
-      <!-- Sidebar -->
-      <div class="drawer-side">
-        <label for="rd-drawer" class="drawer-overlay"></label>
-        {% include "global/partials/sidebar.html" %}
-      </div>
-    </div>
-
-    <!-- Tema + Sidebar mini toggles -->
- <script>
+<script>
 (function(){
   const html = document.documentElement;
   const body = document.body;
-  const themeKey = "rdtrackr-theme";
-  const sideKey  = "rdtrackr-sidebar";
-  const drawerChk = document.getElementById("rd-drawer");
-  const btn = document.getElementById("rdToggleSidebar");
 
-  // restaura preferências
+  // ===== CHAVES DE PREFERÊNCIA =====
+  const themeKey   = "rdtrackr-theme";
+  const sidebarKey = "rdtrackr-sidebar"; // valores: open | mini | closed
+
+  // ===== ELEMENTOS =====
+  const btn      = document.getElementById("rdToggleSidebar");
+  const aside    = document.getElementById("rdSidebar");
+  const backdrop = document.getElementById("rdBackdrop");
+  const mqDesktop = window.matchMedia("(min-width: 1024px)");
+
+  // ===== THEME =====
   const savedTheme = localStorage.getItem(themeKey);
   if (savedTheme) html.setAttribute("data-theme", savedTheme);
 
-  const savedSide = localStorage.getItem(sideKey);
-  if (savedSide) body.setAttribute("data-sidebar", savedSide);
-
-  // estado inicial dos ícones/aria
-  syncButton();
-
-  // tema
-  document.addEventListener("click", (e) => {
-    const t1 = e.target.closest("[data-toggle-theme]");
-    if (t1){
+  document.addEventListener("click", (e)=>{
+    if (e.target.closest("[data-toggle-theme]")){
       const next = html.getAttribute("data-theme")==="dark" ? "light" : "dark";
       html.setAttribute("data-theme", next);
       localStorage.setItem(themeKey, next);
     }
   });
 
-  // sidebar
-  btn?.addEventListener("click", () => {
-    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  // ===== STATE HELPERS =====
+  function isDesktop(){ return mqDesktop.matches; }
 
-    if (!isDesktop) {
-      // mobile: abre/fecha o drawer da DaisyUI
-      if (drawerChk) drawerChk.checked = !drawerChk.checked;
-      return;
-    }
-
-    // desktop: alterna modo mini (ícones-only)
-    const next = body.getAttribute("data-sidebar")==="mini" ? "" : "mini";
-    body.setAttribute("data-sidebar", next);
-    localStorage.setItem(sideKey, next);
-    syncButton();
-  });
-
-  // troca ícones e aria
-  function syncButton(){
-    const mini = body.getAttribute("data-sidebar")==="mini";
-    btn?.setAttribute("aria-expanded", String(!mini));
-    const icExpand  = btn?.querySelector(".icon-expand");
-    const icCollapse= btn?.querySelector(".icon-collapse");
-    if (icExpand && icCollapse){
-      icExpand.classList.toggle("hidden", !mini);
-      icCollapse.classList.toggle("hidden", mini);
-    }
+  function getState(){
+    // ordem: preferencia salva -> atributo no body -> default 'closed'
+    return localStorage.getItem(sidebarKey) || body.getAttribute("data-sidebar") || "closed";
   }
 
-  // ao redimensionar, mantenha o ícone coerente
-  window.addEventListener("resize", () => {
-    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-    if (!isDesktop) {
-      // mobile: sempre mostrar estado "expandido" no botão (pois o drawer é overlay)
-      btn?.setAttribute("aria-expanded", "false");
+  function setState(s){
+    body.setAttribute("data-sidebar", s);
+    localStorage.setItem(sidebarKey, s);
+  }
+
+  // ===== MOBILE OPEN/CLOSE =====
+  function openMobile(){
+    aside?.classList.remove("-translate-x-full");
+    backdrop?.classList.remove("hidden");
+  }
+  function closeMobile(){
+    aside?.classList.add("-translate-x-full");
+    backdrop?.classList.add("hidden");
+  }
+  backdrop?.addEventListener("click", closeMobile);
+
+  // ===== ESTADO INICIAL =====
+  // dica: no HTML, já pode iniciar com <body data-sidebar="closed"> para evitar flash
+  if (isDesktop()) setState(getState()); // inicializa com preferido ou 'closed'
+
+  // ===== TOGGLE BUTTON =====
+  // Clique normal (desktop): alterna open <-> mini
+  // Shift+Clique (desktop): alterna closed <-> open
+  btn?.addEventListener("click", (e)=>{
+    if (!isDesktop()){
+      const oculto = aside?.classList.contains("-translate-x-full");
+      oculto ? openMobile() : closeMobile();
+      return;
+    }
+    if (e.shiftKey){
+      setState(getState()==="closed" ? "open" : "closed");
+      flyoutMode = false;
     } else {
-      // desktop: reflete o estado salvo
-      syncButton();
+      setState(getState()==="mini" ? "open" : "mini");
+      flyoutMode = false;
     }
   });
+
+  // ===== FLYOUT (HOVER): mini -> open ao entrar; open -> mini ao sair =====
+  let flyoutMode = false;    // true quando abriu por hover
+  let closeTimer = null;
+
+  aside?.addEventListener('mouseenter', () => {
+    if (!isDesktop()) return;
+    if (getState() === 'mini') {
+      setState('open');
+      flyoutMode = true;
+    }
+  });
+
+  aside?.addEventListener('mouseleave', () => {
+    if (!isDesktop()) return;
+    if (getState() === 'open' && flyoutMode) {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(() => {
+        setState('mini');
+        flyoutMode = false;
+      }, 120); // debounce curto p/ evitar "piscar" na borda
+    }
+  });
+
+  // ===== CLIQUE FORA: se estiver OPEN, volta para MINI =====
+  document.addEventListener('click', (e) => {
+    if (!isDesktop()) return;
+    const insideSidebar = aside?.contains(e.target);
+    const onToggle = btn?.contains(e.target);
+    if (insideSidebar || onToggle) return;
+    if (getState() === 'open') {
+      setState('mini');
+      flyoutMode = false;
+    }
+  });
+
+  // ===== MINI -> OPEN ao clicar em itens dentro da sidebar =====
+  aside?.addEventListener("click", (e)=>{
+    if (!isDesktop()) return;
+    if (getState()==="mini" && e.target.closest("a, summary, button, li")) {
+      setState("open");
+      flyoutMode = false;
+    }
+  });
+
+  // ===== QUANDO MUDA PARA DESKTOP/MOBILE =====
+  mqDesktop.addEventListener("change", (e)=>{
+    if (e.matches){
+      // virou desktop: fecha overlay mobile e restaura preferência
+      closeMobile();
+      setState(getState() || "closed");
+      flyoutMode = false;
+    } else {
+      // virou mobile: não usar data-sidebar; sidebar se controla por translate
+      flyoutMode = false;
+    }
+  });
+
 })();
 </script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  // Renderiza os ícones declarados com data-lucide="..."
+  document.addEventListener('DOMContentLoaded', () => lucide.createIcons());
+</script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-row-toggle]');
+  if (!btn) return;
+
+  const id = btn.getAttribute('data-row-toggle');
+  const row = document.querySelector(`[data-row-content="${id}"]`);
+  if (!row) return;
+
+  // fecha outros expandidos (opcional; comente se não quiser)
+  document.querySelectorAll('[data-row-content]').forEach(r => {
+    if (r !== row) r.classList.add('hidden');
+  });
+  document.querySelectorAll('[data-row-toggle]').forEach(b => {
+    if (b !== btn) { b.setAttribute('aria-expanded', 'false'); b.querySelector('svg')?.classList.remove('rotate-180'); }
+  });
+
+  // alterna o atual
+  row.classList.toggle('hidden');
+  const expanded = !row.classList.contains('hidden');
+  btn.setAttribute('aria-expanded', String(expanded));
+  btn.querySelector('svg')?.classList.toggle('rotate-180', expanded);
+});
+</script>
+
 
   </body>
 </html>

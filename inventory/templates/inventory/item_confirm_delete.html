@@ -1,0 +1,14 @@
+{% extends "global/base.html" %}
+{% block page_title %}Excluir item{% endblock %}
+{% block content %}
+<form method="post" class="card bg-base-100 border max-w-xl">
+  {% csrf_token %}
+  <div class="card-body">
+    <p>Tem certeza que deseja excluir <b>{{ object.sku }} — {{ object.descricao }}</b>?</p>
+    <div class="card-actions justify-end mt-4">
+      <a href="{% url 'inventory:item-list' %}" class="btn btn-ghost">Cancelar</a>
+      <button class="btn btn-error">Excluir</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
