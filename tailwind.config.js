@@ -1,7 +1,25 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: ["./**/templates/**/*.html", "./base_templates/**/*.html"],
+
+  // Onde o Tailwind vai procurar classes
+  content: [
+    "./**/templates/**/*.html",
+    "./base_templates/**/*.html",
+    "./**/*.{js,ts}", // scripts (toggle, menus, etc.)
+    "./project/**/*.py", // se renderiza classes em views/templatetags
+    "./project/static_src/**/*.{html,js,ts}", // ajuste para sua pasta de origem
+  ],
+
+  // Classes que o purge não pode remover
+  safelist: [
+    "h-[calc(100vh-4rem)]",
+    "transition-[margin]",
+    "lg:ml-64",
+    "-translate-x-full",
+    "lg:translate-x-0",
+  ],
+
   theme: {
     extend: {
       colors: {
@@ -53,7 +71,7 @@ module.exports = {
           "Noto Color Emoji",
         ],
       },
-      // (opcional) deixa a tipografia bonita no claro/escuro
+      // Tipografia bonita no claro/escuro (opcional)
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
@@ -80,9 +98,11 @@ module.exports = {
       }),
     },
   },
-  plugins: [
-    require("daisyui"),
-    require("@tailwindcss/typography"), // ⬅️ aqui
-  ],
-  daisyui: { themes: ["light", "dark", "corporate"], darkTheme: "dark" },
+
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
+
+  daisyui: {
+    themes: ["light", "dark", "corporate"],
+    darkTheme: "dark",
+  },
 };

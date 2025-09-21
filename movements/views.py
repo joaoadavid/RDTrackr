@@ -1,14 +1,16 @@
+# movements/views.py
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView
 from django.db.models import Q
 from django.urls import reverse_lazy
+from django.core.exceptions import ValidationError
 from .models import Movement
 from .forms import MovementForm
 
 class MovementListView(LoginRequiredMixin, ListView):
     model = Movement
     template_name = "movements/movement_list.html"
-    context_object_name = "page_obj"   # usaremos page_obj no template
+    context_object_name = "page_obj"
     paginate_by = 20
 
     def get_queryset(self):
@@ -20,8 +22,8 @@ class MovementListView(LoginRequiredMixin, ListView):
         kind = self.request.GET.get("kind") or ""
         if q:
             qs = qs.filter(
-                Q(item__code__icontains=q) |
-                Q(item__name__icontains=q) |
+                Q(item__sku__icontains=q) |
+                Q(item__descricao__icontains=q) |
                 Q(note__icontains=q)
             )
         if kind in ("IN", "OUT"):
@@ -42,10 +44,13 @@ class MovementCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("movements:movement-list")
 
     def form_valid(self, form):
-        # injeta o usuário e mantém a lógica de aplicar saldo no save() do model
         form.instance.created_by = self.request.user
         try:
             return super().form_valid(form)
-        except ValueError as e:
+        except (ValueError, ValidationError) as e:
             form.add_error(None, str(e))
             return self.form_invalid(form)
+        
+    def get_success_url(self):
+        # permite voltar para a lista/detalhe do item
+        return self.request.POST.get("next") or super().get_success_url()

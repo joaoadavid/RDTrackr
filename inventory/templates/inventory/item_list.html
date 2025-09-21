@@ -1,111 +1,162 @@
 {% extends "global/base.html" %}
-{% block title %}Itens{% endblock %}
 {% block page_title %}Itens{% endblock %}
 {% block content %}
 
-{% with view=request.GET.view|default:'table' %}
-<div class="flex items-center justify-between mb-4 gap-3">
-  <!-- Busca (preserva a visualização atual) -->
-  <form method="get" class="join">
-    <input name="q" value="{{ request.GET.q }}"
-           class="input input-sm input-bordered join-item"
-           placeholder="Buscar">
-    <input type="hidden" name="view" value="{{ view }}">
-    <button class="btn btn-sm btn-primary join-item">Filtrar</button>
-  </form>
-
-  <!-- Controles: trocar visualização + novo -->
-  <div class="join">
-    <a href="?{% if request.GET.q %}q={{ request.GET.q|urlencode }}&{% endif %}view=table"
-       class="btn btn-sm join-item {% if view == 'table' %}btn-primary text-white{% else %}btn-ghost{% endif %}">
-      Tabela
-    </a>
-    <a href="?{% if request.GET.q %}q={{ request.GET.q|urlencode }}&{% endif %}view=grid"
-       class="btn btn-sm join-item {% if view == 'grid' %}btn-primary text-white{% else %}btn-ghost{% endif %}">
-      Cards
-    </a>
-    <a href="{% url 'inventory:item-create' %}" class="btn btn-sm join-item btn-primary">Novo</a>
-  </div>
+<!-- Cards de métricas -->
+<div class="grid md:grid-cols-4 gap-4 mb-6">
+  <div class="card bg-base-100 border"><div class="card-body">
+    <span class="text-sm opacity-70">Total de estoque</span>
+    <div class="text-3xl font-semibold">{{ stats.total_stock }}</div>
+  </div></div>
+  <div class="card bg-base-100 border"><div class="card-body">
+    <span class="text-sm opacity-70">Itens ativos</span>
+    <div class="text-3xl font-semibold">{{ stats.ativos }}</div>
+  </div></div>
+  <div class="card bg-base-100 border"><div class="card-body">
+    <span class="text-sm opacity-70">Abaixo do mínimo</span>
+    <div class="text-3xl font-semibold">{{ stats.abaixo_min }}</div>
+  </div></div>
+  <div class="card bg-base-100 border"><div class="card-body">
+    <span class="text-sm opacity-70">Total de itens</span>
+    <div class="text-3xl font-semibold">{{ stats.itens }}</div>
+  </div></div>
 </div>
 
-{% if view == 'grid' %}
-  <!-- ====== GRID / CARDS ====== -->
-  <div class="mt-2 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-    {% for i in object_list %}
-      <div class="group overflow-hidden rounded-2xl border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
-        <div class="h-40 bg-gradient-to-br from-primary-100 to-white dark:from-gray-800 dark:to-gray-900"></div>
-        <div class="p-5">
-          <div class="flex items-center justify-between">
-            <h3 class="font-medium">{{ i.descricao }}</h3>
+<!-- Filtros -->
+<form method="get" class="flex gap-2 items-end mb-4">
+  <label class="form-control w-full max-w-sm">
+    <span class="label-text">Buscar</span>
+    <input class="input input-bordered" type="text" name="q" value="{{ q }}" placeholder="SKU ou descrição">
+  </label>
+  <a href="{% url 'inventory:item-create' %}" class="btn btn-primary ml-auto">+ Novo item</a>
+</form>
 
-            {% with qty=i.saldo.quantidade|default:0 %}
-              {% if qty <= i.estoque_minimo|default:0 %}
-                <span class="rounded-full bg-red-100 px-2 py-0.5 text-xs text-red-700 dark:bg-red-900/40 dark:text-red-300">
-                  Baixo
-                </span>
-              {% elif qty > 0 %}
-                <span class="rounded-full bg-primary-100 px-2 py-0.5 text-xs text-primary-700 dark:bg-primary-900/40 dark:text-primary-300">
-                  Em estoque
-                </span>
-              {% else %}
-                <span class="rounded-full bg-gray-200 px-2 py-0.5 text-xs text-gray-700 dark:bg-gray-700/60 dark:text-gray-300">
-                  Sem saldo
-                </span>
-              {% endif %}
-            {% endwith %}
+<!-- Tabela -->
+<div class="overflow-x-auto">
+  <table class="table w-full">
+    <thead>
+      <tr>
+        <th class="w-8"></th>
+        <th>SKU</th>
+        <th>Descrição</th>
+        <th>Unid</th>
+        <th>Estoque</th>
+        <th>Est. mín.</th>
+        <th>Status</th>
+        <th class="text-right">Ações</th>
+      </tr>
+    </thead>
+
+    {% for it in items %}
+    <tbody x-data="{ open:false }">
+      <!-- linha principal -->
+      <tr>
+        <td>
+          <button class="btn btn-ghost btn-xs" @click="open=!open" :aria-expanded="open">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform"
+                 :class="open ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </button>
+        </td>
+        <td>{{ it.sku }}</td>
+        <td class="font-medium">
+          <a href="{% url 'inventory:item-detail' it.pk %}" class="link">{{ it.descricao }}</a>
+        </td>
+        <td>{{ it.unidade }}</td>
+        <td>{{ it.stock }}</td>
+        <td>{{ it.estoque_minimo }}</td>
+        <td>
+          {% if it.is_active %}
+            <span class="badge badge-success">Ativo</span>
+          {% else %}
+            <span class="badge badge-ghost">Inativo</span>
+          {% endif %}
+        </td>
+        <td class="text-right">
+          <a href="{% url 'inventory:item-detail' it.pk %}" class="btn btn-xs btn-outline">Abrir</a>
+        </td>
+      </tr>
+
+      <!-- expand -->
+      <tr x-show="open" x-cloak>
+        <td></td>
+        <td colspan="7" class="bg-base-200 p-0">
+          <div class="p-4" x-data="{ edit:false }">
+            <!-- header ações do expand -->
+            <div class="flex items-center gap-2 mb-4">
+              <button class="btn btn-sm" @click="edit=true">Editar</button>
+              <a href="{% url 'inventory:item-delete' it.pk %}" class="btn btn-sm btn-outline">Excluir</a>
+              <button class="btn btn-ghost btn-sm ml-auto" @click="$root.open=false">Fechar</button>
+            </div>
+
+            <!-- VISUALIZAÇÃO -->
+            <div x-show="!edit" x-cloak>
+              <div class="grid md:grid-cols-4 gap-4">
+                <div class="card bg-base-100 border"><div class="card-body p-4">
+                  <div class="text-sm opacity-70">SKU</div><div class="font-medium">{{ it.sku }}</div>
+                </div></div>
+                <div class="card bg-base-100 border"><div class="card-body p-4">
+                  <div class="text-sm opacity-70">Unidade</div><div class="font-medium">{{ it.unidade }}</div>
+                </div></div>
+                <div class="card bg-base-100 border"><div class="card-body p-4">
+                  <div class="text-sm opacity-70">Estoque</div><div class="font-medium">{{ it.stock }}</div>
+                </div></div>
+                <div class="card bg-base-100 border"><div class="card-body p-4">
+                  <div class="text-sm opacity-70">Est. mínimo</div><div class="font-medium">{{ it.estoque_minimo }}</div>
+                </div></div>
+              </div>              
+            </div>
+
+            <!-- EDIÇÃO INLINE (posta para ItemUpdateView) -->
+            <form x-show="edit" x-cloak method="post" action="{% url 'inventory:item-update' it.pk %}"
+                  class="card bg-base-100 border">
+              {% csrf_token %}
+              <div class="card-body grid md:grid-cols-3 gap-4">
+                <label class="form-control">
+                  <span class="label-text">SKU</span>
+                  <input type="text" name="sku" value="{{ it.sku }}" class="input input-bordered" required>
+                </label>
+                <label class="form-control md:col-span-2">
+                  <span class="label-text">Descrição</span>
+                  <input type="text" name="descricao" value="{{ it.descricao }}" class="input input-bordered" required>
+                </label>
+                <label class="form-control">
+                  <span class="label-text">Unidade</span>
+                  <input type="text" name="unidade" value="{{ it.unidade }}" class="input input-bordered">
+                </label>
+                <label class="form-control">
+                  <span class="label-text">Estoque atual</span>
+                  <input type="number" step="0.01" name="stock" value="{{ it.stock }}" class="input input-bordered" required>
+                </label>
+                <label class="form-control">
+                  <span class="label-text">Estoque mínimo</span>
+                  <input type="number" step="0.01" name="estoque_minimo" value="{{ it.estoque_minimo }}" class="input input-bordered">
+                </label>
+                <label class="form-control">
+                  <span class="label-text">Ativo</span>
+                  <input type="checkbox" name="is_active" class="toggle" {% if it.is_active %}checked{% endif %}>
+                </label>
+
+                <div class="md:col-span-3 card-actions justify-end">
+                  <button type="button" class="btn btn-ghost" @click="edit=false">Cancelar</button>
+                  <button class="btn btn-primary">Salvar</button>
+                </div>
+              </div>
+            </form>
+
           </div>
-
-          <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ i.sku }} · Unidade: {{ i.unidade }}
-          </p>
-
-          <div class="mt-4 flex items-center justify-between text-sm">
-            <span class="text-gray-500 dark:text-gray-400">
-              Saldo: {{ i.saldo.quantidade|default:"0" }}
-            </span>
-            <a href="{% url 'inventory:item-detail' i.pk %}"
-               class="rounded-md px-3 py-1 ring-1 ring-gray-300 hover:bg-gray-50 dark:ring-gray-700 dark:hover:bg-gray-800">
-              Ver
-            </a>
-          </div>
-        </div>
-      </div>
+        </td>
+      </tr>
+    </tbody>
     {% empty %}
-      <p class="text-center text-base-content/60 col-span-full py-6">Nenhum item.</p>
+      <tbody><tr><td colspan="8" class="text-center opacity-60">Nada por aqui…</td></tr></tbody>
     {% endfor %}
-  </div>
+  </table>
+</div>
 
-{% else %}
-  <!-- ====== TABELA ====== -->
-  <div class="card bg-base-100 border shadow-sm">
-    <div class="card-body p-0">
-      <div class="overflow-x-auto">
-        <table class="table table-zebra table-sm">
-          <thead>
-            <tr>
-              <th>SKU</th><th>Descrição</th><th>Unid</th>
-              <th>Est. mín.</th><th>Saldo</th><th></th>
-            </tr>
-          </thead>
-          <tbody>
-          {% for i in object_list %}
-            <tr>
-              <td>{{ i.sku }}</td>
-              <td class="font-medium">{{ i.descricao }}</td>
-              <td>{{ i.unidade }}</td>
-              <td>{{ i.estoque_minimo }}</td>
-              <td>{{ i.saldo.quantidade|default:"0" }}</td>
-              <td><a class="btn btn-xs" href="{% url 'inventory:item-detail' i.pk %}">Abrir</a></td>
-            </tr>
-          {% empty %}
-            <tr><td colspan="6" class="text-center text-base-content/60">Nenhum item.</td></tr>
-          {% endfor %}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-{% endif %}
-{% endwith %}
+
+  </table>
+</div>
 
 {% endblock %}
