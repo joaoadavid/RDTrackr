@@ -1,13 +1,25 @@
 {% extends "global/base.html" %}
 {% block page_title %}Excluir item{% endblock %}
 {% block content %}
-<form method="post" class="card bg-base-100 border max-w-xl">
+<form method="post" action="{% url 'inventory:item-delete' object.pk %}" class="card bg-base-100 border max-w-xl">
   {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.GET.next|default:'' }}">
   <div class="card-body">
     <p>Tem certeza que deseja excluir <b>{{ object.sku }} — {{ object.descricao }}</b>?</p>
+
+    {% if object.is_active %}
+      <div class="alert alert-info mt-2">
+        <span>O item está <b>ativo</b>. Desative-o primeiro para poder excluir.</span>
+      </div>
+    {% else %}
+      <div class="alert alert-warning mt-2">
+        <span>Este item está <b>inativo</b>. Ao excluir, <u>todas as movimentações</u> dele serão removidas.</span>
+      </div>
+    {% endif %}
+
     <div class="card-actions justify-end mt-4">
       <a href="{% url 'inventory:item-list' %}" class="btn btn-ghost">Cancelar</a>
-      <button class="btn btn-error">Excluir</button>
+      <button type="submit" class="btn btn-error" {% if object.is_active %}disabled{% endif %}>Excluir</button>
     </div>
   </div>
 </form>
