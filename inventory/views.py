@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from django.contrib import messages
 from django.shortcuts import redirect, get_object_or_404
+from django.db import transaction
 from django.views import View
 from django.db.models.deletion import ProtectedError
 from .models import Item
@@ -68,19 +69,27 @@ class ItemUpdateView(LoginRequiredMixin, UpdateView):
 
 class ItemDeleteView(LoginRequiredMixin, DeleteView):
     model = Item
+    template_name = "inventory/item_confirm_delete.html"
     success_url = reverse_lazy("inventory:item-list")
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        try:
+
+        # 1) Se estiver ATIVO: não permite excluir
+        if getattr(self.object, "is_active", True):
+            messages.error(request, "Este item está ativo. Desative-o antes de excluir.")
+            return redirect(self.get_success_url())
+
+        # 2) Se estiver INATIVO: pode excluir, mesmo com movimentos (apagando o histórico)
+        with transaction.atomic():
+            Movement.objects.filter(item=self.object).delete()
+            messages.success(request, f"Item {self.object.sku} excluído com sucesso.")
             return super().post(request, *args, **kwargs)
-        except ProtectedError:
-            messages.error(
-                request,
-                "Não é possível excluir: o item possui movimentações vinculadas. "
-                "Desative o item para manter o histórico."
-            )
-            return redirect("inventory:item-list")
+
+    def get_success_url(self):
+        # respeita ?next=... se vier do link/form; senão, volta à lista
+        nxt = self.request.POST.get("next") or self.request.GET.get("next")
+        return nxt or str(self.success_url)
 
 
 class ItemDetailView(LoginRequiredMixin, DetailView):

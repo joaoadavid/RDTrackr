@@ -2,9 +2,9 @@
 from decimal import Decimal
 from django.db import models, transaction
 from django.db.models import F
+from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
 from django.utils import timezone
-from django.core.exceptions import ValidationError
 from inventory.models import Item
 
 User = get_user_model()
@@ -26,55 +26,66 @@ class Movement(models.Model):
 
     def __str__(self):
         s = "+" if self.kind == self.IN else "-"
-        return f"{self.item.sku} {s}{self.quantity} ({self.created_at:%d/%m/%Y})"
+        return f"{self.item.sku} {s}{self.quantity}"
 
+    # -------- Helpers internos --------
+    def _signed_qty(self, kind=None, qty=None) -> Decimal:
+        k = kind if kind is not None else self.kind
+        q = Decimal(qty if qty is not None else self.quantity)
+        if q <= 0:
+            raise ValidationError("A quantidade deve ser maior que zero.")
+        return q if k == self.IN else -q
+
+    # -------- Validação de domínio --------
     def clean(self):
-        # quantidade válida
-        if self.quantity is None or self.quantity <= 0:
-            raise ValidationError({"quantity": "Quantidade deve ser positiva."})
+        super().clean()
+        # quantity > 0
+        if self.quantity is None or Decimal(self.quantity) <= 0:
+            raise ValidationError({"quantity": "A quantidade deve ser maior que zero."})
 
-        # 🔒 item deve estar ativo
-        if self.item_id:
-            # usa getattr pra evitar falha se o atributo mudar de nome
-            if not getattr(self.item, "is_active", True):
-                # manda pro topo do form (non_field_errors) com mensagem clara
-                raise ValidationError("Este item está inativo e não pode receber movimentações.")
-
-        # estoque suficiente nas saídas
-        if self.kind == self.OUT and self.item_id:
-            current = self.item.stock or Decimal("0")
-            if self.quantity > current:
-                raise ValidationError(
-                    f"Estoque insuficiente. Disponível: {current}, solicitado: {self.quantity}."
-                )
-
-    def apply_to_item(self):
-        """Aplica a movimentação ao saldo do item com lock de linha."""
-        delta = self.quantity if self.kind == self.IN else -self.quantity
-
-        # bloqueia a linha do item nesta transação
-        item = Item.objects.select_for_update().get(pk=self.item_id)
-
-        # 🔒 checagem extra sob lock: não movimenta item inativo
-        if not getattr(item, "is_active", True):
-            raise ValueError("Não é possível movimentar um item inativo.")
-
-        new_stock = (item.stock or Decimal("0")) + delta
-        if new_stock < 0:
-            # revalidação sob lock (prevenção contra corrida)
-            raise ValueError("Saldo resultante negativo para o item.")
-
-        # atualiza via F() para evitar race conditions
-        Item.objects.filter(pk=item.pk).update(
-            stock=F("stock") + delta,
-            updated_at=timezone.now(),
-        )
-
+    # -------- Persistência com ajuste de estoque --------
     def save(self, *args, **kwargs):
-        is_create = self._state.adding
         with transaction.atomic():
-            # garante validações mesmo fora de ModelForm
-            self.full_clean()
+            # Lock na linha do item para evitar corrida
+            item_locked = Item.objects.select_for_update().get(pk=self.item_id)
+
+            if self.pk:
+                # UPDATE: calcular delta (novo - antigo)
+                old = Movement.objects.select_for_update().get(pk=self.pk)
+                old_signed = old._signed_qty(old.kind, old.quantity)
+                new_signed = self._signed_qty(self.kind, self.quantity)
+                delta = new_signed - old_signed
+            else:
+                # CREATE
+                delta = self._signed_qty(self.kind, self.quantity)
+
+            # Validar estoque não negativo
+            # (se delta negativo e estoque insuficiente, bloqueia)
+            # Obs: usamos .values_list para pegar valor atual sem refrescar objeto.
+            from django.db.models import Value
+            # checar valor atual
+            current_stock = Item.objects.filter(pk=item_locked.pk).values_list("stock", flat=True).first() or Decimal("0")
+            new_stock = Decimal(current_stock) + Decimal(delta)
+            if new_stock < 0:
+                raise ValidationError("Estoque insuficiente para concluir esta saída.")
+
+            # Aplicar delta
+            Item.objects.filter(pk=item_locked.pk).update(stock=F("stock") + delta)
+
+            # Agora salva a movimentação
             super().save(*args, **kwargs)
-            if is_create:
-                self.apply_to_item()
+
+    def delete(self, *args, **kwargs):
+        with transaction.atomic():
+            item_locked = Item.objects.select_for_update().get(pk=self.item_id)
+            # Reverter efeito desta movimentação
+            delta = -self._signed_qty(self.kind, self.quantity)
+            # Validar (delta pode ser positivo ou negativo; aqui normalmente repõe estoque)
+            current_stock = Item.objects.filter(pk=item_locked.pk).values_list("stock", flat=True).first() or Decimal("0")
+            new_stock = Decimal(current_stock) + Decimal(delta)
+            if new_stock < 0:
+                # Na prática não deveria acontecer (estamos devolvendo estoque),
+                # mas deixamos a defesa por consistência.
+                raise ValidationError("Operação inválida: resultaria em estoque negativo.")
+            Item.objects.filter(pk=item_locked.pk).update(stock=F("stock") + delta)
+            super().delete(*args, **kwargs)
