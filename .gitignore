@@ -128,3 +128,7 @@ gunicorn-error-log
 db.sqlite3
 db copy.sqlite3
 static/
+bin/
+obj/
+appsettings.Development.json
+appsettings.Test.json
