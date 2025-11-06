@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "m9iYqWm0YGxttbFnve5h1GGFOCWpBoSMCkoldUNMcds=",
+  "Source": "RDTrackR.API",
+  "BasePath": "_content/RDTrackR.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

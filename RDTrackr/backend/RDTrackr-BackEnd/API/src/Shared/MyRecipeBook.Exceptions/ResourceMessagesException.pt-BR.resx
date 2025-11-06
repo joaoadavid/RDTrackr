@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
+    <value>O e-mail já foi registrado</value>
+  </data>
+  <data name="EMAIL_EMPTY" xml:space="preserve">
+    <value>O e-mail não pode estar vazio.</value>
+  </data>
+  <data name="EMAIL_INVALID" xml:space="preserve">
+    <value>O e-mail é invalido.</value>
+  </data>
+  <data name="NAME_EMPTY" xml:space="preserve">
+    <value>O nome não pode estar vazio.</value>
+  </data>
+  <data name="PASSWORD_EMPTY" xml:space="preserve">
+    <value>A senha deve ter mais de 6 caracteres.</value>
+  </data>
+  <data name="UNKNOW_ERROR" xml:space="preserve">
+    <value>Erro desconhecido.</value>
+  </data>
+  <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
+    <value>O e-mail ou a senha são inválidos.</value>
+  </data>
+  <data name="NO_TOKEN" xml:space="preserve">
+    <value>O token de autenticação não existe.</value>
+  </data>
+  <data name="USER_WITHOU_PERMISSION_ACCESS_RESOURCE" xml:space="preserve">
+    <value>O usuário não tem permissão para acessar o recurso solicitado.</value>
+  </data>
+  <data name="INVALID_PASSWORD" xml:space="preserve">
+    <value>Senha inválida.</value>
+  </data>
+  <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
+    <value>A nova senha deve ser diferente da senha atual.</value>
+  </data>
+  <data name="RECIPE_TITLE_EMPTY" xml:space="preserve">
+    <value>O título da receita não pode estar vazio.</value>
+  </data>
+  <data name="COOKING_TIME_NOT_SUPPORTED" xml:space="preserve">
+    <value>Tempo de preparo não suportado.</value>
+  </data>
+  <data name="DIFFICULTY_LEVEL_NOT_SUPPORTED" xml:space="preserve">
+    <value>Nível de dificuldade não suportado.</value>
+  </data>
+  <data name="AT_LEAST_ONE_INGREDIENT" xml:space="preserve">
+    <value>A receita deve conter pelo menos um ingrediente.</value>
+  </data>
+  <data name="AT_LEAST_ONE_INSTRUCTION" xml:space="preserve">
+    <value>A receita deve conter pelo menos uma instrução.</value>
+  </data>
+  <data name="DISH_TYPE_NOT_SUPPORTED" xml:space="preserve">
+    <value>Tipo de prato não suportado.</value>
+  </data>
+  <data name="INGREDIENT_EMPTY" xml:space="preserve">
+    <value>O nome do ingrediente não pode estar vazio.</value>
+  </data>
+  <data name="NON_NEGATIVE_OR_ZERO_INSTRUCTION_STEP" xml:space="preserve">
+    <value>O número da etapa da instrução deve ser maior que zero.</value>
+  </data>
+  <data name="INSTRUCTION_EXCEEDS_LIMIT_CHARACTERS" xml:space="preserve">
+    <value>A instrução excede o limite máximo de caracteres.</value>
+  </data>
+  <data name="TWO_OR_MORE_INSTRUCTIONS_SAME_ORDER" xml:space="preserve">
+    <value>Duas ou mais instruções não podem ter a mesma ordem.</value>
+  </data>
+  <data name="INSTRUCTION_EMPTY" xml:space="preserve">
+    <value>A instrução não pode estar vazia.</value>
+  </data>
+  <data name="RECIPE_NOT_FOUND" xml:space="preserve">
+    <value>Receita não encontrada.</value>
+  </data>
+  <data name="INVALID_NUMBER_INGREDIENTS" xml:space="preserve">
+    <value>Número inválido de ingredientes. A receita deve conter entre 1 e 5 ingredientes.</value>
+  </data>
+  <data name="DUPLICATED_INGREDIENTS_IN_LIST" xml:space="preserve">
+    <value>Ingredientes duplicados. A receita não pode conter ingredientes repetidos.</value>
+  </data>
+  <data name="INGREDIENT_NOT_FOLLOWING_PATTERN" xml:space="preserve">
+    <value>Ingrediente fora do padrão. Cada ingrediente deve conter entre 3 e 100 caracteres e não incluir símbolos inválidos.</value>
+  </data>
+  <data name="ONLY_IMAGES_ACCEPTED" xml:space="preserve">
+    <value>Tipo de arquivo inválido. Apenas imagens nos formatos JPG e PNG são aceitas.</value>
+  </data>
+  <data name="CODE_INVALID" xml:space="preserve">
+    <value>É necessário um código válido para resetar a senha.</value>
+  </data>
+  <data name="USER_NOT_FOUND" xml:space="preserve">
+    <value>Usuário não encontrado com este e-mail.</value>
+  </data>
+  <data name="CODE_REQUIRED" xml:space="preserve">
+    <value>O código é obrigatório.</value>
+  </data>
+  <data name="EMAIL_REQUIRED" xml:space="preserve">
+    <value>O e-mail é obrigatório.</value>
+  </data>
+  <data name="PASSWORDS_DO_NOT_MATCH" xml:space="preserve">
+    <value>As senhas informadas não conferem.</value>
+  </data>
+  <data name="PASSWORD_MAX_LENGTH" xml:space="preserve">
+    <value>A senha deve ter no máximo 100 caracteres.</value>
+  </data>
+  <data name="PASSWORD_MIN_LENGTH" xml:space="preserve">
+    <value>A senha deve ter no mínimo 8 caracteres.</value>
+  </data>
+  <data name="PASSWORD_REQUIRED" xml:space="preserve">
+    <value>A senha é obrigatória.</value>
+  </data>
+  <data name="EXPIRED_SESSION" xml:space="preserve">
+    <value>Sua sessão está expirada.</value>
+  </data>
+  <data name="INVALID_SESSION" xml:space="preserve">
+    <value>Sessão inválida ou expirada. Faça login novamente.</value>
+  </data>
+  <data name="PRODUCT_SKU_REQUIRED" xml:space="preserve">
+    <value>O SKU do produto é obrigatório.</value>
+  </data>
+  <data name="PRODUCT_NAME_REQUIRED" xml:space="preserve">
+    <value>O nome do produto é obrigatório.</value>
+  </data>
+  <data name="PRODUCT_CATEGORY_REQUIRED" xml:space="preserve">
+    <value>A categoria do produto é obrigatória.</value>
+  </data>
+  <data name="PRODUCT_UNIT_REQUIRED" xml:space="preserve">
+    <value>A unidade de medida é obrigatória.</value>
+  </data>
+  <data name="PRODUCT_PRICE_INVALID" xml:space="preserve">
+    <value>O preço do produto deve ser maior ou igual a zero.</value>
+  </data>
+  <data name="PRODUCT_STOCK_INVALID" xml:space="preserve">
+    <value>O estoque inicial não pode ser negativo.</value>
+  </data>
+  <data name="PRODUCT_REORDER_INVALID" xml:space="preserve">
+    <value>O ponto de reposição deve ser maior ou igual a zero.</value>
+  </data>
+  <data name="PRODUCT_SKU_DUPLICATE" xml:space="preserve">
+    <value>Já existe um produto cadastrado com este SKU.</value>
+  </data>
+  <data name="PRODUCT_NOT_FOUND" xml:space="preserve">
+    <value>O produto não foi encontrado.</value>
+  </data>
+  <data name="MOVEMENT_REFERENCE_REQUIRED" xml:space="preserve">
+    <value>A referência da movimentação é obrigatória.</value>
+  </data>
+  <data name="MOVEMENT_PRODUCT_REQUIRED" xml:space="preserve">
+    <value>O produto é obrigatório.</value>
+  </data>
+  <data name="MOVEMENT_WAREHOUSE_REQUIRED" xml:space="preserve">
+    <value>O depósito é obrigatório.</value>
+  </data>
+  <data name="MOVEMENT_TYPE_REQUIRED" xml:space="preserve">
+    <value>O tipo de movimentação é obrigatório.</value>
+  </data>
+  <data name="MOVEMENT_TYPE_INVALID" xml:space="preserve">
+    <value>Tipo de movimentação inválido.</value>
+  </data>
+  <data name="MOVEMENT_QUANTITY_INVALID" xml:space="preserve">
+    <value>A quantidade deve ser maior que zero.</value>
+  </data>
+  <data name="WAREHOUSE_NOT_FOUND" xml:space="preserve">
+    <value>Armazém não encontrado.</value>
+  </data>
+  <data name="WAREHOUSE_ITEMS_INVALID" xml:space="preserve">
+    <value>A quantidade de itens não pode ser negativa.</value>
+  </data>
+  <data name="WAREHOUSE_CAPACITY_INVALID" xml:space="preserve">
+    <value>A capacidade do armazém deve ser maior que zero.</value>
+  </data>
+  <data name="WAREHOUSE_LOCATION_REQUIRED" xml:space="preserve">
+    <value>A localização do armazém é obrigatória.</value>
+  </data>
+  <data name="WAREHOUSE_NAME_REQUIRED" xml:space="preserve">
+    <value>O nome do armazém é obrigatório.</value>
+  </data>
+  <data name="STOCK_QUANTITY_INVALID" xml:space="preserve">
+    <value>Quantidade de itens em estoque inválida.</value>
+  </data>
+  <data name="SUPPLIER_NOT_FOUND" xml:space="preserve">
+    <value>Fornecedor não encontrado.</value>
+  </data>
+  <data name="PURCHASE_ORDER_NOT_FOUND" xml:space="preserve">
+    <value>Ordem de compra não encontrada.</value>
+  </data>
+  <data name="SUPPLIER_REQUIRED" xml:space="preserve">
+    <value>O fornecedor é obrigatório.</value>
+  </data>
+  <data name="PO_ITEMS_REQUIRED" xml:space="preserve">
+    <value>A ordem de compra deve possuir itens.</value>
+  </data>
+  <data name="PO_ITEM_PRODUCT_REQUIRED" xml:space="preserve">
+    <value>O produto do item da ordem é obrigatório.</value>
+  </data>
+  <data name="PO_ITEM_QUANTITY_INVALID" xml:space="preserve">
+    <value>A quantidade do item deve ser maior que zero.</value>
+  </data>
+  <data name="PO_CANNOT_EDIT_ITEMS" xml:space="preserve">
+    <value>Itens só podem ser alterados enquanto a ordem estiver em rascunho (DRAFT).</value>
+  </data>
+  <data name="PO_CANNOT_DELETE_RECEIVED" xml:space="preserve">
+    <value>Não é possível excluir uma ordem já recebida.</value>
+  </data>
+  <data name="SUPPLIER_NAME_REQUIRED" xml:space="preserve">
+    <value>O nome do fornecedor é obrigatório.</value>
+  </data>
+  <data name="SUPPLIER_EMAIL_INVALID" xml:space="preserve">
+    <value>E-mail inválido.</value>
+  </data>
+  <data name="PO_ITEM_UNITPRICE_INVALID" xml:space="preserve">
+    <value>O preço unitário deve ser maior ou igual a zero.</value>
+  </data>
+  <data name="PO_ITEM_DUPLICATED" xml:space="preserve">
+    <value>O pedido de compra contém produtos duplicados.</value>
+  </data>
+  <data name="SUPPLIER_EMAIL_DUPLICATE" xml:space="preserve">
+    <value>Já existe um fornecedor cadastrado com este e-mail.</value>
+  </data>
+  <data name="SUPPLIER_EMAIL_REQUIRED" xml:space="preserve">
+    <value>O e-mail do fornecedor é obrigatório.</value>
+  </data>
+  <data name="STOCK_INSUFFICIENT" xml:space="preserve">
+    <value>Saldo insuficiente no estoque.</value>
+  </data>
+</root>

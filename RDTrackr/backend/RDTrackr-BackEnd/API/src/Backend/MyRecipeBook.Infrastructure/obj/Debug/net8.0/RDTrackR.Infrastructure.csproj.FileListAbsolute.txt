@@ -1,0 +1,15 @@
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\bin\Debug\net8.0\RDTrackR.Infrastructure.deps.json
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\bin\Debug\net8.0\RDTrackR.Infrastructure.dll
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\bin\Debug\net8.0\RDTrackR.Infrastructure.pdb
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\bin\Debug\net8.0\RDTrackR.Domain.dll
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\bin\Debug\net8.0\RDTrackR.Domain.pdb
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\RDTrackR.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\RDTrackR.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\RDTrackR.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\RDTrackR.Infrastructure.AssemblyInfo.cs
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\RDTrackR.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\RDTrackR.ADDBFAAF.Up2Date
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\RDTrackR.Infrastructure.dll
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\refint\RDTrackR.Infrastructure.dll
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\RDTrackR.Infrastructure.pdb
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Backend\MyRecipeBook.Infrastructure\obj\Debug\net8.0\ref\RDTrackR.Infrastructure.dll

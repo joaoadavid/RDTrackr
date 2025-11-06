@@ -1,0 +1,11 @@
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\bin\Release\net8.0\MyRecipeBook.Exceptions.deps.json
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\bin\Release\net8.0\MyRecipeBook.Exceptions.dll
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\bin\Release\net8.0\MyRecipeBook.Exceptions.pdb
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\obj\Release\net8.0\MyRecipeBook.Exceptions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\obj\Release\net8.0\MyRecipeBook.Exceptions.AssemblyInfoInputs.cache
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\obj\Release\net8.0\MyRecipeBook.Exceptions.AssemblyInfo.cs
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\obj\Release\net8.0\MyRecipeBook.Exceptions.csproj.CoreCompileInputs.cache
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\obj\Release\net8.0\MyRecipeBook.Exceptions.dll
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\obj\Release\net8.0\refint\MyRecipeBook.Exceptions.dll
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\obj\Release\net8.0\MyRecipeBook.Exceptions.pdb
+C:\Users\joaoa\Documents\Estudos\Joao\src\Shared\MyRecipeBook.Exceptions\obj\Release\net8.0\ref\MyRecipeBook.Exceptions.dll

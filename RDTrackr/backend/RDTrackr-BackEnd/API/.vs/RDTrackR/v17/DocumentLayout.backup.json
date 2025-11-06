@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{550B240A-9E06-4C35-88F3-AD0C594272A1}|src\\Backend\\MyRecipeBook.Application\\RDTrackR.Application.csproj|c:\\users\\joaoa\\documents\\rdtrackr-backend\\api\\src\\backend\\myrecipebook.application\\usecases\\replenishment\\getall\\getreplenishmentitemsusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{550B240A-9E06-4C35-88F3-AD0C594272A1}|src\\Backend\\MyRecipeBook.Application\\RDTrackR.Application.csproj|solutionrelative:src\\backend\\myrecipebook.application\\usecases\\replenishment\\getall\\getreplenishmentitemsusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C12705-D237-46E6-8402-4C184EDB7C47}|src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj|c:\\users\\joaoa\\documents\\rdtrackr-backend\\api\\src\\backend\\myrecipebook.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C12705-D237-46E6-8402-4C184EDB7C47}|src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj|solutionrelative:src\\backend\\myrecipebook.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{226C91D2-E75E-4859-81AB-FAA16E7CE86B}|src\\Backend\\MyRecipeBook.Infrastructure\\RDTrackR.Infrastructure.csproj|c:\\users\\joaoa\\documents\\rdtrackr-backend\\api\\src\\backend\\myrecipebook.infrastructure\\migrations\\versions\\version0000016.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{226C91D2-E75E-4859-81AB-FAA16E7CE86B}|src\\Backend\\MyRecipeBook.Infrastructure\\RDTrackR.Infrastructure.csproj|solutionrelative:src\\backend\\myrecipebook.infrastructure\\migrations\\versions\\version0000016.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F062532-5134-488D-9A1A-7891B9AF497F}|src\\Backend\\MyRecipeBook.API\\RDTrackR.API.csproj|c:\\users\\joaoa\\documents\\rdtrackr-backend\\api\\src\\backend\\myrecipebook.api\\filters\\exceptionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F062532-5134-488D-9A1A-7891B9AF497F}|src\\Backend\\MyRecipeBook.API\\RDTrackR.API.csproj|solutionrelative:src\\backend\\myrecipebook.api\\filters\\exceptionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F062532-5134-488D-9A1A-7891B9AF497F}|src\\Backend\\MyRecipeBook.API\\RDTrackR.API.csproj|c:\\users\\joaoa\\documents\\rdtrackr-backend\\api\\src\\backend\\myrecipebook.api\\controllers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F062532-5134-488D-9A1A-7891B9AF497F}|src\\Backend\\MyRecipeBook.API\\RDTrackR.API.csproj|solutionrelative:src\\backend\\myrecipebook.api\\controllers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C12705-D237-46E6-8402-4C184EDB7C47}|src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj|c:\\users\\joaoa\\documents\\rdtrackr-backend\\api\\src\\backend\\myrecipebook.domain\\entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C12705-D237-46E6-8402-4C184EDB7C47}|src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj|solutionrelative:src\\backend\\myrecipebook.domain\\entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetReplenishmentItemsUseCase.cs",
+              "DocumentMoniker": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\UseCases\\Replenishment\\GetAll\\GetReplenishmentItemsUseCase.cs",
+              "RelativeDocumentMoniker": "src\\Backend\\MyRecipeBook.Application\\UseCases\\Replenishment\\GetAll\\GetReplenishmentItemsUseCase.cs",
+              "ToolTip": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\UseCases\\Replenishment\\GetAll\\GetReplenishmentItemsUseCase.cs",
+              "RelativeToolTip": "src\\Backend\\MyRecipeBook.Application\\UseCases\\Replenishment\\GetAll\\GetReplenishmentItemsUseCase.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAD4vx8AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T03:41:58.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "src\\Backend\\MyRecipeBook.Domain\\Entities\\Product.cs",
+              "ToolTip": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\Entities\\Product.cs",
+              "RelativeToolTip": "src\\Backend\\MyRecipeBook.Domain\\Entities\\Product.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwBIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T03:41:14.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Version0000016.cs",
+              "DocumentMoniker": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Infrastructure\\Migrations\\Versions\\Version0000016.cs",
+              "RelativeDocumentMoniker": "src\\Backend\\MyRecipeBook.Infrastructure\\Migrations\\Versions\\Version0000016.cs",
+              "ToolTip": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Infrastructure\\Migrations\\Versions\\Version0000016.cs",
+              "RelativeToolTip": "src\\Backend\\MyRecipeBook.Infrastructure\\Migrations\\Versions\\Version0000016.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T03:36:40.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Supplier.cs",
+              "DocumentMoniker": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\Entities\\Supplier.cs",
+              "RelativeDocumentMoniker": "src\\Backend\\MyRecipeBook.Domain\\Entities\\Supplier.cs",
+              "ToolTip": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\Entities\\Supplier.cs",
+              "RelativeToolTip": "src\\Backend\\MyRecipeBook.Domain\\Entities\\Supplier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T03:18:15.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExceptionFilter.cs",
+              "DocumentMoniker": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.API\\Filters\\ExceptionFilter.cs",
+              "RelativeDocumentMoniker": "src\\Backend\\MyRecipeBook.API\\Filters\\ExceptionFilter.cs",
+              "ToolTip": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.API\\Filters\\ExceptionFilter.cs",
+              "RelativeToolTip": "src\\Backend\\MyRecipeBook.API\\Filters\\ExceptionFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T03:07:59.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SupplierController.cs",
+              "DocumentMoniker": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.API\\Controllers\\SupplierController.cs",
+              "RelativeDocumentMoniker": "src\\Backend\\MyRecipeBook.API\\Controllers\\SupplierController.cs",
+              "ToolTip": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.API\\Controllers\\SupplierController.cs",
+              "RelativeToolTip": "src\\Backend\\MyRecipeBook.API\\Controllers\\SupplierController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAD4vxcAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T03:04:19.425Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

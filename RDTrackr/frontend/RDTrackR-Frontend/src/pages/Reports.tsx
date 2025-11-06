@@ -1,0 +1,202 @@
+import { useMemo } from "react";
+import {
+  TrendingUp,
+  TrendingDown,
+  Package,
+  DollarSign,
+  Users,
+} from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+
+export default function Reports() {
+  // 🔹 Mock de dados de pedidos
+  const mockOrders = [
+    {
+      id: 1,
+      customer: "João Silva",
+      total: 4800,
+      status: "PAID",
+      date: "2025-10-25",
+    },
+    {
+      id: 2,
+      customer: "Maria Souza",
+      total: 1650,
+      status: "PENDING",
+      date: "2025-10-28",
+    },
+    {
+      id: 3,
+      customer: "Carlos Pereira",
+      total: 2790,
+      status: "SHIPPED",
+      date: "2025-10-22",
+    },
+    {
+      id: 4,
+      customer: "Ana Lima",
+      total: 999,
+      status: "CANCELLED",
+      date: "2025-10-15",
+    },
+  ];
+
+  // 🔹 Cálculo dos KPIs principais
+  const kpis = useMemo(() => {
+    const totalOrders = mockOrders.length;
+    const totalRevenue = mockOrders
+      .filter((o) => o.status === "PAID" || o.status === "SHIPPED")
+      .reduce((sum, o) => sum + o.total, 0);
+    const pendingOrders = mockOrders.filter(
+      (o) => o.status === "PENDING"
+    ).length;
+    const cancelledOrders = mockOrders.filter(
+      (o) => o.status === "CANCELLED"
+    ).length;
+
+    return {
+      totalOrders,
+      totalRevenue,
+      pendingOrders,
+      cancelledOrders,
+    };
+  }, [mockOrders]);
+
+  const statusMap = {
+    PAID: { label: "Pago", variant: "default" as const },
+    PENDING: { label: "Pendente", variant: "secondary" as const },
+    SHIPPED: { label: "Enviado", variant: "outline" as const },
+    CANCELLED: { label: "Cancelado", variant: "destructive" as const },
+  };
+
+  return (
+    <div className="space-y-8">
+      {/* Cabeçalho */}
+      <div>
+        <h2 className="text-3xl font-bold tracking-tight">Relatórios</h2>
+        <p className="text-muted-foreground">
+          Análises de vendas e desempenho geral
+        </p>
+      </div>
+
+      {/* KPIs */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Total de Pedidos
+            </CardTitle>
+            <Package className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{kpis.totalOrders}</div>
+            <p className="text-xs text-muted-foreground">no período atual</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Receita Total</CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">
+              R${" "}
+              {kpis.totalRevenue.toLocaleString("pt-BR", {
+                minimumFractionDigits: 2,
+              })}
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Pedidos pagos/enviados
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Pendentes</CardTitle>
+            <Users className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{kpis.pendingOrders}</div>
+            <p className="text-xs text-muted-foreground">
+              aguardando confirmação
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Cancelados</CardTitle>
+            <TrendingDown className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{kpis.cancelledOrders}</div>
+            <p className="text-xs text-muted-foreground">últimos 30 dias</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Separator />
+
+      {/* Tabela de pedidos recentes */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Pedidos Recentes</CardTitle>
+          <CardDescription>
+            Resumo dos últimos pedidos registrados
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Cliente</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead className="text-right">Total</TableHead>
+                <TableHead>Data</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {mockOrders.map((order) => (
+                <TableRow key={order.id}>
+                  <TableCell className="font-medium">
+                    {order.customer}
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant={statusMap[order.status].variant}>
+                      {statusMap[order.status].label}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-right">
+                    R${" "}
+                    {order.total.toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                    })}
+                  </TableCell>
+                  <TableCell>{order.date}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}

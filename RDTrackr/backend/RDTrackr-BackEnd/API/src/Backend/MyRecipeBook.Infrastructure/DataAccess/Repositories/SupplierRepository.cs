@@ -1,0 +1,49 @@
+﻿using Microsoft.EntityFrameworkCore;
+using RDTrackR.Domain.Entities;
+using RDTrackR.Domain.Repositories.Suppliers;
+
+namespace RDTrackR.Infrastructure.DataAccess.Repositories
+{
+    public class SupplierRepository : ISupplierReadOnlyRepository, ISupplierWriteOnlyRepository
+    {
+        private readonly RDTrackRDbContext _context;
+
+        public SupplierRepository(RDTrackRDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task AddAsync(Supplier supplier)
+            => await _context.Suppliers.AddAsync(supplier);
+
+        public async Task<List<Supplier>> GetAllAsync()
+            => await _context.Suppliers.Include(s => s.CreatedBy).AsNoTracking().ToListAsync();
+
+        public async Task<Supplier?> GetByIdAsync(long id)
+        {
+            return await _context.Suppliers
+                .Include(s => s.CreatedBy)
+                .FirstOrDefaultAsync(s => s.Id == id);
+        }
+
+        public Task UpdateAsync(Supplier supplier)
+        {
+            _context.Suppliers.Update(supplier);
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteAsync(Supplier supplier)
+        {
+            _context.Suppliers.Remove(supplier);
+            return Task.CompletedTask;
+        }
+
+        public async Task<bool> ExistsWithEmail(string email) => await _context.Suppliers.AnyAsync(supplier => supplier.Email.Equals(email));
+
+        public async Task<bool> ExistsSupplierWithEmail(string email, long id) =>
+            await _context.Suppliers.AnyAsync(s => s.Email == email && s.Id != id);
+
+
+    }
+
+}

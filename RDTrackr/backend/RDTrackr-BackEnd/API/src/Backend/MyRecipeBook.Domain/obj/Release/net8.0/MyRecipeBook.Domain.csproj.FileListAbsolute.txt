@@ -1,0 +1,11 @@
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\bin\Release\net8.0\MyRecipeBook.Domain.deps.json
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\bin\Release\net8.0\MyRecipeBook.Domain.dll
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\bin\Release\net8.0\MyRecipeBook.Domain.pdb
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\obj\Release\net8.0\MyRecipeBook.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\obj\Release\net8.0\MyRecipeBook.Domain.AssemblyInfoInputs.cache
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\obj\Release\net8.0\MyRecipeBook.Domain.AssemblyInfo.cs
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\obj\Release\net8.0\MyRecipeBook.Domain.csproj.CoreCompileInputs.cache
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\obj\Release\net8.0\MyRecipeBook.Domain.dll
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\obj\Release\net8.0\refint\MyRecipeBook.Domain.dll
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\obj\Release\net8.0\MyRecipeBook.Domain.pdb
+C:\Users\joaoa\Documents\Estudos\Joao\src\Backend\MyRecipeBook.Domain\obj\Release\net8.0\ref\MyRecipeBook.Domain.dll

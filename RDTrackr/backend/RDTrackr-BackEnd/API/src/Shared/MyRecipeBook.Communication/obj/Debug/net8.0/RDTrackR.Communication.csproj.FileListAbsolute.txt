@@ -1,0 +1,11 @@
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\bin\Debug\net8.0\RDTrackR.Communication.deps.json
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\bin\Debug\net8.0\RDTrackR.Communication.dll
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\bin\Debug\net8.0\RDTrackR.Communication.pdb
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\obj\Debug\net8.0\RDTrackR.Communication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\obj\Debug\net8.0\RDTrackR.Communication.AssemblyInfoInputs.cache
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\obj\Debug\net8.0\RDTrackR.Communication.AssemblyInfo.cs
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\obj\Debug\net8.0\RDTrackR.Communication.csproj.CoreCompileInputs.cache
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\obj\Debug\net8.0\RDTrackR.Communication.dll
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\obj\Debug\net8.0\refint\RDTrackR.Communication.dll
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\obj\Debug\net8.0\RDTrackR.Communication.pdb
+C:\Users\joaoa\Documents\RDTrackr-BackEnd\API\src\Shared\MyRecipeBook.Communication\obj\Debug\net8.0\ref\RDTrackR.Communication.dll
