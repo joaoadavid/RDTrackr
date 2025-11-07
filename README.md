@@ -4,8 +4,6 @@
 [![React](https://img.shields.io/badge/React-18.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![SignalR](https://img.shields.io/badge/SignalR-WebSockets-5C2D91?logo=visualstudio&logoColor=white)](https://learn.microsoft.com/aspnet/core/signalr)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/joaodaviddev/rdtrackr/ci.yml?branch=main)](https://github.com/joaodaviddev/rdtrackr/actions)
 [![Code Quality](https://img.shields.io/badge/SonarCloud-Quality%20Check-blue?logo=sonarcloud)](https://sonarcloud.io/)
 
 ---
