@@ -74,7 +74,7 @@ Baseado em Rezende (2008), o RDTrackr promove **monitoramento contínuo**, **ale
 | **Frontend** | [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Vite](https://vitejs.dev/), [Tailwind CSS](https://tailwindcss.com/) |
 | **Banco de Dados** | [SQL Server](https://learn.microsoft.com/sql/) |
 | **Comunicação** | [SignalR (WebSockets)](https://learn.microsoft.com/aspnet/core/signalr) |
-| **Autenticação** | [JWT](https://jwt.io/) + RBAC |
+| **Autenticação** | [JWT](https://jwt.io/) |
 | **CI/CD** | [GitHub Actions](https://github.com/features/actions) |
 | **Qualidade** | [SonarCloud](https://www.sonarsource.com/products/sonarcloud/) |
 | **Containerização** | [Docker](https://www.docker.com/) / [Podman](https://podman.io/) |
@@ -85,14 +85,14 @@ Baseado em Rezende (2008), o RDTrackr promove **monitoramento contínuo**, **ale
 
 O sistema é representado com o modelo **C4**, detalhando os níveis de **Contexto**, **Containers** e **Componentes**, facilitando a compreensão da arquitetura e suas interações.
 
-![Modelagem C4](docs/RDTrackR_C4_Completo.png)
+![Modelagem C4](docs/ModelagemC4.png)
 
 ---
 
 ## Considerações de Segurança
 
 - **HTTPS (TLS/SSL)** para tráfego seguro;  
-- **JWT + RBAC** para autenticação e autorização;  
+- **JWT ** para autenticação e autorização;  
 - **Logs estruturados e auditáveis**;  
 - **Validação e sanitização de dados** contra SQL Injection e XSS.
 
