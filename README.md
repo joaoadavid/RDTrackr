@@ -1,162 +1,153 @@
-# RDTrackr: Sistema de Gerenciamento de Estoque para Empresas de Usinagem
+# 🏭 RDTrackr: Sistema de Gerenciamento de Estoque para Empresas de Usinagem
+
+[![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![React](https://img.shields.io/badge/React-18.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![SignalR](https://img.shields.io/badge/SignalR-WebSockets-5C2D91?logo=visualstudio&logoColor=white)](https://learn.microsoft.com/aspnet/core/signalr)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/joaodaviddev/rdtrackr/ci.yml?branch=main)](https://github.com/joaodaviddev/rdtrackr/actions)
+[![Code Quality](https://img.shields.io/badge/SonarCloud-Quality%20Check-blue?logo=sonarcloud)](https://sonarcloud.io/)
+
+---
 
 ## Resumo
-O **RDTrackr** é um sistema web de gerenciamento de estoque desenvolvido para empresas de usinagem que enfrentam desafios no controle de insumos e ferramentas. O projeto oferece atualização em tempo real, rastreabilidade completa das movimentações e alertas automáticos para itens críticos. Sua arquitetura é baseada em Django, Celery e Redis, promovendo escalabilidade, desempenho e modularidade, com um frontend moderno construído em React.
+
+O **RDTrackr** é um sistema web de gerenciamento de estoque desenvolvido para **empresas de usinagem**, oferecendo **rastreabilidade completa**, **alertas automáticos** e **atualização em tempo real**.  
+Sua arquitetura é baseada em **.NET 8 Web API** com **Entity Framework Core** e **SQL Server**, e o frontend utiliza **React + TypeScript + Vite + Tailwind**.  
+A comunicação em tempo real é garantida pelo **SignalR**, permitindo notificações instantâneas de movimentações e alertas de estoque.  
+A solução prioriza **automação, segurança e confiabilidade**, reduzindo perdas e aumentando a eficiência produtiva.
 
 ---
 
-## 1. Introdução
+## Introdução
 
-### Contexto
-A gestão de estoque exerce um papel estratégico nas organizações, sendo fator determinante para a eficiência produtiva e a saúde financeira. Conforme evidenciado por Rezende (2008), falhas na administração de materiais e na rastreabilidade das entradas e saídas podem resultar em excessos ou rupturas de estoque, impactando diretamente o fluxo operacional e o nível de serviço ao cliente. No setor de usinagem, onde o controle de insumos e ferramentas é crítico, um sistema especializado como o RDTrackr se justifica por permitir acompanhamento em tempo real, redução de desperdícios e aumento da confiabilidade dos processos.
+### Contexto  
+Empresas de usinagem enfrentam desafios complexos no controle de insumos e ferramentas.  
+A ausência de controle em tempo real e a dependência de planilhas comprometem a produtividade.  
+O RDTrackr foi criado para resolver esses problemas com uma solução moderna, escalável e automatizada.
 
-### Justificativa
-Para evitar paradas na produção, atrasos em entregas e desperdícios, torna-se essencial contar com um sistema que vá além do simples registro: é necessário monitorar continuamente o estoque, emitindo alertas preventivos. Rezende (2008) destaca que falhas na gestão de estoque resultam em custos adicionais e comprometem o fluxo operacional, reforçando a importância de soluções especializadas. O RDTrackr foi concebido como uma solução sob medida para empresas de usinagem, garantindo controle total, integração e automação.
+### Justificativa  
+Falhas na rastreabilidade e gestão de estoque geram **custos, atrasos e desperdícios**.  
+Baseado em Rezende (2008), o RDTrackr promove **monitoramento contínuo**, **alertas preventivos** e **integração total entre setores**, otimizando o processo produtivo.
 
-### Objetivos
-#### Objetivo Principal
-Desenvolver um sistema web modular para gerenciamento de estoque, focado em atualização em tempo real, rastreabilidade e automação de alertas operacionais.
-
-#### Objetivos Secundários
-- Proporcionar uma interface web intuitiva e responsiva;
-- Facilitar o acompanhamento em tempo real de saldos e movimentações;
-- Gerar alertas automáticos para reposição de itens críticos;
-- Permitir emissão de relatórios por setor, período e movimentação;
-- Incorporar dashboards interativos para análise estratégica do estoque.
-
----
-
-## 2. Descrição do Projeto
-
-### Tema
-Sistema web de gerenciamento de estoque voltado para empresas de usinagem, com ênfase em rastreabilidade, automação e escalabilidade.
-
-### Problemas a Resolver
-- Falta de controle de estoque em tempo real;
-- Ausência de alertas automáticos para itens críticos;
-- Dificuldade em rastrear movimentações e responsáveis;
-- Carência de uma interface especializada para o setor de usinagem.
-
-### Limitações
-- Integrações com sistemas externos (ERP, financeiro) não fazem parte do escopo atual;
-- O módulo de controle de produção não está incluído no MVP.
+### Objetivos  
+- Desenvolver um **sistema modular e responsivo** para controle de estoque;  
+- Implementar **notificações em tempo real** com SignalR;  
+- Gerar **relatórios e dashboards estratégicos**;  
+- Garantir **autenticação segura (JWT + RBAC)**;  
+- Melhorar a **rastreabilidade e automação operacional**.  
 
 ---
 
-## 3. Especificação Técnica
+##  Especificação Técnica
 
-### Requisitos Funcionais (RF)
-- RF01: Permitir cadastro de itens no estoque.
-- RF02: Permitir edição de itens no estoque.
-- RF03: Registrar entradas com origem e quantidade.
-- RF04: Registrar saídas com destino e responsável.
-- RF05: Consultar saldo atualizado por item/setor.
-- RF06: Emitir alertas automáticos conforme regras de estoque.
-- RF07: Manter histórico completo de movimentações.
+### Requisitos Funcionais
+- **RF01:** Cadastrar e editar itens de estoque;  
+- **RF02:** Registrar entradas e saídas;  
+- **RF03:** Consultar saldos e movimentações;  
+- **RF04:** Emitir alertas automáticos;  
+- **RF05:** Manter histórico completo;  
+- **RF06:** Gerar relatórios e dashboards.  
 
-### Requisitos Não Funcionais (RNF)
-- RNF01: Garantir tempo de resposta inferior a 500ms para operações críticas. 
-- RNF02: Utilizar Celery com Redis como broker e backend para processamento assíncrono.
-- RNF03: Garantir autenticação segura via JWT. 
-- RNF04: Garantir interface responsiva em diferentes dispositivos. 
-- RNF05: Permitir configuração de permissões por tipo de usuário. 
-- RNF06: Disponibilizar API REST para futuras integrações com sistemas externos. 
----
-
-## 4. Stack Tecnológica e Considerações de Design
-
-### Considerações de Design
-- **Monólito Modularizado:** backend construído em Django REST Framework, separado em módulos de domínio como estoque, movimentações e alertas.
-- **MVC:** Django organiza Models, Views e Serializers, mantendo coesão e manutenibilidade.
-- **Event-Driven:** o Celery, com Redis como broker e backend, viabiliza processamento assíncrono para relatórios e alertas.
-
-### Tecnologias Utilizadas
-| Camada         | Tecnologias                      |
-|----------------|---------------------------------|
-| Linguagens     | Python, JavaScript              |
-| Backend        | Django, Django REST Framework   |
-| Frontend       | React, Tailwind CSS             |
-| Tarefas        | Celery                          |
-| Cache/Filas    | Redis                           |
-| Banco de Dados | PostgreSQL                      |
-| Monitoramento  | Prometheus, Grafana, Loguru     |
-| CI/CD          | GitHub Actions, Podman          |
+### Requisitos Não Funcionais
+- **RNF01:** Tempo de resposta inferior a 500ms;  
+- **RNF02:** Comunicação em tempo real com **SignalR**;  
+- **RNF03:** Autenticação via **JWT** e controle **RBAC**;  
+- **RNF04:** Interface responsiva (**React + Tailwind**);  
+- **RNF05:** Documentação da API com **Swagger/OpenAPI**;  
+- **RNF06:** Suporte a **containerização (Docker/Podman)**.  
 
 ---
 
-## 5. Diagramas de Caso de Uso (UML)
+## Arquitetura e Stack Tecnológica
 
-### Caso de Uso 1: Processo de Compra
-![Caso de Uso 1](docs/CasoDeUso-ProcessoCompra.png)
+### Padrões de Design
+- **Monólito Modular:** backend organizado em camadas (Domain, Application, Infrastructure);  
+- **Clean Architecture:** isolamento de regras de negócio;  
+- **Event-Driven:** uso de **SignalR** para notificações assíncronas.
 
-### Caso de Uso 2: Movimentação e Cadastro de Produtos
-![Caso de Uso 2](docs/CasoDeUso-MovimentacaoCadastro.jpg)
+### Stack Utilizada
 
-### Caso de Uso 3: Gestão de Estoque e Alertas
-![Caso de Uso 3](docs/CasoDeUso-GestaoEstoque.png)
-
----
-
-## 6. Modelagem C4
-
-O modelo C4 foi adotado para representar a arquitetura em níveis. O diagrama abaixo mostra a visão de containers, já considerando orquestração com Podman para padronizar ambientes.
-
-![Modelagem C4](docs/ModelagemC4.png)
-
----
-
-## 7. Considerações de Segurança
-
-- **HTTPS em toda comunicação:** protegendo dados sensíveis e credenciais.
-- **JWT + RBAC:** controle de acesso baseado em papéis e autenticação stateless.
-- **Logs estruturados:** facilitando auditorias, rastreamento e monitoramento.
-- **Validações robustas:** prevenindo SQL Injection e XSS.
+| Camada | Tecnologias |
+|--------|--------------|
+| **Backend** | [.NET 8 Web API](https://dotnet.microsoft.com/), [Entity Framework Core](https://learn.microsoft.com/ef/core/) |
+| **Frontend** | [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), [Vite](https://vitejs.dev/), [Tailwind CSS](https://tailwindcss.com/) |
+| **Banco de Dados** | [SQL Server](https://learn.microsoft.com/sql/) |
+| **Comunicação** | [SignalR (WebSockets)](https://learn.microsoft.com/aspnet/core/signalr) |
+| **Autenticação** | [JWT](https://jwt.io/) + RBAC |
+| **CI/CD** | [GitHub Actions](https://github.com/features/actions) |
+| **Qualidade** | [SonarCloud](https://www.sonarsource.com/products/sonarcloud/) |
+| **Containerização** | [Docker](https://www.docker.com/) / [Podman](https://podman.io/) |
 
 ---
 
-## 8. Próximos Passos
+## Modelagem C4
 
-- Validação do escopo e modelo com stakeholders e orientadores.
-- Refinamento dos requisitos e dos diagramas UML e C4.
-- Montagem do pipeline de CI/CD com Podman e GitHub Actions.
-- Desenvolvimento do MVP com sprints quinzenais.
-- Implantação em ambiente controlado para homologação.
-- Coleta de feedback e ajustes contínuos.
+O sistema é representado com o modelo **C4**, detalhando os níveis de **Contexto**, **Containers** e **Componentes**, facilitando a compreensão da arquitetura e suas interações.
+
+![Modelagem C4](docs/RDTrackR_C4_Completo.png)
 
 ---
 
-## 9. Referências
+## Considerações de Segurança
+
+- **HTTPS (TLS/SSL)** para tráfego seguro;  
+- **JWT + RBAC** para autenticação e autorização;  
+- **Logs estruturados e auditáveis**;  
+- **Validação e sanitização de dados** contra SQL Injection e XSS.
+
+---
+
+## Próximos Passos
+
+- Configurar **CI/CD com GitHub Actions**;  
+- Criar ambiente de **homologação e testes automatizados**;  
+- Realizar **deploy containerizado** e documentação final.  
+
+---
+
+## Referências
 
 ### Frameworks e Bibliotecas
-- [Django](https://www.djangoproject.com/)
-- [Django REST Framework](https://www.django-rest-framework.org/)
-- [React.js](https://reactjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Celery](https://docs.celeryq.dev/)
-- [Redis](https://redis.io/)
-- [JWT](https://jwt.io/)
+- [.NET 8 Web API](https://dotnet.microsoft.com/)  
+- [Entity Framework Core](https://learn.microsoft.com/ef/core/)  
+- [React](https://react.dev/)  
+- [TypeScript](https://www.typescriptlang.org/)  
+- [Vite](https://vitejs.dev/)  
+- [Tailwind CSS](https://tailwindcss.com/)  
+- [SignalR](https://learn.microsoft.com/aspnet/core/signalr)  
+- [JWT (JSON Web Token)](https://jwt.io/)
+
+---
 
 ### Ferramentas de Desenvolvimento e Gestão
-- [GitHub Actions](https://github.com/features/actions)
-- [Podman](https://podman.io/)
-- [Prometheus](https://prometheus.io/)
-- [Grafana](https://grafana.com/)
-- [VS Code](https://code.visualstudio.com/)
-- [Postman](https://www.postman.com/)
+- [GitHub Actions](https://github.com/features/actions)  
+- [SonarCloud](https://www.sonarsource.com/products/sonarcloud/)  
+- [Docker](https://www.docker.com/) / [Podman](https://podman.io/)  
+- [Visual Studio Code](https://code.visualstudio.com/)  
+- [Postman](https://www.postman.com/)  
+- [SQL Server Management Studio (SSMS)](https://learn.microsoft.com/sql/ssms/)  
+- [Git](https://git-scm.com/)  
 
-### Documentação e Artigos
-- [Django Docs](https://docs.djangoproject.com/en/stable/)
-- [DRF Quickstart](https://www.django-rest-framework.org/tutorial/quickstart/)
-- [React Learn](https://react.dev/learn)
-- [Tailwind Docs](https://tailwindcss.com/docs)
-- [Celery Docs](https://docs.celeryq.dev/en/stable/)
+---
+
+### Documentação e Guias Técnicos
+- [.NET Documentation](https://learn.microsoft.com/dotnet/)  
+- [Entity Framework Core Docs](https://learn.microsoft.com/ef/core/)  
+- [SignalR Documentation](https://learn.microsoft.com/aspnet/core/signalr)  
+- [React Learn](https://react.dev/learn)  
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)  
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)  
+- [Vite Guide](https://vitejs.dev/guide/)  
+
+---
 
 ### Trabalhos Acadêmicos
 - REZENDE, Juliana Pinheiro. *Gestão de Estoque: um estudo de caso em uma empresa de materiais para construção*. Monografia (Administração de Empresas) — UniCEUB, Brasília, 2008.
 
 ---
 
-## 10. Autor
+## Autor
 
 **João Antonio David**  
 Curso: Engenharia de Software – Católica de Santa Catarina  
