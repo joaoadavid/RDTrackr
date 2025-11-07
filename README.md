@@ -81,6 +81,17 @@ Baseado em Rezende (2008), o RDTrackr promove **monitoramento contínuo**, **ale
 
 ---
 
+ Diagramas de Caso de Uso (UML)
+
+### Caso de Uso 1: Processo de Compra
+![Caso de Uso 1](docs/CasoDeUso-ProcessoCompra.png)
+
+### Caso de Uso 2: Movimentação e Cadastro de Produtos
+![Caso de Uso 2](docs/CasoDeUso-MovimentacaoCadastro.jpg)
+
+### Caso de Uso 3: Gestão de Estoque e Alertas
+![Caso de Uso 3](docs/CasoDeUso-GestaoEstoque.png)
+
 ## Modelagem C4
 
 O sistema é representado com o modelo **C4**, detalhando os níveis de **Contexto**, **Containers** e **Componentes**, facilitando a compreensão da arquitetura e suas interações.
