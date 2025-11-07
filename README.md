@@ -1,4 +1,4 @@
-# 🏭 RDTrackr: Sistema de Gerenciamento de Estoque para Empresas de Usinagem
+# RDTrackr: Sistema de Gerenciamento de Estoque para Empresas de Usinagem
 
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![React](https://img.shields.io/badge/React-18.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
