@@ -25,12 +25,12 @@ jobs:
 
       - name: Restore & Build backend
         run: |
-          dotnet restore ./backend/RDTrackr-BackEnd/API/RDTrackR.API.sln
-          dotnet build ./backend/RDTrackr-BackEnd/API/RDTrackR.API.sln --configuration Release
+          dotnet restore RDTrackr/backend/RDTrackr-BackEnd/API/RDTrackR.sln
+          dotnet build RDTrackr/backend/RDTrackr-BackEnd/API/RDTrackR.sln --configuration Release
 
       - name: Run tests with coverage
         run: |
-          dotnet test ./backend/RDTrackr-BackEnd/API/tests/WebApi.Test/WebApi.Test.csproj \
+          dotnet test RDTrackr/backend/RDTrackr-BackEnd/API/tests/WebApi.Test/WebApi.Test.csproj \
             --configuration Release \
             --collect:"XPlat Code Coverage" \
             --results-directory ./TestResults
@@ -49,7 +49,7 @@ jobs:
 
       - name: Build frontend
         run: |
-          cd frontend/RDTrackR-Frontend
+          cd RDTrackr/frontend/RDTrackR-Frontend
           npm install
           npm run build
 
