@@ -11,7 +11,7 @@ using WebApi.Test.InlineData;
 
 namespace WebApi.Test.User.ChangePassword;
 
-public class ChangePasswordTest : MyRecipeBookClassFixture
+public class ChangePasswordTest : RDTrackRClassFixture
 {
     private const string METHOD = "user/change-password";
 

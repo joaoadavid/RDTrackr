@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "mOSC7Ffa3O0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application\\RDTrackR.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joaoa\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\file.typechecker\\4.3.0\\file.typechecker.4.3.0.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\mapster\\7.4.0\\mapster.7.4.0.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\mapster.core\\1.2.1\\mapster.core.1.2.1.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.10\\microsoft.extensions.configuration.9.0.10.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.10\\microsoft.extensions.configuration.abstractions.9.0.10.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.9\\microsoft.extensions.configuration.binder.9.0.9.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.10\\microsoft.extensions.primitives.9.0.10.nupkg.sha512",
+    "C:\\Users\\joaoa\\.nuget\\packages\\sqids\\3.1.0\\sqids.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

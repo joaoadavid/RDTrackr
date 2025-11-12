@@ -11,17 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{EF25
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{EE94EFBC-8F6C-48D5-B63C-A8DBC7740C38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.API", "src\Backend\MyRecipeBook.API\RDTrackR.API.csproj", "{9F062532-5134-488D-9A1A-7891B9AF497F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.API", "src\Backend\RDTrackR.API\RDTrackR.API.csproj", "{9F062532-5134-488D-9A1A-7891B9AF497F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Domain", "src\Backend\MyRecipeBook.Domain\RDTrackR.Domain.csproj", "{58C12705-D237-46E6-8402-4C184EDB7C47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Domain", "src\Backend\RDTrackR.Domain\RDTrackR.Domain.csproj", "{58C12705-D237-46E6-8402-4C184EDB7C47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Infrastructure", "src\Backend\MyRecipeBook.Infrastructure\RDTrackR.Infrastructure.csproj", "{226C91D2-E75E-4859-81AB-FAA16E7CE86B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Infrastructure", "src\Backend\RDTrackR.Infrastructure\RDTrackR.Infrastructure.csproj", "{226C91D2-E75E-4859-81AB-FAA16E7CE86B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Communication", "src\Shared\MyRecipeBook.Communication\RDTrackR.Communication.csproj", "{B979F177-CB90-4E33-B1A6-03233AC7A72F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Communication", "src\Shared\RDTrackR.Communication\RDTrackR.Communication.csproj", "{B979F177-CB90-4E33-B1A6-03233AC7A72F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Exceptions", "src\Shared\MyRecipeBook.Exceptions\RDTrackR.Exceptions.csproj", "{BD81B41A-93A3-47D3-B961-F7E0DEC7A2DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Exceptions", "src\Shared\RDTrackR.Exceptions\RDTrackR.Exceptions.csproj", "{BD81B41A-93A3-47D3-B961-F7E0DEC7A2DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Application", "src\Backend\MyRecipeBook.Application\RDTrackR.Application.csproj", "{550B240A-9E06-4C35-88F3-AD0C594272A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDTrackR.Application", "src\Backend\RDTrackR.Application\RDTrackR.Application.csproj", "{550B240A-9E06-4C35-88F3-AD0C594272A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validors.Test", "tests\Validors.Test\Validors.Test.csproj", "{6CF727B0-1EB7-45E0-8800-A2410366083A}"
 EndProject

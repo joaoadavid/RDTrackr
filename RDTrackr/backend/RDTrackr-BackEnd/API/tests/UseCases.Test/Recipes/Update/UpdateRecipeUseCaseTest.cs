@@ -1,8 +1,8 @@
 ﻿using CommonTestUtilities.Entities;
 using CommonTestUtilities.LoggedUser;
 using CommonTestUtilities.Mapper;
-using CommonTestUtilities.Recipes;
 using CommonTestUtilities.Repositories;
+using CommonTestUtilities.Requests.Recipes;
 using MyRecipeBook.Application.UseCases.Recipe.Update;
 using RDTrackR.Exceptions;
 using RDTrackR.Exceptions.ExceptionBase;

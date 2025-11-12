@@ -1,6 +1,6 @@
 ﻿using Moq;
-using MyRecipeBook.Domain.Repositories.User;
 using RDTrackR.Domain.Entities;
+using RDTrackR.Domain.Repositories.Users;
 
 namespace CommonTestUtilities.Repositories
 {

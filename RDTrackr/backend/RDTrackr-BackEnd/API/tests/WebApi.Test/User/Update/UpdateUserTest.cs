@@ -9,7 +9,7 @@ using WebApi.Test.InlineData;
 
 namespace WebApi.Test.User.Update
 {
-    public class UpdateUserTest : MyRecipeBookClassFixture
+    public class UpdateUserTest : RDTrackRClassFixture
     {
         private readonly string METHOD = "user";
 

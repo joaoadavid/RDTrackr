@@ -1,0 +1,56 @@
+﻿using FluentValidation;
+using RDTrackR.Application.UseCases.Users.Validators;
+using RDTrackR.Communication.Requests.User;
+using RDTrackR.Domain.Repositories;
+using RDTrackR.Domain.Repositories.Users;
+using RDTrackR.Exceptions;
+using RDTrackR.Exceptions.ExceptionBase;
+
+namespace RDTrackR.Application.UseCases.User.Admin
+{
+    public class AdminUpdateUserUseCase : IAdminUpdateUserUseCase
+    {
+        private readonly IUserReadOnlyRepository _readRepository;
+        private readonly IUserWriteOnlyRepository _writeRepository;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public AdminUpdateUserUseCase(
+            IUserReadOnlyRepository readRepository,
+            IUserWriteOnlyRepository writeRepository,
+            IUnitOfWork unitOfWork)
+        {
+            _readRepository = readRepository;
+            _writeRepository = writeRepository;
+            _unitOfWork = unitOfWork;
+        }
+
+        public async Task Execute(long id, RequestAdminUpdateUserJson request)
+        {
+            await Validate(id, request);
+
+            var user = await _readRepository.GetByIdAsync(id)
+                ?? throw new NotFoundException(ResourceMessagesException.USER_NOT_FOUND);
+
+            user.Name = request.Name;
+            user.Email = request.Email;
+            user.Active = request.Active;
+
+            await _writeRepository.UpdateAsync(user);
+            await _unitOfWork.Commit();
+        }
+
+        private async Task Validate(long id, RequestAdminUpdateUserJson request)
+        {
+            var validator = new AdminUpdateUserValidator();
+
+            var result = await validator.ValidateAsync(request);
+
+            var emailExists = await _readRepository.ExistsAnotherUserWithEmail(id, request.Email);
+            if (emailExists)
+                result.Errors.Add(new FluentValidation.Results.ValidationFailure(nameof(request.Email), ResourceMessagesException.EMAIL_ALREADY_REGISTERED));
+
+            if (!result.IsValid)
+                throw new ErrorOnValidationException(result.Errors.Select(e => e.ErrorMessage).Distinct().ToList());
+        }
+    }
+}

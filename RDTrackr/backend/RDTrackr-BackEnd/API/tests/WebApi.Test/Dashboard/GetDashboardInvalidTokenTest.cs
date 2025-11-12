@@ -3,7 +3,7 @@ using Shouldly;
 using System.Net;
 
 namespace WebApi.Test.Dashboard;
-public class GetDashboardInvalidTokenTest : MyRecipeBookClassFixture
+public class GetDashboardInvalidTokenTest : RDTrackRClassFixture
 {
     private const string METHOD = "dashboard";
 

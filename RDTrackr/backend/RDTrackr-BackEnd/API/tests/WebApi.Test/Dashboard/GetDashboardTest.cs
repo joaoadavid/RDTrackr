@@ -4,7 +4,7 @@ using System.Net;
 using System.Text.Json;
 
 namespace WebApi.Test.Dashboard;
-public class GetDashboardTest : MyRecipeBookClassFixture
+public class GetDashboardTest : RDTrackRClassFixture
 {
     private const string METHOD = "dashboard";
 

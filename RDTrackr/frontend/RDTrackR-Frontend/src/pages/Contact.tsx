@@ -74,10 +74,10 @@ export default function Contact() {
                   <CardTitle className="text-lg">Email</CardTitle>
                   <CardDescription>
                     <a
-                      href="mailto:suporte@seusaas.com"
+                      href="mailto:joao.antoniodavid@hotmail.com"
                       className="hover:text-primary transition-colors"
                     >
-                      suporte@seusaas.com
+                      joao.antoniodavid@hotmail.com
                     </a>
                   </CardDescription>
                 </CardHeader>

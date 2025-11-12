@@ -4,7 +4,7 @@ using Shouldly;
 
 namespace WebApi.Test.User.ChangePassword
 {
-    public class ChangePasswordInvalidTokenTest :MyRecipeBookClassFixture
+    public class ChangePasswordInvalidTokenTest :RDTrackRClassFixture
     {
         private readonly string METHOD = "user/change-password";
         public ChangePasswordInvalidTokenTest(CustomWebApplicationFactory webApplication): base (webApplication)

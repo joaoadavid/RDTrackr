@@ -1,0 +1,19 @@
+﻿using Microsoft.AspNetCore.Http;
+using RDTrackR.Domain.Context;
+
+namespace RDTrackR.Application.Services.Context
+{
+    public class UserContext : IUserContext
+    {
+        private readonly IHttpContextAccessor _http;
+
+        public UserContext(IHttpContextAccessor http)
+        {
+            _http = http;
+        }
+
+        public long UserId => long.Parse(_http.HttpContext!.User.FindFirst("sub")!.Value);
+        public string UserName => _http.HttpContext!.User.Identity!.Name!;
+    }
+
+}

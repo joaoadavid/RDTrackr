@@ -1,5 +1,5 @@
-﻿using CommonTestUtilities.Recipes;
-using CommonTestUtilities.Requests;
+﻿using CommonTestUtilities.Requests;
+using CommonTestUtilities.Requests.Recipes;
 using MyRecipeBook.Application.UseCases.Recipe;
 using RDTrackR.Communication.Enums;
 using RDTrackR.Exceptions;

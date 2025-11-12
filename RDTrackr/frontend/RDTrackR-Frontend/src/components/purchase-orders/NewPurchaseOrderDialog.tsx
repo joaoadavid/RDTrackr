@@ -124,7 +124,9 @@ export function NewPurchaseOrderDialog({
           </div>
 
           <DialogFooter>
-            <Button type="submit">Salvar Pedido</Button>
+            <Button type="submit" data-testid="submit">
+              Salvar Pedido
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

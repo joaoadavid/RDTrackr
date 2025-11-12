@@ -1,125 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\Validors.Test.csproj": {}
+    "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\Validors.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\MyRecipeBook.Application.csproj": {
+    "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application\\RDTrackR.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\MyRecipeBook.Application.csproj",
-        "projectName": "MyRecipeBook.Application",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\MyRecipeBook.Application.csproj",
-        "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\joaoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj"
-              },
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\MyRecipeBook.Communication.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\MyRecipeBook.Communication.csproj"
-              },
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\MyRecipeBook.Exceptions.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\MyRecipeBook.Exceptions.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[14.0.0, )"
-            },
-            "File.TypeChecker": {
-              "target": "Package",
-              "version": "[4.3.0, )"
-            },
-            "FluentValidation": {
-              "target": "Package",
-              "version": "[12.0.0, )"
-            },
-            "Mapster": {
-              "target": "Package",
-              "version": "[7.4.0, )"
-            },
-            "Microsoft.Extensions.Configuration": {
-              "target": "Package",
-              "version": "[9.0.10, )"
-            },
-            "Microsoft.Extensions.Configuration.Binder": {
-              "target": "Package",
-              "version": "[9.0.9, )"
-            },
-            "Sqids": {
-              "target": "Package",
-              "version": "[3.1.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\RDTrackR.Application.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\RDTrackR.Application.csproj",
+        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application\\RDTrackR.Application.csproj",
         "projectName": "RDTrackR.Application",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\RDTrackR.Application.csproj",
+        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application\\RDTrackR.Application.csproj",
         "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\obj\\",
+        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -140,14 +32,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj"
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\RDTrackR.Domain.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\RDTrackR.Domain.csproj"
               },
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\RDTrackR.Communication.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\RDTrackR.Communication.csproj"
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Communication\\RDTrackR.Communication.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Communication\\RDTrackR.Communication.csproj"
               },
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\RDTrackR.Exceptions.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\RDTrackR.Exceptions.csproj"
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Exceptions\\RDTrackR.Exceptions.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Exceptions\\RDTrackR.Exceptions.csproj"
               }
             }
           }
@@ -220,14 +112,14 @@
         }
       }
     },
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj": {
+    "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\RDTrackR.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\RDTrackR.Domain.csproj",
         "projectName": "RDTrackR.Domain",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj",
+        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\RDTrackR.Domain.csproj",
         "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\obj\\",
+        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -285,14 +177,14 @@
         }
       }
     },
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Infrastructure\\RDTrackR.Infrastructure.csproj": {
+    "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Infrastructure\\RDTrackR.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Infrastructure\\RDTrackR.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Infrastructure\\RDTrackR.Infrastructure.csproj",
         "projectName": "RDTrackR.Infrastructure",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Infrastructure\\RDTrackR.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Infrastructure\\RDTrackR.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -313,8 +205,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Domain\\RDTrackR.Domain.csproj"
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\RDTrackR.Domain.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\RDTrackR.Domain.csproj"
               }
             }
           }
@@ -358,6 +250,10 @@
             "FluentMigrator.Runner": {
               "target": "Package",
               "version": "[7.1.0, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Core": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -404,82 +300,14 @@
         }
       }
     },
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\MyRecipeBook.Communication.csproj": {
+    "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Communication\\RDTrackR.Communication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\MyRecipeBook.Communication.csproj",
-        "projectName": "MyRecipeBook.Communication",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\MyRecipeBook.Communication.csproj",
-        "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\joaoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\RDTrackR.Communication.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\RDTrackR.Communication.csproj",
+        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Communication\\RDTrackR.Communication.csproj",
         "projectName": "RDTrackR.Communication",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\RDTrackR.Communication.csproj",
+        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Communication\\RDTrackR.Communication.csproj",
         "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\obj\\",
+        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Communication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -540,79 +368,14 @@
         }
       }
     },
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\MyRecipeBook.Exceptions.csproj": {
+    "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Exceptions\\RDTrackR.Exceptions.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\MyRecipeBook.Exceptions.csproj",
-        "projectName": "MyRecipeBook.Exceptions",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\MyRecipeBook.Exceptions.csproj",
-        "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\obj\\",
-        "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\joaoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\RDTrackR.Exceptions.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\RDTrackR.Exceptions.csproj",
+        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Exceptions\\RDTrackR.Exceptions.csproj",
         "projectName": "RDTrackR.Exceptions",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\RDTrackR.Exceptions.csproj",
+        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Exceptions\\RDTrackR.Exceptions.csproj",
         "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Exceptions\\obj\\",
+        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Exceptions\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -670,14 +433,14 @@
         }
       }
     },
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj": {
+    "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj",
+        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj",
         "projectName": "CommonTestUtilities",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj",
+        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj",
         "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\obj\\",
+        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -698,14 +461,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\RDTrackR.Application.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\RDTrackR.Application.csproj"
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application\\RDTrackR.Application.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application\\RDTrackR.Application.csproj"
               },
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Infrastructure\\RDTrackR.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Infrastructure\\RDTrackR.Infrastructure.csproj"
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\RDTrackR.Domain.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain\\RDTrackR.Domain.csproj"
               },
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\RDTrackR.Communication.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Shared\\MyRecipeBook.Communication\\RDTrackR.Communication.csproj"
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Infrastructure\\RDTrackR.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Infrastructure\\RDTrackR.Infrastructure.csproj"
+              },
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Communication\\RDTrackR.Communication.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Communication\\RDTrackR.Communication.csproj"
               }
             }
           }
@@ -759,14 +525,14 @@
         }
       }
     },
-    "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\Validors.Test.csproj": {
+    "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\Validors.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\Validors.Test.csproj",
+        "projectUniqueName": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\Validors.Test.csproj",
         "projectName": "Validors.Test",
-        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\Validors.Test.csproj",
+        "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\Validors.Test.csproj",
         "packagesPath": "C:\\Users\\joaoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\obj\\",
+        "outputPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\Validors.Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -787,11 +553,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\MyRecipeBook.Application.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\src\\Backend\\MyRecipeBook.Application\\MyRecipeBook.Application.csproj"
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application\\RDTrackR.Application.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application\\RDTrackR.Application.csproj"
               },
-              "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj": {
-                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj"
+              "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj": {
+                "projectPath": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities\\CommonTestUtilities.csproj"
               }
             }
           }

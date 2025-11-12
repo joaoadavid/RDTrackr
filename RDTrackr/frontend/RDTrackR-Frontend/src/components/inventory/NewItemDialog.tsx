@@ -68,7 +68,6 @@ export function NewItemDialog({
       description: `O produto "${form.name}" foi adicionado ao inventário com sucesso.`,
     });
 
-    // Limpar e fechar
     setForm({
       sku: "",
       name: "",
@@ -91,19 +90,27 @@ export function NewItemDialog({
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4"
+          role="form"
+          noValidate
+        >
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label>SKU</Label>
+              <Label htmlFor="sku">SKU</Label>
               <Input
+                id="sku"
                 value={form.sku}
                 onChange={(e) => setForm({ ...form, sku: e.target.value })}
                 required
               />
             </div>
+
             <div>
-              <Label>Nome</Label>
+              <Label htmlFor="name">Nome</Label>
               <Input
+                id="name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 required
@@ -113,20 +120,21 @@ export function NewItemDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label>Categoria</Label>
+              <Label htmlFor="category">Categoria</Label>
               <Input
+                id="category"
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
                 placeholder="Ex: Eletrônicos"
               />
             </div>
             <div>
-              <Label>Unidade</Label>
+              <Label htmlFor="uom">Unidade</Label>
               <Select
                 value={form.uom}
                 onValueChange={(val) => setForm({ ...form, uom: val })}
               >
-                <SelectTrigger>
+                <SelectTrigger id="uom">
                   <SelectValue placeholder="Unidade" />
                 </SelectTrigger>
                 <SelectContent>
@@ -140,8 +148,9 @@ export function NewItemDialog({
 
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <Label>Preço</Label>
+              <Label htmlFor="price">Preço</Label>
               <Input
+                id="price"
                 type="number"
                 value={form.price}
                 onChange={(e) => setForm({ ...form, price: e.target.value })}
@@ -149,8 +158,9 @@ export function NewItemDialog({
               />
             </div>
             <div>
-              <Label>Estoque</Label>
+              <Label htmlFor="stock">Estoque</Label>
               <Input
+                id="stock"
                 type="number"
                 value={form.stock}
                 onChange={(e) => setForm({ ...form, stock: e.target.value })}
@@ -158,8 +168,9 @@ export function NewItemDialog({
               />
             </div>
             <div>
-              <Label>Ponto de Reposição</Label>
+              <Label htmlFor="reorderPoint">Ponto de Reposição</Label>
               <Input
+                id="reorderPoint"
                 type="number"
                 value={form.reorderPoint}
                 onChange={(e) =>
@@ -171,7 +182,9 @@ export function NewItemDialog({
           </div>
 
           <DialogFooter>
-            <Button type="submit">Salvar Item</Button>
+            <Button type="submit" data-testid="submit">
+              Salvar Item
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

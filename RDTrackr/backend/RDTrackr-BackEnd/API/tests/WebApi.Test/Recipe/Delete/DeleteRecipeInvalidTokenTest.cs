@@ -4,7 +4,7 @@ using Shouldly;
 using System.Net;
 
 namespace WebApi.Test.Recipe.Delete;
-public class DeleteRecipeInvalidTokenTest : MyRecipeBookClassFixture
+public class DeleteRecipeInvalidTokenTest : RDTrackRClassFixture
 {
     private const string METHOD = "recipe";
 

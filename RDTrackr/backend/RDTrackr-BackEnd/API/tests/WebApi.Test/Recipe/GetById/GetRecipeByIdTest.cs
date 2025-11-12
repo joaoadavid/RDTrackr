@@ -8,7 +8,7 @@ using System.Text.Json;
 using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Recipe.GetById;
-public class GetRecipeByIdTest : MyRecipeBookClassFixture
+public class GetRecipeByIdTest : RDTrackRClassFixture
 {
     private const string METHOD = "recipe";
 

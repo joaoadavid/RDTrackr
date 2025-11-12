@@ -7,7 +7,7 @@ using WebApi.Test.InlineData;
 
 namespace WebApi.Test.User.Register
 {
-    public class RegisterUserTest: MyRecipeBookClassFixture
+    public class RegisterUserTest: RDTrackRClassFixture
     {
         private readonly string method = "user";
         public RegisterUserTest(CustomWebApplicationFactory factory) : base(factory) { }

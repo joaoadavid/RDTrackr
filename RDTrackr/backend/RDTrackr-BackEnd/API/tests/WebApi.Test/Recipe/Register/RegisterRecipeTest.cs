@@ -1,4 +1,4 @@
-﻿using CommonTestUtilities.Recipes;
+﻿using CommonTestUtilities.Requests.Recipes;
 using CommonTestUtilities.Tokens;
 using RDTrackR.Exceptions;
 using Shouldly;
@@ -9,7 +9,7 @@ using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Recipe.Register
 {
-    public class RegisterRecipeTest : MyRecipeBookClassFixture
+    public class RegisterRecipeTest : RDTrackRClassFixture
     {
         private readonly string METHOD = "recipe";
 

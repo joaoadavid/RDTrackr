@@ -1,4 +1,4 @@
-﻿using CommonTestUtilities.Recipes;
+﻿using CommonTestUtilities.Requests.Recipes;
 using CommonTestUtilities.Tokens;
 using RDTrackR.Exceptions;
 using Shouldly;
@@ -8,7 +8,7 @@ using System.Text.Json;
 using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Recipe.Update;
-public class UpdateRecipeTest : MyRecipeBookClassFixture
+public class UpdateRecipeTest : RDTrackRClassFixture
 {
     private const string METHOD = "recipe";
 

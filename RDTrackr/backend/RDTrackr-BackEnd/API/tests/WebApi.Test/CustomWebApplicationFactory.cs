@@ -1,6 +1,9 @@
 ﻿using CommonTestUtilities.BlobStorage;
 using CommonTestUtilities.Entities;
+using CommonTestUtilities.Entities.Products;
+using CommonTestUtilities.Entities.Warehouses;
 using CommonTestUtilities.IdEncryption;
+using CommonTestUtilities.PurchaseOrders;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +19,9 @@ namespace WebApi.Test
     {
         private RDTrackR.Domain.Entities.Recipe _recipe = default!;
         private RDTrackR.Domain.Entities.User _user = default!;
+        private RDTrackR.Domain.Entities.Warehouse _warehouse = default!;
+        private RDTrackR.Domain.Entities.Product _product = default!;
+        private RDTrackR.Domain.Entities.PurchaseOrder _purchaseOrder = default!;
         private string _password = string.Empty;
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
@@ -54,25 +60,34 @@ namespace WebApi.Test
         public string GetName() => _user.Name;
 
         public string GetRecipeId() => IdEncripterBuilder.Build().Encode(_recipe.Id);
+        public long GetProductId() => _product.Id;
+        public long GetWarehouseId() => _warehouse.Id;
+        public long GetPurchaseOrderId() => _purchaseOrder.Id;
         public string GetRecipeTitle() => _recipe.Title;
+        public string GetProductName() => _product.Name;
         public Difficulty GetRecipeDifficulty() => _recipe.Difficulty!.Value;
         public CookingTime GetRecipeCookingTime() => _recipe.CookingTime!.Value;
         public IList<RDTrackR.Domain.Enums.DishType> GetDishTypes() => _recipe.DishTypes.Select(c => c.Type).ToList();
+
         private void StartDatabase(RDTrackRDbContext dbContext)
         {
             (_user, _password) = UserBuilder.Build();
 
             _recipe = RecipeBuilder.Build(_user);
-
+            _warehouse = WarehouseBuilder.Build(_user);
+            _product = ProductBuilder.Build(createdBy: _user);
+            _purchaseOrder = PurchaseOrderBuilder.Build(createdByUserId:_user.Id,productId:_product.Id);
 
             dbContext.Users.Add(_user);
-
             dbContext.Recipes.Add(_recipe);
-
+            dbContext.Warehouses.Add(_warehouse);
+            dbContext.Products.Add(_product);
+            dbContext.PurchaseOrders.Add(_purchaseOrder);
 
             dbContext.SaveChanges();
         }
+
     }
 
-   
+
 }

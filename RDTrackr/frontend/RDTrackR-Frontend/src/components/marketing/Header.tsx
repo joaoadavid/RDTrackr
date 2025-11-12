@@ -20,10 +20,10 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { href: "/replenishment", label: "Planejamento" },
-    { href: "/contact", label: "Contato" },
-    { href: "/support", label: "Suporte" },
-  ];
+  { href: "/replenishment-info", label: "Planejamento de Reposição" },
+  { href: "/contact", label: "Contato" },
+  { href: "/support", label: "Suporte" },
+];
 
   return (
     <header

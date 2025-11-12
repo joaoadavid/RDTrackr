@@ -4,7 +4,7 @@ using Shouldly;
 using System.Net;
 
 namespace WebApi.Test.Recipe.Filter;
-public class FilterRecipeInvalidTokenTest : MyRecipeBookClassFixture
+public class FilterRecipeInvalidTokenTest : RDTrackRClassFixture
 {
     private const string METHOD = "recipe/filter";
 

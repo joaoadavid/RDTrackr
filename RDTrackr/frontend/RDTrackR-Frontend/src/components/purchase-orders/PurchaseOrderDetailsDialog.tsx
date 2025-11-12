@@ -60,7 +60,9 @@ export function PurchaseOrderDetailsDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Detalhes do Pedido</DialogTitle>
+          <DialogTitle data-testid="details-title">
+            Detalhes do Pedido
+          </DialogTitle>
           <DialogDescription>
             Informações completas sobre o pedido de compra selecionado.
           </DialogDescription>

@@ -4,7 +4,7 @@ using System.Net;
 
 namespace WebApi.Test.User.Profile
 {
-    public class GetUserProfileInvalideTokenTest : MyRecipeBookClassFixture
+    public class GetUserProfileInvalideTokenTest : RDTrackRClassFixture
     {
         private readonly string METHOD = "user";
         public GetUserProfileInvalideTokenTest(CustomWebApplicationFactory factory): base(factory) { }      

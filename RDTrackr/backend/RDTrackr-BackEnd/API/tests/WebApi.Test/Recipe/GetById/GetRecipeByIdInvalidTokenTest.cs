@@ -4,7 +4,7 @@ using Shouldly;
 using System.Net;
 
 namespace WebApi.Test.Recipe.GetById;
-public class GetRecipeByIdInvalidTokenTest : MyRecipeBookClassFixture
+public class GetRecipeByIdInvalidTokenTest : RDTrackRClassFixture
 {
     private const string METHOD = "recipe";
 

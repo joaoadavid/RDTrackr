@@ -13,9 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Backend\MyRecipeBook.Application\RDTrackR.Application.csproj" />
-    <ProjectReference Include="..\..\src\Backend\MyRecipeBook.Infrastructure\RDTrackR.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\src\Shared\MyRecipeBook.Communication\RDTrackR.Communication.csproj" />
+    <ProjectReference Include="..\..\src\Backend\RDTrackR.Application\RDTrackR.Application.csproj" />
+    <ProjectReference Include="..\..\src\Backend\RDTrackR.Domain\RDTrackR.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Backend\RDTrackR.Infrastructure\RDTrackR.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Shared\RDTrackR.Communication\RDTrackR.Communication.csproj" />
   </ItemGroup>
 
   <ItemGroup>

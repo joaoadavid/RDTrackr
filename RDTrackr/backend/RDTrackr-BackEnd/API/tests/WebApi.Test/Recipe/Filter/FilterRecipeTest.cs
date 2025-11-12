@@ -10,7 +10,7 @@ using System.Text.Json;
 using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Recipe.Filter;
-public class FilterRecipeTest : MyRecipeBookClassFixture
+public class FilterRecipeTest : RDTrackRClassFixture
 {
     private const string METHOD = "recipe/filter";
 

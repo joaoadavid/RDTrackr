@@ -5,36 +5,42 @@ import { cn } from "@/lib/utils";
 
 const faqs = [
   {
-    question: "Qual é o preço do plano?",
+    question: "O RDTrackr é gratuito?",
     answer:
-      "Oferecemos planos flexíveis que se adaptam ao tamanho do seu negócio. Entre em contato para conhecer as opções e escolher a melhor para você.",
+      "Sim! O projeto é open-source e gratuito para uso. Você pode instalar, modificar e adaptar às necessidades da sua empresa sem custo.",
   },
   {
-    question: "Meus dados estão seguros?",
+    question: "Para que tipo de empresa o RDTrackr é indicado?",
     answer:
-      "Sim! Utilizamos criptografia de ponta a ponta, backups automáticos e seguimos as melhores práticas de segurança da indústria (incluindo LGPD).",
+      "O RDTrackr é ideal para empresas que desejam melhorar o controle de estoque, compras e movimentações internas, especialmente indústrias, distribuidoras e oficinas.",
+  },
+  {
+    question: "Quais módulos estão disponíveis?",
+    answer:
+      "Atualmente, o sistema conta com: cadastro de produtos, fornecedores, depósitos, movimentação de estoque, pedidos de compra, reposição automatizada e relatórios operacionais.",
   },
   {
     question: "Posso integrar com outros sistemas?",
     answer:
-      "Sim, oferecemos uma API REST completa que permite integração com ERPs, e-commerce, sistemas de pagamento e muito mais.",
+      "Sim! O RDTrackr possui API REST estruturada, permitindo integração com ERPs, lojas virtuais, sistemas internos e automações.",
   },
   {
-    question: "Como funciona o suporte?",
+    question: "Meus dados estão seguros?",
     answer:
-      "Oferecemos suporte por email, chat e documentação completa. Clientes premium têm acesso a suporte prioritário com SLA garantido.",
+      "Sim! O sistema foi construído seguindo boas práticas de segurança, autenticação JWT, controle de permissões e tratamento de dados conforme a LGPD.",
   },
   {
-    question: "Posso cancelar a qualquer momento?",
+    question: "Posso colaborar com o projeto?",
     answer:
-      "Sim, não há período de fidelidade. Você pode cancelar sua assinatura a qualquer momento sem custos adicionais.",
+      "Com certeza! Qualquer contribuição é bem-vinda: desenvolvimento, correção de bugs, documentação ou sugestões. O projeto está disponível no GitHub.",
   },
   {
-    question: "Existe período de teste gratuito?",
+    question: "Haverá suporte?",
     answer:
-      "Sim! Você pode testar todas as funcionalidades por 14 dias sem precisar cadastrar cartão de crédito.",
+      "Por ser um projeto open-source, o suporte é comunitário. Porém, você pode abrir issues no GitHub ou entrar em contato para suporte profissional.",
   },
 ];
+
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);

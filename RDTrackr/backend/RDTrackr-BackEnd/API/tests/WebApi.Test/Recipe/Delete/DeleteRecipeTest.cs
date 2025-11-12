@@ -8,7 +8,7 @@ using System.Text.Json;
 using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Recipe.Delete;
-public class DeleteRecipeTest : MyRecipeBookClassFixture
+public class DeleteRecipeTest : RDTrackRClassFixture
 {
     private const string METHOD = "recipe";
 

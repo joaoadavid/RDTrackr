@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "@/hooks/use-theme";
 import { Badge } from "@/components/ui/badge";
-import LogoRDTrackR from "@/assets/LogoRDTrackR.svg"; // ✅ importa a logo
+import LogoRDTrackR from "@/assets/LogoRDTrackR.svg";
 
 export function Topbar() {
   const { theme, setTheme } = useTheme();
@@ -22,7 +22,6 @@ export function Topbar() {
         <SidebarTrigger />
 
         <div className="flex flex-1 items-center justify-between">
-          {/* 🔹 Substituímos o texto pela logo */}
           <div className="flex items-center gap-2">
             <img
               src={LogoRDTrackR}

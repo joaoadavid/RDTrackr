@@ -8,7 +8,7 @@ using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Login.DoLogin
 {
-    public class DoLoginTest : MyRecipeBookClassFixture
+    public class DoLoginTest : RDTrackRClassFixture
     {
         private readonly string method = "login";
 

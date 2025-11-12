@@ -76,12 +76,12 @@ export function NewMovementDialog({
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label>Tipo</Label>
+            <Label htmlFor="type">Tipo</Label>
             <Select
               value={form.type}
               onValueChange={(v) => setForm({ ...form, type: v })}
             >
-              <SelectTrigger>
+              <SelectTrigger id="type">
                 <SelectValue placeholder="Selecione o tipo" />
               </SelectTrigger>
               <SelectContent>
@@ -93,8 +93,9 @@ export function NewMovementDialog({
           </div>
 
           <div>
-            <Label>Referência</Label>
+            <Label htmlFor="reference">Referência</Label>
             <Input
+              id="reference"
               placeholder="Ex: PO-010"
               value={form.reference}
               onChange={(e) => setForm({ ...form, reference: e.target.value })}
@@ -103,8 +104,9 @@ export function NewMovementDialog({
           </div>
 
           <div>
-            <Label>Produto</Label>
+            <Label htmlFor="product">Produto</Label>
             <Input
+              id="product"
               placeholder="Ex: Monitor LG"
               value={form.product}
               onChange={(e) => setForm({ ...form, product: e.target.value })}
@@ -113,8 +115,9 @@ export function NewMovementDialog({
           </div>
 
           <div>
-            <Label>Depósito</Label>
+            <Label htmlFor="warehouse">Depósito</Label>
             <Input
+              id="warehouse"
               placeholder="Ex: CD São Paulo"
               value={form.warehouse}
               onChange={(e) => setForm({ ...form, warehouse: e.target.value })}
@@ -123,8 +126,9 @@ export function NewMovementDialog({
           </div>
 
           <div>
-            <Label>Quantidade</Label>
+            <Label htmlFor="quantity">Quantidade</Label>
             <Input
+              id="quantity"
               type="number"
               placeholder="Ex: 25"
               value={form.quantity}

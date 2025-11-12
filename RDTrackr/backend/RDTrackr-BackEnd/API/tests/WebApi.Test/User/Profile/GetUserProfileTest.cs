@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Test.User.Profile
 {
-    public class GetUserProfileTest : MyRecipeBookClassFixture
+    public class GetUserProfileTest : RDTrackRClassFixture
     {
         private readonly string METHOD = "user";
 

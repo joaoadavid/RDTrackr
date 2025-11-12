@@ -169,10 +169,13 @@ export default function PurchaseOrders() {
         <CardContent>
           <div className="mb-4">
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-[200px]">
+              <SelectTrigger
+                className="w-[200px]"
+                data-testid="status-filter-trigger"
+              >
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent data-testid="status-filter-menu">
                 <SelectItem value="all">Todos</SelectItem>
                 <SelectItem value="DRAFT">Rascunho</SelectItem>
                 <SelectItem value="PENDING">Pendente</SelectItem>
@@ -231,6 +234,7 @@ export default function PurchaseOrders() {
 
                         {/* Ver Detalhes */}
                         <DropdownMenuItem
+                          data-testid={`view-details-${order.id}`}
                           onClick={() => {
                             setSelectedOrder(order);
                             setIsDetailsOpen(true);

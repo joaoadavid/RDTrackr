@@ -1,11 +1,11 @@
 ﻿using CommonTestUtilities.IdEncryption;
-using CommonTestUtilities.Recipes;
+using CommonTestUtilities.Requests.Recipes;
 using CommonTestUtilities.Tokens;
 using Shouldly;
 using System.Net;
 
 namespace WebApi.Test.Recipe.Update;
-public class UpdateRecipeTestInvalidTokenTest : MyRecipeBookClassFixture
+public class UpdateRecipeTestInvalidTokenTest : RDTrackRClassFixture
 {
     private const string METHOD = "recipe";
 

@@ -136,14 +136,22 @@ export default function Movements() {
         <CardContent>
           <div className="mb-4 flex gap-4">
             <Select value={typeFilter} onValueChange={setTypeFilter}>
-              <SelectTrigger className="w-[200px]">
+              <SelectTrigger className="w-[200px]" data-testid="filter-trigger">
                 <SelectValue placeholder="Tipo" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todos</SelectItem>
-                <SelectItem value="INBOUND">Entradas</SelectItem>
-                <SelectItem value="OUTBOUND">Saídas</SelectItem>
-                <SelectItem value="ADJUST">Ajustes</SelectItem>
+              <SelectContent data-testid="filter-menu">
+                <SelectItem value="all" data-testid="filter-all">
+                  Todos
+                </SelectItem>
+                <SelectItem value="INBOUND" data-testid="filter-inbound">
+                  Entradas
+                </SelectItem>
+                <SelectItem value="OUTBOUND" data-testid="filter-outbound">
+                  Saídas
+                </SelectItem>
+                <SelectItem value="ADJUST" data-testid="filter-adjust">
+                  Ajustes
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>

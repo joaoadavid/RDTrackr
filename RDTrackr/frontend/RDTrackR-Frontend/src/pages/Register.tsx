@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import LogoR from "@/assets/LogoRDTrackR.svg";
 
 export default function Register() {
   const { toast } = useToast();
@@ -60,7 +61,11 @@ export default function Register() {
           {/* Card */}
           <Card>
             <CardHeader className="text-center">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent mx-auto mb-4" />
+               <img
+              src={LogoR}
+              alt="RDTrackR Logo"
+              className="h-30 w-auto sm:h-32 object-contain scale-125"
+            />
               <CardTitle className="text-2xl font-semibold">
                 Criar conta
               </CardTitle>
