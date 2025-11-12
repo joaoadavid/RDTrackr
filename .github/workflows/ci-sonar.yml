@@ -18,6 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
+      # .NET SETUP
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -28,30 +29,35 @@ jobs:
           dotnet restore RDTrackr/backend/RDTrackr-BackEnd/API/RDTrackR.sln
           dotnet build RDTrackr/backend/RDTrackr-BackEnd/API/RDTrackR.sln --configuration Release
 
-      - name: Run tests with coverage
+      - name: Run backend tests with coverage
         run: |
           dotnet test RDTrackr/backend/RDTrackr-BackEnd/API/tests/WebApi.Test/WebApi.Test.csproj \
             --configuration Release \
             --collect:"XPlat Code Coverage" \
             --results-directory ./TestResults
 
-      - name: Convert coverage to lcov
+      - name: Convert backend coverage to lcov
         run: |
           dotnet tool install --global dotnet-reportgenerator-globaltool
           export PATH="$PATH:/home/runner/.dotnet/tools"
           reportgenerator "-reports:TestResults/**/coverage.cobertura.xml" "-targetdir:coverage-report" "-reporttypes:lcov"
 
+      # NODE SETUP
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Build frontend
+      - name: Install & Test frontend with Vitest
         run: |
           cd RDTrackr/frontend/RDTrackR-Frontend
-          npm install
+          npm ci
           npm run build
-          
+          npx vitest run --coverage
+        env:
+          CI: true
+
+      # JAVA + SCANNER SETUP
       - name: Setup Java 17
         uses: actions/setup-java@v4
         with:
@@ -63,6 +69,7 @@ jobs:
           dotnet tool install --global dotnet-sonarscanner
           export PATH="$PATH:/home/runner/.dotnet/tools"
 
+      # SONARCLOUD ANALYSIS
       - name: Run SonarQube Analysis
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -74,7 +81,8 @@ jobs:
             /o:"joaoadavid" \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
-            /d:sonar.cs.opencover.reportsPaths="TestResults/**/coverage.cobertura.xml"
-      
+            /d:sonar.cs.opencover.reportsPaths="TestResults/**/coverage.cobertura.xml" \
+            /d:sonar.javascript.lcov.reportPaths="RDTrackr/frontend/RDTrackR-Frontend/coverage/lcov.info"
+
           dotnet build RDTrackr/backend/RDTrackr-BackEnd/API/RDTrackR.sln --configuration Release
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
