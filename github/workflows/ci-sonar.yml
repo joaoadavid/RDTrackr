@@ -1,4 +1,4 @@
-name: CI - Build, Test & SonarQube
+name: CI - Build, Test & SonarCloud
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # necessário para histórico completo do sonar
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -53,8 +53,10 @@ jobs:
           npm install
           npm run build
 
-      - name: Run SonarQube analysis
+      - name: Run SonarCloud analysis
         uses: SonarSource/sonarqube-scan-action@v1
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_HOST_URL: https://sonarcloud.io
+          SONAR_PROJECT_KEY: joaoadavid_RDTrackr
+          SONAR_ORGANIZATION: joaoadavid
