@@ -1,9 +1,0 @@
-{
-  "CommonTestUtilities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\tests\\CommonTestUtilities",
-  "RDTrackR.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.API",
-  "RDTrackR.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Application",
-  "RDTrackR.Communication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Communication",
-  "RDTrackR.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Domain",
-  "RDTrackR.Exceptions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Shared\\RDTrackR.Exceptions",
-  "RDTrackR.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\joaoa\\Documents\\RDTrackR\\RDTrackr-BackEnd\\API\\src\\Backend\\RDTrackR.Infrastructure"
-}
