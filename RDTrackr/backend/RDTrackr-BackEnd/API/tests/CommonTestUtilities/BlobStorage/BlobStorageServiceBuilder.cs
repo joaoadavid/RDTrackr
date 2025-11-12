@@ -23,15 +23,15 @@ public class BlobStorageServiceBuilder
         return this;
     }
 
-    public BlobStorageServiceBuilder GetFileUrl(User user, IList<Recipe> recipes)
-    {
-        foreach (var recipe in recipes)
-        {
-            GetFileUrl(user, recipe.ImageIdentifier);
-        }
+    //public BlobStorageServiceBuilder GetFileUrl(User user, IList<Recipe> recipes)
+    //{
+    //    foreach (var recipe in recipes)
+    //    {
+    //        GetFileUrl(user, recipe.ImageIdentifier);
+    //    }
 
-        return this;
-    }
+    //    return this;
+    //}
 
     public IBlobStorageService Build() => _mock.Object;
 }

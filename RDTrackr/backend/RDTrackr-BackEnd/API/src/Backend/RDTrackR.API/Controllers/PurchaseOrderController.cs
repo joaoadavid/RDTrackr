@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using MyRecipeBook.Application.UseCases.Recipe.GetById;
-using MyRecipeBook.Communication.Responses;
+﻿using Microsoft.AspNetCore.Mvc;
 using RDTrackR.API.Attributes;
 using RDTrackR.API.Binders;
 using RDTrackR.Application.UseCases.PurchaseOrders.Delete;
@@ -10,6 +7,7 @@ using RDTrackR.Application.UseCases.PurchaseOrders.Register;
 using RDTrackR.Application.UseCases.PurchaseOrders.Update;
 using RDTrackR.Communication.Requests.PurchaseOrders;
 using RDTrackR.Communication.Responses.Error;
+using RDTrackR.Communication.Responses.PurchaseOrders;
 
 namespace RDTrackR.API.Controllers
 {
@@ -56,7 +54,7 @@ namespace RDTrackR.API.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        [ProducesResponseType(typeof(ResponseRecipeJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponsePurchaseOrderJson), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(
             [FromServices] IGetByIdPurchaseOrdersUseCase useCase,

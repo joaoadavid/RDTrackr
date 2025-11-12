@@ -40,9 +40,9 @@ namespace RDTrackR.Infrastructure.DataAccess.Repositories
             if (user == null)
                 return;
 
-            var recipes = _dbContext.Recipes.Where(recipe => recipe.UserId == user.Id);
+            var users = _dbContext.Users.Where(users => users.UserIdentifier == userIdentifier);
 
-            _dbContext.Recipes.RemoveRange(recipes);
+            _dbContext.Users.RemoveRange(users);
 
             _dbContext.Users.Remove(user);
         }

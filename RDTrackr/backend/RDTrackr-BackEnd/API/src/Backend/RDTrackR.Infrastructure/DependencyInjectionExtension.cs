@@ -17,7 +17,6 @@ using RDTrackR.Domain.Repositories.Notifications;
 using RDTrackR.Domain.Repositories.Password;
 using RDTrackR.Domain.Repositories.Products;
 using RDTrackR.Domain.Repositories.PurchaseOrders;
-using RDTrackR.Domain.Repositories.Recipe;
 using RDTrackR.Domain.Repositories.SalesOrders;
 using RDTrackR.Domain.Repositories.StockItems;
 using RDTrackR.Domain.Repositories.Suppliers;
@@ -96,9 +95,6 @@ namespace RDTrackR.Infrastructure
             services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
             services.AddScoped<IUserReadOnlyRepository, UserRepository>();
             services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
-            services.AddScoped<IRecipeWriteOnlyRepository, RecipeRepository>();
-            services.AddScoped<IRecipeReadOnlyRepository, RecipeRepository>();
-            services.AddScoped<IRecipeUpdateOnlyRepository, RecipeRepository>();
             services.AddScoped<IUserDeleteOnlyRepository, UserRepository>();
             services.AddScoped<ICodeToPerformActionRepository, CodeToPerformActionRepository>();
             services.AddScoped<ITokenRepository, TokenRepository>();

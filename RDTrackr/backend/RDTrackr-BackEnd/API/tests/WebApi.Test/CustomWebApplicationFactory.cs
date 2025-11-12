@@ -17,7 +17,6 @@ namespace WebApi.Test
 {
     public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {
-        private RDTrackR.Domain.Entities.Recipe _recipe = default!;
         private RDTrackR.Domain.Entities.User _user = default!;
         private RDTrackR.Domain.Entities.Warehouse _warehouse = default!;
         private RDTrackR.Domain.Entities.Product _product = default!;
@@ -59,27 +58,21 @@ namespace WebApi.Test
         public string GetPassword() => _password;
         public string GetName() => _user.Name;
 
-        public string GetRecipeId() => IdEncripterBuilder.Build().Encode(_recipe.Id);
         public long GetProductId() => _product.Id;
         public long GetWarehouseId() => _warehouse.Id;
         public long GetPurchaseOrderId() => _purchaseOrder.Id;
-        public string GetRecipeTitle() => _recipe.Title;
         public string GetProductName() => _product.Name;
-        public Difficulty GetRecipeDifficulty() => _recipe.Difficulty!.Value;
-        public CookingTime GetRecipeCookingTime() => _recipe.CookingTime!.Value;
-        public IList<RDTrackR.Domain.Enums.DishType> GetDishTypes() => _recipe.DishTypes.Select(c => c.Type).ToList();
+
 
         private void StartDatabase(RDTrackRDbContext dbContext)
         {
             (_user, _password) = UserBuilder.Build();
 
-            _recipe = RecipeBuilder.Build(_user);
             _warehouse = WarehouseBuilder.Build(_user);
             _product = ProductBuilder.Build(createdBy: _user);
             _purchaseOrder = PurchaseOrderBuilder.Build(createdByUserId:_user.Id,productId:_product.Id);
 
             dbContext.Users.Add(_user);
-            dbContext.Recipes.Add(_recipe);
             dbContext.Warehouses.Add(_warehouse);
             dbContext.Products.Add(_product);
             dbContext.PurchaseOrders.Add(_purchaseOrder);

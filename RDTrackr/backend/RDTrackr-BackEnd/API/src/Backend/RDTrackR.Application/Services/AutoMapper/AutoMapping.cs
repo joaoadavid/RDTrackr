@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using MyRecipeBook.Communication.Responses;
-using RDTrackR.Communication.Enums;
 using RDTrackR.Communication.Requests.Movements;
 using RDTrackR.Communication.Requests.Product;
 using RDTrackR.Communication.Requests.PurchaseOrders;
-using RDTrackR.Communication.Requests.Recipe;
 using RDTrackR.Communication.Requests.StockItem;
 using RDTrackR.Communication.Requests.Supplier;
 using RDTrackR.Communication.Requests.User;
@@ -12,14 +10,12 @@ using RDTrackR.Communication.Requests.Warehouse;
 using RDTrackR.Communication.Responses.Movements;
 using RDTrackR.Communication.Responses.Product;
 using RDTrackR.Communication.Responses.PurchaseOrders;
-using RDTrackR.Communication.Responses.Recipe;
 using RDTrackR.Communication.Responses.Reports;
 using RDTrackR.Communication.Responses.StockItem;
 using RDTrackR.Communication.Responses.Supplier;
 using RDTrackR.Communication.Responses.User.Admin;
 using RDTrackR.Communication.Responses.Warehouse;
 using RDTrackR.Domain.Entities;
-using RDTrackR.Domain.Enums;
 using Sqids;
 
 namespace RDTrackR.Application.Services.AutoMapper
@@ -41,19 +37,6 @@ namespace RDTrackR.Application.Services.AutoMapper
             //segundo parametro = destino dos dados (entidade)
             CreateMap<RequestRegisterUserJson, Domain.Entities.User>()
                 .ForMember(dest => dest.Password, opt => opt.Ignore());//precisa definir a propriedade do destino (User)
-
-            CreateMap<RequestRecipeJson, Domain.Entities.Recipe>()
-                .ForMember(dest => dest.Instructions, opt => opt.Ignore())
-                .ForMember(dest => dest.Ingredients, opt => opt.MapFrom(source => source.Ingredients.Distinct()))
-                .ForMember(dest => dest.DishTypes, opt => opt.MapFrom(source => source.DishTypes.Distinct()));
-
-            CreateMap<string, Domain.Entities.Ingredient>()
-                .ForMember(dest => dest.Item, opt => opt.MapFrom(source => source));
-
-            CreateMap<Communication.Enums.DishType, Domain.Entities.DishType>()
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(source => source));
-
-            CreateMap<RequestInstructionJson, Domain.Entities.Instruction>();
 
             // Produtos
             CreateMap<RequestRegisterProductJson, Domain.Entities.Product>()
@@ -87,23 +70,6 @@ namespace RDTrackR.Application.Services.AutoMapper
         private void DomainToResponse()
         {
             CreateMap<Domain.Entities.User, ResponseUserProfileJson>();
-
-            CreateMap<Domain.Entities.Recipe, ResponseRegisteredRecipeJson>()
-                .ForMember(dest => dest.Id, config => config.MapFrom(source => _idEncoder.Encode(source.Id)));
-
-            CreateMap<Domain.Entities.Recipe, ResponseShortRecipeJson>()
-                .ForMember(dest => dest.Id, config => config.MapFrom(source => _idEncoder.Encode(source.Id)))
-                .ForMember(dest => dest.AmountIngredients, config => config.MapFrom(source => source.Ingredients.Count));
-
-            CreateMap<Domain.Entities.Recipe, ResponseRecipeJson>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(source => _idEncoder.Encode(source.Id)))
-                .ForMember(dest => dest.DishTypes, opt => opt.MapFrom(source => source.DishTypes.Select(r => r.Type)));
-
-            CreateMap<Domain.Entities.Ingredient, ResponseIngredientJson>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(source => _idEncoder.Encode(source.Id)));
-
-            CreateMap<Domain.Entities.Instruction, ResponseInstructionJson>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(source => _idEncoder.Encode(source.Id)));
 
             CreateMap<Domain.Entities.Product, ResponseProductJson>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

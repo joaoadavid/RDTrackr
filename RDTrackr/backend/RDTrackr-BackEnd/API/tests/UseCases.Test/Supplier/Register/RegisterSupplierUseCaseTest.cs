@@ -49,7 +49,6 @@ namespace UseCases.Test.Supplier.Register
             var mapper = MapperBuilder.Build();
             var unitOfWork = UnitOfWorkBuilder.Build();
             var loggedUser = LoggedUserBuilder.Build(user);
-            var repository = RecipeWriteOnlyRepositoryBuilder.Build();
 
             return new RegisterSupplierUseCase(writeRepository, readRepository,loggedUser,unitOfWork,mapper);
         }

@@ -1,6 +1,4 @@
 ﻿using CommonTestUtilities.Requests.PurchaseOrder;
-using CommonTestUtilities.Requests.Recipes;
-using MyRecipeBook.Application.UseCases.Recipe;
 using RDTrackR.Application.UseCases.PurchaseOrders;
 using RDTrackR.Exceptions;
 using Shouldly;

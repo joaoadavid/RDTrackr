@@ -9,10 +9,8 @@ namespace RDTrackR.Infrastructure.DataAccess
         public RDTrackRDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Recipe> Recipes { get; set; }
         public DbSet<CodeToPerformAction> CodeToPerformActions { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
-
         public DbSet<Product> Products { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<StockItem> StockItems { get; set; }

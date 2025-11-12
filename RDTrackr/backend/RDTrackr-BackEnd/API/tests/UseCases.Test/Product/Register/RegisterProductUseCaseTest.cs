@@ -1,22 +1,14 @@
-﻿using CommonTestUtilities.BlobStorage;
-using CommonTestUtilities.Entities;
+﻿using CommonTestUtilities.Entities;
 using CommonTestUtilities.LoggedUser;
 using CommonTestUtilities.Mapper;
 using CommonTestUtilities.Repositories;
-using CommonTestUtilities.Requests;
-using Microsoft.AspNetCore.Http;
-using MyRecipeBook.Application.UseCases.Recipe;
-using RDTrackR.Exceptions.ExceptionBase;
-using RDTrackR.Exceptions;
-using Shouldly;
-using UseCases.Test.Recipes.InlineDatas;
-using RDTrackR.Application.UseCases.Products.Register;
-using RDTrackR.Domain.Repositories.Products;
-using RDTrackR.Domain.Repositories;
-using RDTrackR.Domain.Services.Audit;
-using RDTrackR.Domain.Services.LoggedUser;
 using CommonTestUtilities.Repositories.Products;
+using CommonTestUtilities.Requests;
 using CommonTestUtilities.Services.Audit;
+using RDTrackR.Application.UseCases.Products.Register;
+using RDTrackR.Exceptions;
+using RDTrackR.Exceptions.ExceptionBase;
+using Shouldly;
 
 namespace UseCases.Test.Product.Register
 {

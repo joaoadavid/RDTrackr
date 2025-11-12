@@ -1,23 +1,15 @@
-﻿using CommonTestUtilities.Entities.Suppliers;
-using CommonTestUtilities.Entities;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Entities.Products;
 using CommonTestUtilities.LoggedUser;
 using CommonTestUtilities.Mapper;
-using CommonTestUtilities.Repositories.Suppliers;
 using CommonTestUtilities.Repositories;
-using CommonTestUtilities.Requests.Supplier;
-using RDTrackR.Application.UseCases.Suppliers.Update;
-using RDTrackR.Exceptions.ExceptionBase;
-using RDTrackR.Exceptions;
-using Shouldly;
-using RDTrackR.Application.UseCases.Product.Update;
 using CommonTestUtilities.Repositories.Products;
-using CommonTestUtilities.Services.Audit;
-using RDTrackR.Domain.Repositories.Products;
-using RDTrackR.Domain.Services.LoggedUser;
 using CommonTestUtilities.Requests;
-using RDTrackR.Domain.Entities;
-using CommonTestUtilities.Entities.Products;
-using CommonTestUtilities.Requests.Recipes;
+using CommonTestUtilities.Services.Audit;
+using RDTrackR.Application.UseCases.Product.Update;
+using RDTrackR.Exceptions;
+using RDTrackR.Exceptions.ExceptionBase;
+using Shouldly;
 
 namespace UseCases.Test.Product.Update
 {
