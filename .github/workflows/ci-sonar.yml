@@ -38,9 +38,8 @@ jobs:
       - name: Convert coverage to lcov
         run: |
           dotnet tool install --global dotnet-reportgenerator-globaltool
+          export PATH="$PATH:/home/runner/.dotnet/tools"
           reportgenerator "-reports:TestResults/**/coverage.cobertura.xml" "-targetdir:coverage-report" "-reporttypes:lcov"
-        env:
-          PATH: ${{ env.PATH }}:/home/runner/.dotnet/tools
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
