@@ -1,1 +1,62 @@
+name: CI - Build, Test & SonarCloud
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # necessário para histórico completo do sonar
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore & Build backend
+        run: |
+          dotnet restore ./backend/RDTrackr-BackEnd/API/RDTrackR.API.sln
+          dotnet build ./backend/RDTrackr-BackEnd/API/RDTrackR.API.sln --configuration Release
+
+      - name: Run tests with coverage
+        run: |
+          dotnet test ./backend/RDTrackr-BackEnd/API/tests/WebApi.Test/WebApi.Test.csproj \
+            --configuration Release \
+            --collect:"XPlat Code Coverage" \
+            --results-directory ./TestResults
+
+      - name: Convert coverage to lcov
+        run: |
+          dotnet tool install --global dotnet-reportgenerator-globaltool
+          reportgenerator "-reports:TestResults/**/coverage.cobertura.xml" "-targetdir:coverage-report" "-reporttypes:lcov"
+        env:
+          PATH: ${{ env.PATH }}:/home/runner/.dotnet/tools
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build frontend
+        run: |
+          cd frontend/RDTrackR-Frontend
+          npm install
+          npm run build
+
+      - name: Run SonarCloud analysis
+        uses: SonarSource/sonarqube-scan-action@v1
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+          SONAR_PROJECT_KEY: joaoadavid_RDTrackr
+          SONAR_ORGANIZATION: joaoadavid
