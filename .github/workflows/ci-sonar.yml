@@ -69,6 +69,12 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
           export PATH="$PATH:/home/runner/.dotnet/tools"
-          dotnet sonarscanner begin /k:"joaoadavid_RDTrackr" /o:"joaoadavid" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.coverageReportPaths="coverage-report/lcov.info"
+          dotnet sonarscanner begin \
+            /k:"joaoadavid_RDTrackr" \
+            /o:"joaoadavid" \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
+            /d:sonar.cs.opencover.reportsPaths="TestResults/**/coverage.cobertura.xml"
+      
           dotnet build RDTrackr/backend/RDTrackr-BackEnd/API/RDTrackR.sln --configuration Release
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
