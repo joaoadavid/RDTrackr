@@ -18,6 +18,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Debug folder structure
+        run: |
+          echo "ROOT:"
+          ls -R .
+
       # ---------------- BACKEND (.NET) ----------------
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -42,29 +47,28 @@ jobs:
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml" \
-            /d:sonar.javascript.lcov.reportPaths="RDTrackR/frontend/RDTrackR-Frontend/coverage/**/lcov.info"
+            /d:sonar.javascript.lcov.reportPaths="RDTrackr/frontend/RDTrackR-Frontend/coverage/**/lcov.info"
 
       # ---------------- BACKEND BUILD ----------------
       - name: Build backend
         run: |
-          dotnet build RDTrackR/backend/RDTrackR-BackEnd/API/RDTrackR.sln --configuration Release
+          dotnet build RDTrackr/backend/RDTrackR-BackEnd/API/RDTrackR.sln --configuration Release
 
-      # ---------------- BACKEND TESTS + COVERAGE ----------------
+      # ---------------- BACKEND TESTS ----------------
       - name: Run backend tests with coverage
         run: |
-          cd RDTrackR/backend/RDTrackR-BackEnd/API
+          cd RDTrackr/backend/RDTrackR-BackEnd/API
           dotnet test \
             --configuration Release \
             --collect:"XPlat Code Coverage" \
             --results-directory TestResults
 
-          # Convert Cobertura → LCOV (compatível com Sonar)
           reportgenerator \
             "-reports:TestResults/**/coverage.cobertura.xml" \
             "-targetdir:coveragereport" \
             "-reporttypes:lcov"
 
-      # ---------------- FRONTEND (VITE + VITEST) ----------------
+      # ---------------- FRONTEND TESTS ----------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -72,15 +76,15 @@ jobs:
 
       - name: Install & Test frontend
         run: |
-          cd RDTrackR/frontend/RDTrackR-Frontend
+          cd RDTrackr/frontend/RDTrackR-Frontend
           npm ci
           npm run build
           npx vitest run --coverage
 
-      - name: Debug coverage path
+      - name: Debug frontend coverage folder
         run: |
-          echo "Listing coverage folder:"
-          ls -R RDTrackR/frontend/RDTrackR-Frontend/coverage || echo "Coverage folder NOT FOUND"
+          echo "Checking coverage folder..."
+          ls -R RDTrackr/frontend/RDTrackR-Frontend/coverage || echo "Coverage not found"
 
       # ---------------- SONAR END ----------------
       - name: Finish SonarCloud scanner
