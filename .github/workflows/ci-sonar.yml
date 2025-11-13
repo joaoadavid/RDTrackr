@@ -47,7 +47,10 @@ jobs:
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml" \
+            /d:sonar.cs.lcov.reportPaths="RDTrackr/backend/RDTrackr-BackEnd/API/coveragereport/lcov.info" \
             /d:sonar.javascript.lcov.reportPaths="RDTrackr/frontend/RDTrackR-Frontend/coverage/lcov.info"
+
+
 
       # BUILD BACKEND
       - name: Build backend
