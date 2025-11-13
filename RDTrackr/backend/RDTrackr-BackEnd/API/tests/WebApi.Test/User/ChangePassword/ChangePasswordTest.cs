@@ -1,4 +1,5 @@
 ﻿using CommonTestUtilities.ChangePassword;
+using CommonTestUtilities.Entities;
 using CommonTestUtilities.Tokens;
 using RDTrackR.Communication.Requests.Login;
 using RDTrackR.Communication.Requests.Password;
@@ -17,13 +18,13 @@ public class ChangePasswordTest : RDTrackRClassFixture
 
     private readonly string _password;
     private readonly string _email;
-    private readonly Guid _userIdentifier;
+    private readonly RDTrackR.Domain.Entities.User _userIdentifier;
 
     public ChangePasswordTest(CustomWebApplicationFactory factory) : base(factory)
     {
         _password = factory.GetPassword();
         _email = factory.GetEmail();
-        _userIdentifier = factory.GetUserIdentifier();
+        _userIdentifier = factory.GetUser();
     }
 
     [Fact]

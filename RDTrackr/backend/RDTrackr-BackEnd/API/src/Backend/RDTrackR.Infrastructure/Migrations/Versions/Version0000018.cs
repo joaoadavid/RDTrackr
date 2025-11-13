@@ -3,7 +3,7 @@
 namespace RDTrackR.Infrastructure.Migrations.Versions
 {
     [Migration(DatabaseVersions.TABLE_NOTIFICATIONS, "Create Notifications table")]
-    public class Version0000018_Create_Notifications : VersionBase
+    public class Version0000018 : VersionBase
     {
         public override void Up()
         {

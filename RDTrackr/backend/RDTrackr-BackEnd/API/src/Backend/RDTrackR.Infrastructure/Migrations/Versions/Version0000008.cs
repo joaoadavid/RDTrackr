@@ -3,7 +3,7 @@ using RDTrackR.Infrastructure.Migrations;
 using FluentMigrator;
 
 [Migration(DatabaseVersions.TABLE_WAREHOUSES, "Create Warehouses table")]
-public class Version0000008_Create_Warehouses : VersionBase
+public class Version0000008 : VersionBase
 {
     public override void Up()
     {

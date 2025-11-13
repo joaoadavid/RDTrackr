@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Tokens;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Tokens;
 using Shouldly;
 using System.Net;
 
@@ -31,7 +32,8 @@ namespace WebApi.Test.User.Profile
         [Fact]
         public async Task Error_Token_With_User_NotFound()
         {
-            var token = JwtTokenGeneratorBuilder.Build().Generate(Guid.NewGuid());
+            (var user, _) = UserBuilder.Build();
+            var token = JwtTokenGeneratorBuilder.Build().Generate(user);
 
             var response = await DoGet(METHOD, token);
 

@@ -3,7 +3,7 @@ using RDTrackR.Infrastructure.Migrations;
 using FluentMigrator;
 
 [Migration(DatabaseVersions.TABLE_MOVEMENTS, "Create Movements table")]
-public class Version0000009_CreateMovementsTable : VersionBase
+public class Version0000009 : VersionBase
 {
     public override void Up()
     {

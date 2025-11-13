@@ -1,8 +1,10 @@
-﻿namespace RDTrackR.Domain.Security.Tokens
+﻿using RDTrackR.Domain.Entities;
+
+namespace RDTrackR.Domain.Security.Tokens
 {
     public interface IAccessTokenGenerator
     {
-        public string Generate(Guid userIdentifier);
+        public string Generate(User user);
         string GenerateWithTokenId(Guid userIdentifier, string tokenId);
     }
 }

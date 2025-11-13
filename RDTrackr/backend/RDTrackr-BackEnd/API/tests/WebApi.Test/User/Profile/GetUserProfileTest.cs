@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Requests;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Requests;
 using CommonTestUtilities.Tokens;
 using Shouldly;
 using System;
@@ -17,13 +18,13 @@ namespace WebApi.Test.User.Profile
 
         private readonly string _name;
         private readonly string _email;
-        private readonly Guid _userIdentifier;
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier;
 
         public GetUserProfileTest(CustomWebApplicationFactory factory) : base(factory)
         {
             _name = factory.GetName();
             _email = factory.GetEmail();
-            _userIdentifier = factory.GetUserIdentifier();
+            _userIdentifier = factory.GetUser();
         }
 
         [Fact]

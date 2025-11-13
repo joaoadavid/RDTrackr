@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Requests;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Requests;
 using CommonTestUtilities.Requests.Supplier;
 using CommonTestUtilities.Tokens;
 using Shouldly;
@@ -10,11 +11,11 @@ namespace WebApi.Test.Product.Register
     public class RegisterProductTest : RDTrackRClassFixture
     {
         private const string METHOD = "product";
-        private readonly Guid _userIdentifier;
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier;
 
         public RegisterProductTest(CustomWebApplicationFactory factory) : base(factory)
         {
-            _userIdentifier = factory.GetUserIdentifier();
+            _userIdentifier = factory.GetUser();
         }
 
         [Fact]

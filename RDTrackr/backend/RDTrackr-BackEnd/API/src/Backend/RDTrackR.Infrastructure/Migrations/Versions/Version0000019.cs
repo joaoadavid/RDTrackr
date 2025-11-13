@@ -3,7 +3,7 @@
 namespace RDTrackR.Infrastructure.Migrations.Versions
 {
     [Migration(DatabaseVersions.ALTER_PURCHASE_ORDERS_NUMBER_TO_IDENTITY)]
-    public class Version0000019_Alter_PurchaseOrders_Number_To_Identity : VersionBase
+    public class Version0000019: VersionBase
     {
         public override void Up()
         {

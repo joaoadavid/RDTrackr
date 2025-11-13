@@ -1,5 +1,4 @@
-﻿using CommonTestUtilities.IdEncryption;
-using CommonTestUtilities.Tokens;
+﻿using CommonTestUtilities.Tokens;
 using RDTrackR.Exceptions;
 using Shouldly;
 using System.Globalization;
@@ -9,18 +8,12 @@ using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Product.Delete
 {
-    public class DeleteProductTest : RDTrackRClassFixture
+    public class DeleteProductTest(CustomWebApplicationFactory factory) : RDTrackRClassFixture(factory)
     {
         private const string METHOD = "product";
 
-        private readonly Guid _userIdentifier;
-        private readonly long _productId;
-
-        public DeleteProductTest(CustomWebApplicationFactory factory) : base(factory)
-        {
-            _userIdentifier = factory.GetUserIdentifier();
-            _productId = factory.GetProductId();
-        }
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier = factory.GetUser();
+        private readonly long _productId = factory.GetProductId();
 
         [Fact]
         public async Task Success()

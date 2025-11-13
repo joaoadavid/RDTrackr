@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Requests;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Requests;
 using CommonTestUtilities.Requests.Warehouse;
 using CommonTestUtilities.Tokens;
 using RDTrackR.Exceptions;
@@ -12,16 +13,15 @@ namespace WebApi.Test.Warehouse.Register
     public class RegisterWarehouseTest : RDTrackRClassFixture
     {
         private readonly string _method = "warehouse";
-        private readonly Guid _userIdentifier;
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier;
         public RegisterWarehouseTest(CustomWebApplicationFactory factory) : base(factory) 
         {
-            _userIdentifier = factory.GetUserIdentifier();
+            _userIdentifier = factory.GetUser();
         }
 
         [Fact]
         public async Task Success()
         {
-
             var request = RequestRegisterWarehouseJsonBuilder.Build();
             var token = JwtTokenGeneratorBuilder.Build().Generate(_userIdentifier);
             var response = await DoPost(method: _method, request: request, token:token);

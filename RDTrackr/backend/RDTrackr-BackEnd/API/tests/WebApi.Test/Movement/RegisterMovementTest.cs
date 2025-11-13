@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Requests.Movements;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Requests.Movements;
 using CommonTestUtilities.Tokens;
 using RDTrackR.Exceptions;
 using Shouldly;
@@ -12,13 +13,13 @@ namespace WebApi.Test.Movement
     public class RegisterMovementTest : RDTrackRClassFixture
     {
         private const string METHOD = "movement";
-        private readonly Guid _userIdentifier;
+        private readonly RDTrackR.Domain.Entities.User _user;
         private readonly long _warehouseId;
         private readonly long _productId;
 
         public RegisterMovementTest(CustomWebApplicationFactory factory) : base(factory) 
         {
-            _userIdentifier = factory.GetUserIdentifier();
+            _user = factory.GetUser();
             _warehouseId = factory.GetWarehouseId();
             _productId = factory.GetProductId();
 
@@ -30,7 +31,7 @@ namespace WebApi.Test.Movement
             var request = RequestRegisterMovementJsonBuilder.Build();
             request.ProductId = _productId;
             request.WarehouseId = _warehouseId;
-            var token = JwtTokenGeneratorBuilder.Build().Generate(_userIdentifier);
+            var token = JwtTokenGeneratorBuilder.Build().Generate(_user);
 
             var response = await DoPost(method: METHOD, request:request, token:token);
 
@@ -56,7 +57,7 @@ namespace WebApi.Test.Movement
             request.WarehouseId = _warehouseId;
             request.Reference = string.Empty;
 
-            var token = JwtTokenGeneratorBuilder.Build().Generate(_userIdentifier);
+            var token = JwtTokenGeneratorBuilder.Build().Generate(_user);
 
             var response = await DoPost(method: METHOD, request: request, token: token, culture: culture);
 

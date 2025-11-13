@@ -22,6 +22,7 @@
         public const int ALTER_PURCHASE_ORDERS_NUMBER_TO_IDENTITY = 19;
         public const int ALTER_PURCHASE_ORDERS_STAUTS_TO_INT32 = 20;
         public const int FIX_AUDITLOG_ACTIONTYPE_INT = 21;
+        public const int ADD_USER_ROLE_COLUMN = 22;
 
     }
 }

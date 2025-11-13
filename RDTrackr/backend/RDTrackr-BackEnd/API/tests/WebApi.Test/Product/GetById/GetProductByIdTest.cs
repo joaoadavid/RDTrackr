@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Tokens;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Tokens;
 using Shouldly;
 using System.Net;
 using System.Text.Json;
@@ -8,13 +9,13 @@ namespace WebApi.Test.Product.GetById
     public class GetProductByIdTest : RDTrackRClassFixture
     {
         private const string METHOD = "product";
-        private readonly Guid _userIdentifier;
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier;
         private readonly long _productId;
         private readonly string _productName;
 
         public GetProductByIdTest(CustomWebApplicationFactory factory) : base(factory)
         {
-            _userIdentifier = factory.GetUserIdentifier();
+            _userIdentifier = factory.GetUser();
             _productId = factory.GetProductId();
             _productName = factory.GetProductName();
         }

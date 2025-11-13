@@ -57,7 +57,7 @@ namespace WebApi.Test
         public Guid GetUserIdentifier() => _user.UserIdentifier;
         public string GetPassword() => _password;
         public string GetName() => _user.Name;
-
+        public RDTrackR.Domain.Entities.User GetUser() => _user;
         public long GetProductId() => _product.Id;
         public long GetWarehouseId() => _warehouse.Id;
         public long GetPurchaseOrderId() => _purchaseOrder.Id;

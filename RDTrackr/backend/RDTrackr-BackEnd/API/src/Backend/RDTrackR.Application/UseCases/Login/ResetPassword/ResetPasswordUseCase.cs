@@ -9,7 +9,7 @@ using RDTrackR.Domain.ValueObjects;
 using RDTrackR.Exceptions;
 using RDTrackR.Exceptions.ExceptionBase;
 
-namespace MyRecipeBook.Application.UseCases.Login.ResetPassword
+namespace RDTrackR.Application.UseCases.Login.ResetPassword
 {
     public class ResetPasswordUseCase : IResetPasswordUseCase
     {
@@ -31,7 +31,7 @@ namespace MyRecipeBook.Application.UseCases.Login.ResetPassword
         {
             var code = await _codeRepository.GetByCode(request.Code);
 
-            if(code is null)
+            if (code is null)
                 throw new ErrorOnValidationException([ResourceMessagesException.CODE_INVALID]);
 
             var user = await _repository.GetById(code.UserId);
@@ -47,7 +47,7 @@ namespace MyRecipeBook.Application.UseCases.Login.ResetPassword
             await _unitOfWork.Commit();
         }
 
-        private static void Validate(RDTrackR.Domain.Entities.User user, CodeToPerformAction code, RequestResetYourPasswordJson request)
+        private static void Validate(Domain.Entities.User user, CodeToPerformAction code, RequestResetYourPasswordJson request)
         {
             if (user is null)
                 throw new ErrorOnValidationException([ResourceMessagesException.USER_WITHOU_PERMISSION_ACCESS_RESOURCE]);
@@ -57,11 +57,11 @@ namespace MyRecipeBook.Application.UseCases.Login.ResetPassword
 
             var validation = new ForgoPasswordValidation().Validate(request);
 
-            if(DateTime.Compare(code.CreatedOn.AddHours(MyRecipeBookRuleConstants.PASSWORD_RESET_CODE_VALIDITY_HOURS),DateTime.UtcNow)<=0)
+            if (DateTime.Compare(code.CreatedOn.AddHours(MyRecipeBookRuleConstants.PASSWORD_RESET_CODE_VALIDITY_HOURS), DateTime.UtcNow) <= 0)
                 throw new ErrorOnValidationException([ResourceMessagesException.CODE_INVALID]);
 
-            if(validation.IsValid.IsFalse())
-                throw new ErrorOnValidationException(validation.Errors.Select(code=>code.ErrorMessage).ToList());
+            if (validation.IsValid.IsFalse())
+                throw new ErrorOnValidationException(validation.Errors.Select(code => code.ErrorMessage).ToList());
         }
     }
 }

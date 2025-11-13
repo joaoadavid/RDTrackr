@@ -1,6 +1,6 @@
 ﻿using RDTrackR.Communication.Requests.Password;
 
-namespace MyRecipeBook.Application.UseCases.Login.ResetPassword
+namespace RDTrackR.Application.UseCases.Login.ResetPassword
 {
     public interface IResetPasswordUseCase
     {

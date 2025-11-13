@@ -56,11 +56,11 @@ namespace RDTrackR.Infrastructure
             AddRepositories(services);
             AddLoggerUser(services);
             AddCodeGenerator(services);
+            AddBrevo(services);
             AddTokens(services, configuration);
             AddAuditService(services);
             AddNotificationService(services);
             services.AddAzureStorage(configuration);
-            AddEmailSender(services, configuration);
             AddRefreshTokenGenerator(services);
             AddQueues(services, configuration);
             AddAuditService(services);
@@ -192,16 +192,12 @@ namespace RDTrackR.Infrastructure
             services.AddScoped<ICodeGenerator, CodeGenerator>();
         }
 
-        private static void AddEmailSender(IServiceCollection services, IConfiguration configuration)
+        private static void AddBrevo(IServiceCollection services)
         {
-            var apiKey = configuration.GetValue<string>("Email:ApiKey");
-
-            var postmarkClient = new PostmarkClient(apiKey);
-
-            services.AddSingleton(postmarkClient);
-
-            services.AddScoped<ISendCodeResetPassword, PostmarkSendCodeResetPassword>();
+            services.AddScoped<ISendCodeResetPassword, BrevoSendCodeResetPassword>();
         }
+
+        
 
         private static void AddRefreshTokenGenerator(IServiceCollection services)
         {

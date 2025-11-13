@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Requests;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Requests;
 using CommonTestUtilities.Tokens;
 using RDTrackR.Exceptions;
 using Shouldly;
@@ -9,16 +10,11 @@ using WebApi.Test.InlineData;
 
 namespace WebApi.Test.User.Update
 {
-    public class UpdateUserTest : RDTrackRClassFixture
+    public class UpdateUserTest(CustomWebApplicationFactory factory) : RDTrackRClassFixture(factory)
     {
-        private readonly string METHOD = "user";
+        private readonly string _method = "user";
 
-        private readonly Guid _userIdentifier;
-
-        public UpdateUserTest(CustomWebApplicationFactory factory) : base(factory)
-        {
-            _userIdentifier = factory.GetUserIdentifier();
-        }
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier = factory.GetUser();
 
         [Fact]
         public async Task Success()
@@ -27,7 +23,7 @@ namespace WebApi.Test.User.Update
 
             var token = JwtTokenGeneratorBuilder.Build().Generate(_userIdentifier);
 
-            var response = await DoPut(METHOD, request, token);
+            var response = await DoPut(_method, request, token);
 
             response.StatusCode.ShouldBe(HttpStatusCode.NoContent);
         }
@@ -41,7 +37,7 @@ namespace WebApi.Test.User.Update
 
             var token = JwtTokenGeneratorBuilder.Build().Generate(_userIdentifier);
 
-            var response = await DoPut(METHOD, request, token, culture);
+            var response = await DoPut(_method, request, token, culture);
 
             response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
 

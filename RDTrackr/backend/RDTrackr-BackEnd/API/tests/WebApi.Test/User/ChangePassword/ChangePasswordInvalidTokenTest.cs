@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Tokens;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Tokens;
 using RDTrackR.Communication.Requests.Password;
 using Shouldly;
 
@@ -32,7 +33,8 @@ namespace WebApi.Test.User.ChangePassword
         [Fact]
         public async Task Error_With_User_NotFound()
         {
-            var token = JwtTokenGeneratorBuilder.Build().Generate(Guid.NewGuid());
+            (var user, _) = UserBuilder.Build();
+            var token = JwtTokenGeneratorBuilder.Build().Generate(user);
             var request = new RequestChangePasswordJson();
             var response = await DoPut(METHOD, request, token);
             response.StatusCode.ShouldBe(System.Net.HttpStatusCode.Unauthorized);

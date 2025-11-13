@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Requests;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Requests;
 using CommonTestUtilities.Requests.PurchaseOrder;
 using CommonTestUtilities.Tokens;
 using Shouldly;
@@ -10,11 +11,11 @@ namespace WebApi.Test.PurchaseOrders.Register
     public class RegisterPurchaseOrderTest : RDTrackRClassFixture
     {
         private const string METHOD = "purchaseorder";
-        private readonly Guid _userIdentifier;
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier;
 
         public RegisterPurchaseOrderTest(CustomWebApplicationFactory factory) : base(factory)
         {
-            _userIdentifier = factory.GetUserIdentifier();
+            _userIdentifier = factory.GetUser();
         }
 
         [Fact]

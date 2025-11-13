@@ -12,6 +12,7 @@ using RDTrackR.Application.Services.Context;
 using RDTrackR.Application.UseCases.AuditLogs;
 using RDTrackR.Application.UseCases.Login.DoLogin;
 using RDTrackR.Application.UseCases.Login.Logout;
+using RDTrackR.Application.UseCases.Login.ResetPassword;
 using RDTrackR.Application.UseCases.Movements.GetAll;
 using RDTrackR.Application.UseCases.Movements.Register;
 using RDTrackR.Application.UseCases.Overview.Get;
@@ -63,6 +64,7 @@ namespace RDTrackR.Application
             AddContextAcessor(services);
             AddReportsUseCases(services);
             AddReplenishmentUseCase(services);
+            AddRestePassword(services);
             AddReportsUseCase(services);
             AddOverviewUseCase(services);
             AddAuditLog(services);
@@ -167,6 +169,12 @@ namespace RDTrackR.Application
 
         }
 
+        private static void AddRestePassword(IServiceCollection services)
+        {
+            services.AddScoped<IResetPasswordUseCase, ResetPasswordUseCase>();
+            services.AddScoped<IRequestCodeResetPasswordUseCase, RequestCodeResetPasswordUseCase>();
+        }
+
         private static void AddReplenishmentUseCase(IServiceCollection services)
         {
             services.AddScoped<IGetReplenishmentItemsUseCase, GetReplenishmentItemsUseCase>();
@@ -185,10 +193,5 @@ namespace RDTrackR.Application
         {
             services.AddScoped<IGetAuditLogsUseCase, GetAuditLogsUseCase>();
         }
-
-
-
-
-
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyRecipeBook.Application.UseCases.Login.ResetPassword;
 using RDTrackR.API.Attributes;
 using RDTrackR.Application.UseCases.Login.DoLogin;
 using RDTrackR.Application.UseCases.Login.Logout;
+using RDTrackR.Application.UseCases.Login.ResetPassword;
 using RDTrackR.Communication.Requests.Login;
 using RDTrackR.Communication.Requests.Password;
 using RDTrackR.Communication.Responses.Error;
@@ -33,7 +33,6 @@ namespace RDTrackR.API.Controllers
             return NoContent();
         }
 
-        [AuthenticatedUser]
         [HttpGet]
         [Route("code-reset-password/{email}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
@@ -45,7 +44,6 @@ namespace RDTrackR.API.Controllers
             return Accepted();
         }
 
-        [AuthenticatedUser]
         [HttpPut]
         [Route("reset-password")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

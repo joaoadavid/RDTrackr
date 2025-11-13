@@ -3,7 +3,7 @@
 namespace RDTrackR.Infrastructure.Migrations.Versions
 {
     [Migration(DatabaseVersions.ADD_PRODUCT_USER_RELATION, "Add CreatedByUserId to Products table")]
-    public class Version0000007_AddProductUserRelation : VersionBase
+    public class Version0000007 : VersionBase
     {
         public override void Up()
         {

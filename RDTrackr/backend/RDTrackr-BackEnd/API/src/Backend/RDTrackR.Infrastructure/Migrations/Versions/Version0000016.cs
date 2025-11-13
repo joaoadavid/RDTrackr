@@ -1,9 +1,8 @@
 ﻿using FluentMigrator;
 using RDTrackR.Infrastructure.Migrations;
-using System.Diagnostics.Metrics;
 
 [Migration(DatabaseVersions.ADD_PRODUCT_REPLENISHMENT_FIELDS)]
-public class Version0000016_AddReplenishmentFieldsToProducts : ForwardOnlyMigration
+public class Version0000016 : ForwardOnlyMigration
 {
     public override void Up()
     {

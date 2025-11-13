@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Requests;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Requests;
 using CommonTestUtilities.Tokens;
 using RDTrackR.Exceptions;
 using Shouldly;
@@ -13,12 +14,12 @@ namespace WebApi.Test.Product.Update
     {
         private const string METHOD = "product";
 
-        private readonly Guid _userIdentifier;
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier;
         private readonly long _productId;
 
         public UpdateProductTest(CustomWebApplicationFactory factory) : base(factory)
         {
-            _userIdentifier = factory.GetUserIdentifier();
+            _userIdentifier = factory.GetUser();
             _productId = factory.GetProductId();
         }
 

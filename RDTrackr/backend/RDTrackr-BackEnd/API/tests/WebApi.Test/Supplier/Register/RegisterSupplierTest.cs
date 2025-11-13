@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.Requests.Supplier;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.Requests.Supplier;
 using CommonTestUtilities.Tokens;
 using Shouldly;
 using System.Net;
@@ -9,11 +10,11 @@ namespace WebApi.Test.Supplier.Register
     public class RegisterSupplierTest : RDTrackRClassFixture
     {
         private const string endpoint = "supplier";
-        private readonly Guid _userIdentifier;
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier;
 
         public RegisterSupplierTest(CustomWebApplicationFactory factory) : base(factory)
         {
-            _userIdentifier = factory.GetUserIdentifier();
+            _userIdentifier = factory.GetUser();
         }
 
         [Fact]

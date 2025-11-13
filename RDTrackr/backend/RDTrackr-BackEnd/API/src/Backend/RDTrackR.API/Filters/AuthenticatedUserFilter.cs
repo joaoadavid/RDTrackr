@@ -37,11 +37,21 @@ namespace RDTrackR.API.Filters
                     throw new UnauthorizedException(ResourceMessagesException.USER_WITHOU_PERMISSION_ACCESS_RESOURCE);
                 }
 
+                //var claims = new List<Claim>
+                //{
+                //    new Claim("sub", user.Id.ToString()),
+                //    new Claim(ClaimTypes.Name, user.Name ?? ""),
+                //    new Claim(ClaimTypes.Role, user.Role)
+                //};
                 var claims = new List<Claim>
                 {
-                    new Claim("sub", user.Id.ToString()),          // ← Aqui usamos o ID numérico real
-                    new Claim(ClaimTypes.Name, user.Name ?? "")    // ← Evita null
+                    new Claim(ClaimTypes.Sid, user.UserIdentifier.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.Name ?? ""),
+                    new Claim(ClaimTypes.Role, user.Role)
                 };
+
+
 
                 var identity = new ClaimsIdentity(claims, "Bearer");
                 context.HttpContext.User = new ClaimsPrincipal(identity);

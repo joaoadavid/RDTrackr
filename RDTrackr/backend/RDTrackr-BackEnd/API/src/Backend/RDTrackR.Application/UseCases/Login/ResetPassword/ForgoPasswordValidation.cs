@@ -2,7 +2,7 @@
 using RDTrackR.Communication.Requests.Password;
 using RDTrackR.Exceptions;
 
-namespace MyRecipeBook.Application.UseCases.Login.ResetPassword
+namespace RDTrackR.Application.UseCases.Login.ResetPassword
 {
     public class ForgoPasswordValidation : AbstractValidator<RequestResetYourPasswordJson>
     {
@@ -22,7 +22,7 @@ namespace MyRecipeBook.Application.UseCases.Login.ResetPassword
                 .Equal(r => r.Password)
                 .WithMessage(ResourceMessagesException.PASSWORDS_DO_NOT_MATCH);
 
-            RuleFor(r => r.Code)  
+            RuleFor(r => r.Code)
                 .NotEmpty().WithMessage(ResourceMessagesException.CODE_REQUIRED);
         }
     }

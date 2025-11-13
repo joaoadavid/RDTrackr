@@ -3,7 +3,7 @@
 namespace RDTrackR.Infrastructure.Migrations.Versions
 {
     [Migration(DatabaseVersions.TABLE_PURCHASE_ORDER_ITEMS)]
-    public class Version0000017_CreatePurchaseOrderItemsTable : VersionBase
+    public class Version0000017 : VersionBase
     {
         public override void Up()
         {

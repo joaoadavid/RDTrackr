@@ -7,7 +7,7 @@ using RDTrackR.Domain.Services.Email;
 using RDTrackR.Exceptions;
 using RDTrackR.Exceptions.ExceptionBase;
 
-namespace MyRecipeBook.Application.UseCases.Login.ResetPassword
+namespace RDTrackR.Application.UseCases.Login.ResetPassword
 {
     public class RequestCodeResetPasswordUseCase : IRequestCodeResetPasswordUseCase
     {

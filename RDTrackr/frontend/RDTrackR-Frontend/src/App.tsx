@@ -8,6 +8,10 @@ import { AppSidebar } from "@/components/layout/AppSidebar";
 import { Topbar } from "@/components/layout/Topbar";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ThemeProvider } from "@/hooks/use-theme";
+
+import { AuthProvider } from "@/context/AuthContext";
+import { ProtectedRoute } from "@/routes/ProtectedRoute";
+
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Support from "./pages/Support";
@@ -53,137 +57,186 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            {/* ROTAS PÚBLICAS */}
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/support" element={<Support />} />
-            <Route path="/replenishment-info" element={<ReplenishmentInfo />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/dashboard"
-              element={
-                <AppLayout>
-                  <Dashboard />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/users"
-              element={
-                <AppLayout>
-                  <Users />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/products"
-              element={
-                <AppLayout>
-                  <Products />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/orders"
-              element={
-                <AppLayout>
-                  <Orders />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/reports"
-              element={
-                <AppLayout>
-                  <Reports />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/settings"
-              element={
-                <AppLayout>
-                  <Settings />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/audit-log"
-              element={
-                <AppLayout>
-                  <AuditLog />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/inventory"
-              element={
-                <AppLayout>
-                  <InventoryOverview />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/inventory/items"
-              element={
-                <AppLayout>
-                  <InventoryItems />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/inventory/warehouses"
-              element={
-                <AppLayout>
-                  <Warehouses />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/inventory/replenishment"
-              element={
-                <AppLayout>
-                  <Replenishment />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/inventory/movements"
-              element={
-                <AppLayout>
-                  <Movements />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/inventory/suppliers"
-              element={
-                <AppLayout>
-                  <Suppliers />
-                </AppLayout>
-              }
-            />
-            <Route
-              path="/inventory/purchase-orders"
-              element={
-                <AppLayout>
-                  <PurchaseOrders />
-                </AppLayout>
-              }
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              {/* ROTAS PÚBLICAS */}
+              <Route path="/" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/support" element={<Support />} />
+              <Route
+                path="/replenishment-info"
+                element={<ReplenishmentInfo />}
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+
+              {/* ROTAS PROTEGIDAS */}
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Dashboard />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/users"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Users />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/products"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Products />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/orders"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Orders />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/reports"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Reports />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/settings"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Settings />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/audit-log"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <AuditLog />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/inventory"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <InventoryOverview />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/inventory/items"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <InventoryItems />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/inventory/warehouses"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Warehouses />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/inventory/replenishment"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Replenishment />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/inventory/movements"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Movements />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/inventory/suppliers"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <Suppliers />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/inventory/purchase-orders"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout>
+                      <PurchaseOrders />
+                    </AppLayout>
+                  </ProtectedRoute>
+                }
+              />
+
+              {/* NOT FOUND */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </ThemeProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 

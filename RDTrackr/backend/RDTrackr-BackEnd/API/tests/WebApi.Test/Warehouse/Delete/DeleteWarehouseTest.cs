@@ -1,4 +1,5 @@
-﻿using CommonTestUtilities.IdEncryption;
+﻿using CommonTestUtilities.Entities;
+using CommonTestUtilities.IdEncryption;
 using CommonTestUtilities.Requests;
 using CommonTestUtilities.Requests.Warehouse;
 using CommonTestUtilities.Tokens;
@@ -14,12 +15,12 @@ namespace WebApi.Test.Warehouse.Delete
     public class DeleteWarehouseTest : RDTrackRClassFixture
     {
         private readonly string METHOD = "warehouse";
-        private readonly Guid _userIdentifier;
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier;
         private readonly long _warehouseId;
 
         public DeleteWarehouseTest(CustomWebApplicationFactory factory) : base(factory) 
         {
-            _userIdentifier = factory.GetUserIdentifier();
+            _userIdentifier = factory.GetUser();
             _warehouseId = factory.GetWarehouseId();
         }
 
@@ -45,6 +46,6 @@ namespace WebApi.Test.Warehouse.Delete
             var response = await DoDelete(method: $"{METHOD}/9999",token:token, culture:culture);
 
             response.StatusCode.ShouldBe(HttpStatusCode.NotFound);
-        }     
+        }
     }
 }

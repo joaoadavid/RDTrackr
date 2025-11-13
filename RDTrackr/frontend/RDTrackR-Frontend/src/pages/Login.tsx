@@ -12,29 +12,41 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { login } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-    // Mock login - in production, validate against backend
-    if (email && password) {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      await login(email, password);
+
       toast({
         title: "Login bem-sucedido",
-        description: "Redirecionando para o dashboard...",
+        description: `Bem-vindo!`,
       });
-      setTimeout(() => navigate("/"), 1000);
-    } else {
+
+      navigate("/dashboard");
+    } catch (err: any) {
+      const message =
+        err?.result?.message ?? err?.body?.message ?? "Erro ao realizar login.";
+
       toast({
         title: "Erro no login",
-        description: "Por favor, preencha todos os campos.",
+        description: message,
         variant: "destructive",
       });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,35 +62,36 @@ export default function Login() {
             />
           </CardTitle>
           <CardDescription className="text-center">
-            Entre com suas credenciais para acessar o painel
+            Entre com suas credenciais
           </CardDescription>
         </CardHeader>
+
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label>Email</Label>
               <Input
-                id="email"
                 type="email"
-                placeholder="admin@example.com"
                 value={email}
+                disabled={loading}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
+
             <div className="space-y-2">
-              <Label htmlFor="password">Senha</Label>
+              <Label>Senha</Label>
               <Input
-                id="password"
                 type="password"
-                placeholder="••••••••"
+                disabled={loading}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
-            <Button type="submit" className="w-full">
-              Entrar
+
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? "Entrando..." : "Entrar"}
             </Button>
           </form>
         </CardContent>

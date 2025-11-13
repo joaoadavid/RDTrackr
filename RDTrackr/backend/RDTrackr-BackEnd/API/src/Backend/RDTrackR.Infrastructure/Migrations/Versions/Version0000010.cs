@@ -3,7 +3,7 @@
 namespace RDTrackR.Infrastructure.Migrations.Versions
 {
     [Migration(DatabaseVersions.TABLE_STOCKITEMS, "Create StockItems table")]
-    public class Version0000010_CreateStockItemsTable : VersionBase
+    public class Version0000010 : VersionBase
     {
         public override void Up()
         {
