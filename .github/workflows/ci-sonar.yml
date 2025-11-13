@@ -2,11 +2,9 @@ name: CI - Build, Test & SonarQube
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build-test-analyze:
@@ -18,10 +16,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Debug folder structure
+      # Debug initial structure
+      - name: DEBUG — Show structure
         run: |
-          echo "ROOT:"
+          echo "--- ROOT ---"
           ls -R .
+          echo "--- RDTrackr ---"
+          ls -R RDTrackr
 
       # ---------------- BACKEND (.NET) ----------------
       - name: Setup .NET
@@ -35,29 +36,31 @@ jobs:
       - name: Install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
 
-      # ---------------- SONAR BEGIN ----------------
+      # SONAR BEGIN
       - name: Start SonarCloud scanner
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           export PATH="$PATH:/home/runner/.dotnet/tools"
+
           dotnet sonarscanner begin \
             /k:"joaoadavid_RDTrackr" \
             /o:"joaoadavid" \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml" \
-            /d:sonar.javascript.lcov.reportPaths="RDTrackr/frontend/RDTrackR-Frontend/coverage/**/lcov.info"
+            /d:sonar.javascript.lcov.reportPaths="RDTrackr/RDTrackr/frontend/RDTrackR-Frontend/coverage/**/lcov.info"
 
-      # ---------------- BACKEND BUILD ----------------
+      # BUILD BACKEND
       - name: Build backend
         run: |
-          dotnet build RDTrackr/backend/RDTrackR-BackEnd/API/RDTrackR.sln --configuration Release
+          dotnet build RDTrackr/RDTrackr/backend/RDTrackR-BackEnd/API/RDTrackR.sln --configuration Release
 
-      # ---------------- BACKEND TESTS ----------------
+      # TEST BACKEND
       - name: Run backend tests with coverage
         run: |
-          cd RDTrackr/backend/RDTrackR-BackEnd/API
+          cd RDTrackr/RDTrackr/backend/RDTrackR-BackEnd/API
+
           dotnet test \
             --configuration Release \
             --collect:"XPlat Code Coverage" \
@@ -76,17 +79,17 @@ jobs:
 
       - name: Install & Test frontend
         run: |
-          cd RDTrackr/frontend/RDTrackR-Frontend
+          cd RDTrackr/RDTrackr/frontend/RDTrackR-Frontend
           npm ci
           npm run build
           npx vitest run --coverage
 
-      - name: Debug frontend coverage folder
+      - name: DEBUG — Show frontend coverage
         run: |
-          echo "Checking coverage folder..."
-          ls -R RDTrackr/frontend/RDTrackR-Frontend/coverage || echo "Coverage not found"
+          echo "Listing coverage folder:"
+          ls -R RDTrackr/RDTrackr/frontend/RDTrackR-Frontend/coverage || echo "Coverage not found"
 
-      # ---------------- SONAR END ----------------
+      # SONAR END
       - name: Finish SonarCloud scanner
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
