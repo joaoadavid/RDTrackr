@@ -24,15 +24,13 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      # Install ReportGenerator
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
-      # Install SonarScanner
       - name: Install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
 
-      # Begin SonarScanner
+      # ---------------- SONAR BEGIN ----------------
       - name: Start SonarCloud scanner
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -42,24 +40,25 @@ jobs:
             /k:"joaoadavid_RDTrackr" \
             /o:"joaoadavid" \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml" \
-            /d:sonar.javascript.lcov.reportPaths="RDTrackr/frontend/RDTrackR-Frontend/coverage/lcov.info"
+            /d:sonar.javascript.lcov.reportPaths="RDTrackR/frontend/RDTrackR-Frontend/coverage/**/lcov.info"
 
-      # Build backend
+      # ---------------- BACKEND BUILD ----------------
       - name: Build backend
         run: |
-          dotnet build RDTrackr/backend/RDTrackr-BackEnd/API/RDTrackR.sln --configuration Release
+          dotnet build RDTrackR/backend/RDTrackR-BackEnd/API/RDTrackR.sln --configuration Release
 
-      # Run backend tests WITH COVERAGE and generate report
+      # ---------------- BACKEND TESTS + COVERAGE ----------------
       - name: Run backend tests with coverage
         run: |
-          cd RDTrackr/backend/RDTrackr-BackEnd/API
+          cd RDTrackR/backend/RDTrackR-BackEnd/API
           dotnet test \
             --configuration Release \
             --collect:"XPlat Code Coverage" \
             --results-directory TestResults
 
-          # Convert Cobertura → LCOV
+          # Convert Cobertura → LCOV (compatível com Sonar)
           reportgenerator \
             "-reports:TestResults/**/coverage.cobertura.xml" \
             "-targetdir:coveragereport" \
@@ -73,12 +72,17 @@ jobs:
 
       - name: Install & Test frontend
         run: |
-          cd RDTrackr/frontend/RDTrackR-Frontend
+          cd RDTrackR/frontend/RDTrackR-Frontend
           npm ci
           npm run build
           npx vitest run --coverage
 
-      # END SonarScanner
+      - name: Debug coverage path
+        run: |
+          echo "Listing coverage folder:"
+          ls -R RDTrackR/frontend/RDTrackR-Frontend/coverage || echo "Coverage folder NOT FOUND"
+
+      # ---------------- SONAR END ----------------
       - name: Finish SonarCloud scanner
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
