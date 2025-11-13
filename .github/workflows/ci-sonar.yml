@@ -16,13 +16,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Debug initial structure
+      # Debug structure
       - name: DEBUG — Show structure
         run: |
           echo "--- ROOT ---"
           ls -R .
-          echo "--- RDTrackr ---"
-          ls -R RDTrackr
 
       # ---------------- BACKEND (.NET) ----------------
       - name: Setup .NET
@@ -49,17 +47,17 @@ jobs:
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.host.url="https://sonarcloud.io" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml" \
-            /d:sonar.javascript.lcov.reportPaths="RDTrackr/RDTrackr/frontend/RDTrackR-Frontend/coverage/**/lcov.info"
+            /d:sonar.javascript.lcov.reportPaths="RDTrackr/frontend/RDTrackR-Frontend/coverage/lcov.info"
 
       # BUILD BACKEND
       - name: Build backend
         run: |
-          dotnet build RDTrackr/RDTrackr/backend/RDTrackR-BackEnd/API/RDTrackR.sln --configuration Release
+          dotnet build RDTrackr/backend/RDTrackr-BackEnd/API/RDTrackR.sln --configuration Release
 
       # TEST BACKEND
       - name: Run backend tests with coverage
         run: |
-          cd RDTrackr/RDTrackr/backend/RDTrackR-BackEnd/API
+          cd RDTrackr/backend/RDTrackr-BackEnd/API
 
           dotnet test \
             --configuration Release \
@@ -71,7 +69,7 @@ jobs:
             "-targetdir:coveragereport" \
             "-reporttypes:lcov"
 
-      # ---------------- FRONTEND TESTS ----------------
+      # ---------------- FRONTEND (VITE + VITEST) ----------------
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -79,15 +77,14 @@ jobs:
 
       - name: Install & Test frontend
         run: |
-          cd RDTrackr/RDTrackr/frontend/RDTrackR-Frontend
+          cd RDTrackr/frontend/RDTrackR-Frontend
           npm ci
           npm run build
           npx vitest run --coverage
 
       - name: DEBUG — Show frontend coverage
         run: |
-          echo "Listing coverage folder:"
-          ls -R RDTrackr/RDTrackr/frontend/RDTrackR-Frontend/coverage || echo "Coverage not found"
+          ls -R RDTrackr/frontend/RDTrackR-Frontend/coverage || echo "Coverage not found"
 
       # SONAR END
       - name: Finish SonarCloud scanner
