@@ -43,7 +43,7 @@ jobs:
             /o:"joaoadavid" \
             /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
             /d:sonar.cs.opencover.reportsPaths="**/coverage.cobertura.xml" \
-            /d:sonar.javascript.lcov.reportPaths="**/coverage/lcov.info"
+            /d:sonar.javascript.lcov.reportPaths="RDTrackr/frontend/RDTrackR-Frontend/coverage/lcov.info"
 
       # Build backend
       - name: Build backend
