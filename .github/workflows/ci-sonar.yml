@@ -18,9 +18,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-        
-      - name: List backend directory2
-        run: ls -R RDTrackr/backend/RDTrackr-BackEnd/
+      
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -30,11 +28,11 @@ jobs:
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
       - name: Restore & Build Backend
-        run: dotnet build RDTrackr/backend/RDTrackR-BackEnd/API/RDTrackR.sln --configuration Release
+        run: dotnet build RDTrackr/backend/RDTrackr-BackEnd/API/RDTrackR.sln --configuration Release
 
       - name: Run Backend Tests with Coverage
         run: |
-          cd RDTrackr/backend/RDTrackR-BackEnd/API
+          cd RDTrackr/backend/RDTrackr-BackEnd/API
 
           dotnet test \
             --configuration Release \
@@ -50,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backend-coverage
-          path: RDTrackr/backend/RDTrackR-BackEnd/API/coverage/
+          path: RDTrackr/backend/RDTrackr-BackEnd/API/coverage/
           retention-days: 1
 
 
