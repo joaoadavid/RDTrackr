@@ -28,7 +28,7 @@ jobs:
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
 
       - name: Restore & Build Backend
-        run: dotnet build RDTrackr/backend/RDTrackR-BackEnd/API/RDTrackR.sln --configuration Release
+        run: dotnet build RDTrackR/backend/RDTrackR-BackEnd/API/RDTrackR.sln --configuration Release
 
       - name: Run Backend Tests with Coverage
         run: |
