@@ -23,7 +23,7 @@ jobs:
       # Aqui já geramos cobertura em formato OpenCover,
       # sem precisar do ReportGenerator + Cobertura
       - name: Run Backend Tests with Coverage (OpenCover)
-        working-directory: RDTrackr/backend/RDTrackR-BackEnd/API
+        working-directory: RDTrackr/backend/RDTrackr-BackEnd/API
         run: |
           dotnet test \
             /p:CollectCoverage=true \
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: backend-coverage
-          path: RDTrackr/backend/RDTrackR-BackEnd/API/TestResults/
+          path: RDTrackr/backend/RDTrackr-BackEnd/API/TestResults/
 
 
   # ============================================================
@@ -89,7 +89,7 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.organization=joaoadavid
             -Dsonar.projectKey=joaoadavid_RdTrackR-backend
-            -Dsonar.sources=RDTrackr/backend/RDTrackR-BackEnd/API/src
+            -Dsonar.sources=RDTrackr/backend/RDTrackr-BackEnd/API/src
             -Dsonar.cs.opencover.reportsPaths=backend-coverage/**/coverage.opencover.xml
 
 
@@ -157,7 +157,7 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io
             -Dsonar.organization=joaoadavid
             -Dsonar.projectKey=joaoadavid_RDTrackR
-            -Dsonar.sources=RDTrackr/backend/RDTrackR-BackEnd/API/src,RDTrackr/frontend/RDTrackR-Frontend/src
+            -Dsonar.sources=RDTrackr/backend/RDTrackr-BackEnd/API/src,RDTrackr/frontend/RDTrackR-Frontend/src
             -Dsonar.exclusions=RDTrackr/frontend/RDTrackR-Frontend/src/tests/**
             -Dsonar.cs.opencover.reportsPaths=backend-coverage/**/coverage.opencover.xml
             -Dsonar.javascript.lcov.reportPaths=frontend-coverage/**/lcov.info
