@@ -117,7 +117,7 @@ jobs:
       - name: SonarCloud Scan — BACKEND
         uses: SonarSource/sonarcloud-github-action@v3
         with:
-          projectBaseDir: RDTrackr/backend/RDTrackR-BackEnd/API
+          projectBaseDir: RDTrackr/backend/RDTrackr-BackEnd/API
           args: >
             -Dsonar.projectKey=joaoadavid_RDTrackr-backend
             -Dsonar.organization=joaoadavid
