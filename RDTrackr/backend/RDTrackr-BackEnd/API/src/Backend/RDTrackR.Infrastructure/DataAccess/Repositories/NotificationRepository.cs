@@ -24,10 +24,11 @@
             {
                 return await _context.Notifications
                     .Where(n => n.UserId == userId && !n.Read)
-                    .OrderByDescending(n => n.CreatedAt)
                     .AsNoTracking()
+                    .OrderByDescending(n => n.CreatedAt)
                     .ToListAsync();
             }
+
 
             public async Task MarkAsReadAsync(long notificationId)
             {

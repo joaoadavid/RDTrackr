@@ -10,18 +10,26 @@ using WebApi.Test.InlineData;
 
 namespace WebApi.Test.User.Update
 {
-    public class UpdateUserTest(CustomWebApplicationFactory factory) : RDTrackRClassFixture(factory)
+    public class UpdateUserTest : RDTrackRClassFixture
     {
+        private readonly Guid _userIdentifier;
         private readonly string _method = "user";
 
-        private readonly RDTrackR.Domain.Entities.User _userIdentifier = factory.GetUser();
+        private readonly RDTrackR.Domain.Entities.User _user;
+
+        public UpdateUserTest(CustomWebApplicationFactory factory) : base(factory)
+        {
+            _userIdentifier = factory.GetUserIdentifier();
+            _user = factory.GetUser();
+        }
+        
 
         [Fact]
         public async Task Success()
         {
             var request = RequestUpdateUserJsonBuilder.Build();
 
-            var token = JwtTokenGeneratorBuilder.Build().Generate(_userIdentifier);
+            var token = JwtTokenGeneratorBuilder.Build().Generate(_user);
 
             var response = await DoPut(_method, request, token);
 
@@ -35,7 +43,7 @@ namespace WebApi.Test.User.Update
             var request = RequestUpdateUserJsonBuilder.Build();
             request.Name = string.Empty;
 
-            var token = JwtTokenGeneratorBuilder.Build().Generate(_userIdentifier);
+            var token = JwtTokenGeneratorBuilder.Build().Generate(_user);
 
             var response = await DoPut(_method, request, token, culture);
 

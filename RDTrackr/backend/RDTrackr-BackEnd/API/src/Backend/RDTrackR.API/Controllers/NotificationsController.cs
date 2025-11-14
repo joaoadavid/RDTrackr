@@ -10,11 +10,12 @@ namespace RDTrackR.API.Controllers
     {
         [HttpGet("notifications")]
         public async Task<IActionResult> GetUnread(
-        [FromServices] IUserContext user,
-        [FromServices] INotificationRepository repo)
+            [FromServices] IUserContext user,
+            [FromServices] INotificationRepository repo)
         {
             return Ok(await repo.GetAllUnreadAsync(user.UserId));
         }
+
 
         [HttpPost("notifications/{id}/read")]
         public async Task<IActionResult> MarkAsRead(long id,

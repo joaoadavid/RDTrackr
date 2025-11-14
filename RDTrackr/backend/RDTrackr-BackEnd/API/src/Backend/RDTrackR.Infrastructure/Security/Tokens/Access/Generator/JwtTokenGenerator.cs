@@ -6,11 +6,16 @@ using System.Security.Claims;
 
 namespace RDTrackR.Infrastructure.Security.Tokens.Access.Generator
 {
-    public class JwtTokenGenerator(uint expirationInMinutes, string signingKey) : JwtTokenHandler, IAccessTokenGenerator
+    public class JwtTokenGenerator : JwtTokenHandler, IAccessTokenGenerator
     {
-        private readonly uint _expirationInMinutes = expirationInMinutes;
-        private readonly string _signingKey = signingKey;
+        private readonly uint _expirationInMinutes;
+        private readonly string _signingKey;
 
+        public JwtTokenGenerator(uint expirationInMinutes, string signingKey)
+        {
+            _expirationInMinutes = expirationInMinutes;
+            _signingKey = signingKey;
+        }
         public string Generate(User user)
         {
             var tokenId = Guid.NewGuid().ToString();
@@ -18,23 +23,26 @@ namespace RDTrackR.Infrastructure.Security.Tokens.Access.Generator
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Sid, user.UserIdentifier.ToString()),
+                new Claim(JwtRegisteredClaimNames.Jti, tokenId),
                 new Claim(ClaimTypes.Role, user.Role),
                 new Claim(ClaimTypes.Name, user.Name),
-                new Claim("TokenId", tokenId),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email)
             };
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.UtcNow.AddMinutes(_expirationInMinutes),
-                SigningCredentials = new SigningCredentials(SecurityKey(_signingKey), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(
+                    SecurityKey(_signingKey),
+                    SecurityAlgorithms.HmacSha256Signature
+                )
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-            var jwt = tokenHandler.WriteToken(securityToken);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return jwt;
+            return tokenHandler.WriteToken(token);
         }
 
         public string GenerateWithTokenId(Guid userIdentifier, string tokenId)

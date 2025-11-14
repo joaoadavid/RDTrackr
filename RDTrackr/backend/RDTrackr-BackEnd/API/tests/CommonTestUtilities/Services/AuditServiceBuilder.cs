@@ -4,7 +4,7 @@ using RDTrackR.Domain.Context;
 using RDTrackR.Domain.Repositories.Audit;
 using RDTrackR.Infrastructure.Services.Audit;
 
-namespace CommonTestUtilities.Services.Audit
+namespace CommonTestUtilities.Services
 {
     public class AuditServiceBuilder
     {
@@ -22,6 +22,7 @@ namespace CommonTestUtilities.Services.Audit
             _user = UserContextBuilder.Build(id, name);
             return this;
         }
+
 
         public AuditService Build()
         {

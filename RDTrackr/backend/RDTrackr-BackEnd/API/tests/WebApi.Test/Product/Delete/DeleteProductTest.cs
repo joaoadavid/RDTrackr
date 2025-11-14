@@ -8,12 +8,17 @@ using WebApi.Test.InlineData;
 
 namespace WebApi.Test.Product.Delete
 {
-    public class DeleteProductTest(CustomWebApplicationFactory factory) : RDTrackRClassFixture(factory)
+    public class DeleteProductTest : RDTrackRClassFixture
     {
         private const string METHOD = "product";
 
-        private readonly RDTrackR.Domain.Entities.User _userIdentifier = factory.GetUser();
-        private readonly long _productId = factory.GetProductId();
+        private readonly RDTrackR.Domain.Entities.User _userIdentifier;
+        private readonly long _productId;
+        public DeleteProductTest(CustomWebApplicationFactory factory) : base(factory)
+        {
+            _userIdentifier = factory.GetUser();
+            _productId = factory.GetProductId();
+        }
 
         [Fact]
         public async Task Success()

@@ -10,8 +10,5 @@ namespace RDTrackR.Infrastructure.Migrations.Versions
             Alter.Table("Users")
                 .AddColumn("Role").AsString(50).NotNullable().WithDefaultValue("User");
         }
-
-        
     }
-
 }

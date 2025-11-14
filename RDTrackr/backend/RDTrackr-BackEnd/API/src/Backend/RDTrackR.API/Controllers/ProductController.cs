@@ -12,6 +12,7 @@ using RDTrackR.Communication.Responses.Product;
 namespace RDTrackR.API.Controllers
 {
     [AuthenticatedUser]
+
     public class ProductController : RDTrackRBaseController
     {
         [HttpPost]

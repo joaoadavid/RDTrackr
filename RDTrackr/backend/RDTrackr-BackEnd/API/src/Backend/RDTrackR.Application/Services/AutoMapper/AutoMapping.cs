@@ -33,20 +33,16 @@ namespace RDTrackR.Application.Services.AutoMapper
 
         private void RequestToDomain()
         {
-            //primeiro parametro = fonte dos dados (requisição)
-            //segundo parametro = destino dos dados (entidade)
+
             CreateMap<RequestRegisterUserJson, Domain.Entities.User>()
                 .ForMember(dest => dest.Password, opt => opt.Ignore());//precisa definir a propriedade do destino (User)
 
-            // Produtos
             CreateMap<RequestRegisterProductJson, Domain.Entities.Product>()
                 .ForMember(dest => dest.CreatedByUserId, opt => opt.Ignore());
 
-            // Armazéns
             CreateMap<RequestRegisterWarehouseJson, Domain.Entities.Warehouse>()
                 .ForMember(dest => dest.CreatedByUserId, opt => opt.Ignore());
 
-            // Movimentações (Request → Domain)
             CreateMap<RequestRegisterMovementJson, Domain.Entities.Movement>()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => (RDTrackR.Domain.Enums.MovementType)src.Type))
                 .ForMember(dest => dest.CreatedByUserId, opt => opt.Ignore())
@@ -81,7 +77,6 @@ namespace RDTrackR.Application.Services.AutoMapper
                 .ForMember(dest => dest.CreatedByUserId, opt => opt.MapFrom(src => src.CreatedByUserId))
                 .ForMember(dest => dest.CreatedByName, opt => opt.MapFrom(src => src.CreatedBy.Name));
 
-            // Armazéns
             CreateMap<Domain.Entities.Warehouse, ResponseWarehouseJson>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.CreatedByUserId, opt => opt.MapFrom(src => src.CreatedByUserId))
@@ -120,14 +115,12 @@ namespace RDTrackR.Application.Services.AutoMapper
             CreateMap<PurchaseOrderItem, ResponsePurchaseOrderItemJson>()
                 .ForMember(dest => dest.ProductName, o => o.MapFrom(src => src.Product.Name));
 
-            // Listagem de usuários no painel Admin
             CreateMap<Domain.Entities.User, ResponseUserListItemJson>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
                 .ForMember(dest => dest.Active, opt => opt.MapFrom(src => src.Active));
 
-            // Versão simples (dropdown, seleção etc)
             CreateMap<Domain.Entities.User, ResponseShortUserJson>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name));
